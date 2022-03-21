@@ -1,2 +1,1 @@
-# E-commerce
-An E-commerce store for a baby bed niche
+A baby bed niche E-commerce store built with django, html, css, js, and others...
