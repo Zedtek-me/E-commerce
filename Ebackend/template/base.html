@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{%block title%}Home Page{%endblock%}</title>
+        <meta name= "viewport" content="width=device-width, initial-scale=1">
+        <meta name="Description" content="E-commerce store">
+        <meta name="Keywords" content="commerce, e-commerce, store">
+        <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/signin_nd_up.css">
+        <link rel="icon" type="img/jpg" href="">
+        <script src="https://kit.fontawesome.com/b7a792697d.js" crossorigin="anonymous"></script>
+        <script src="../static/js/index.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">B<span id="chair-txt">chair</span></div>
+            <ul class="nav-list">
+                <li><a href="">Mattress</a></li>
+                <li><a href="">Bedroom</a></li>
+                <li><a href="">Living Room</a></li>
+                <li><a href="">Kid Room</a></li>
+                <li class="float-right"><a href="{%url 'login'%}">Login</a></li>
+            </ul>
+            <!-- icon -->
+            <div class="icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-duotone fa-cart-shopping"></i>
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <!-- hamburgger -->
+            <div class="harmburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </header>
+        <!-- mobile -->
+        <ul class="nav-list-mobile">
+            <li><a href="">Mattress</a></li>
+            <li><a href="">Bedroom</a></li>
+            <li><a href="">Living Room</a></li>
+            <li><a href="">Kid Room</a></li>
+        </ul>
+        {%block content%}
+
+        {%endblock%}
+    </body>
+    <footer>
+        <div class="Links">
+            <h5 class="quick-links" onclick="displayLink()">Quick Links</h5>
+            <div class="buyer-seller">
+                <a href='' id="be-a-vendor"> Be a vendor</a>
+                <a href='' id="registered-buyer">Register as a buyer</a>
+                <a href='' id="affiliate">Be an affiliate</a>
+            </div>
+        </div>
+
+        <div class="policies">
+            <a href='' class="customer-pol">Customer Policy</a>
+            <a href='' class="seller-pol">Seller's Policy</a>
+            <a href='' class="data-privacy">Data Privacy</a>
+        </div>
+
+        <div class="copy-wright">
+            <a href='' id="copy-right">CopyWright Bchair</a>
+            <a href='' id="terms-of-service">Terms of Services</a>
+        </div>
+    </footer>
+</html>

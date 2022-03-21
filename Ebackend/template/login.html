@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block title%}login{%endblock%}
+
+{%block content%}
+<div class="sign-in"><h5>Sign in here</h5> <hr class="sepr"></div>
+<form action="" method="post" class="sign-form">
+    {%csrf_token%}
+    <label for="username">Username</label>
+    <input type="text" name="username" value="" placeholder="type in your username here...">
+    <label for="password">Password</label>
+    <input type="password" name="password" value="" placeholder="type in your pass word...">
+    <button type="submit" class="login-btn">Login</button>
+</form>
+<p class="heads-up">no account? Sign-up <a href="{%url 'signup'%}">here</a></p>
+{%endblock%}

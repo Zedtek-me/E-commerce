@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{%block title%}signup{%endblock%}
+
+{%block content%}
+<div class="sign-up-guide">Sign-up here</div>
+<form action="" method="post" class="signup-form">
+    {%csrf_token%}
+    <div class="input-cont">
+        <label for="name">Name*</label>
+        <input type="text" name="name" value="" placeholder="type in your full name here...">
+    </div>
+    
+    <div class="input-cont">
+        <label for="email">Email*</label>
+        <input type="email" name="email" value="" placeholder="your email...">
+    </div>
+    
+    <div class="input-cont">
+        <label for="username">Username*</label>
+        <input type="text" name="username" value="" placeholder="type in your username here...">
+    </div>
+    
+    <div class="options input-cont">
+        <label for="option">who are you?*</label>
+        <select name="usertype" id="usertype" class="option">
+            <option value="vendor">vendor</option>
+            <option value="buyer">buyer</option>
+        </select>
+    </div>
+
+    <div class="input-cont">
+        <label for="password">Password</label>
+        <input type="password" name="password" value="" placeholder="type in your pass word...">
+    </div>
+    
+    <div class="input-cont">
+        <label for="password2">Retype-Password</label>
+        <input type="password" name="password2" value="" placeholder="type in your pass again">
+    </div>
+
+    <button type="submit" class="signup-btn">Signup</button>
+</form>
+<p class="heads-up">already have an account? login <a href="{%url 'login'%}">here</a></p>
+{%endblock%}

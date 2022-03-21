@@ -1,0 +1,284 @@
+*{
+    margin:none;
+    border:none;
+    font-family: poppins;
+}
+
+@font-face{
+    font-family:poppins;
+    src: url('../Poppins/Poppins-Medium.ttf'),
+    url('../Poppins/Poppins-Light.ttf'),
+    url('../Poppins/Poppins-ExtraLightItalic.ttf'),
+    url('../Poppins/Poppins-ExtraLight.ttf');
+}
+/* header section */
+header{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position:sticky;
+    top:0;
+    right:0;
+    left:0;
+    border-bottom:solid black 2px;
+    background-color:white;
+}
+
+.logo{
+    font-weight: 400;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:orange;
+    cursor:pointer;
+}
+#chair-txt{
+    font-size:16px;
+    color:red 
+}
+.nav-list{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    list-style:none;
+    text-align: center;
+}
+
+.nav-list li>a{
+    text-decoration: none;
+    color:black;
+    margin:8px;
+}
+
+.nav-list li>a:hover{
+    border-bottom:solid 2px orange;
+}
+
+.float-right{
+    margin-left: auto;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+/* mobile nav */
+.nav-list-mobile{
+    display: none;
+}
+.hamburger{
+    display:none;
+}
+
+body{
+    margin:auto;
+    padding:auto;
+    background-image:url('../img/E-comBackground.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+.root-parent{
+    background-image:url('../img/E-comBackground.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+/* hero section */
+.hero-section{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    margin-top:30px;
+    width: 100%;
+    padding:auto;
+}
+
+/* first container in hero */
+.mordern-cont{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    text-align:left;
+    width:50%;
+    margin-left:170px;
+}
+
+.desc-btn{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    text-align: center;
+    color:white;
+}
+
+.buy{
+    background-color: orange;
+    text-decoration: none;
+    color:white;
+    border-radius: 10px;
+    width:fit-content;
+    height: fit-content;
+    padding:8px;
+    text-align: center;
+    margin:15px;
+}
+
+.how-it-works{
+    color:black;
+    text-align: center;
+    margin:auto;
+}
+
+.mordern-cont > img{
+    width:50%;
+    height:10%;
+}
+.mordern-txt{
+    font-weight: 500;
+    width:50%;
+}
+
+.mordern-desc{
+    font-weight:lighter;
+    margin-top:5px;
+    max-width:25%;
+    font-size:10px;
+    text-align: unset;
+}
+
+/* second container in hero */
+.big-img{
+    width:50%;
+    margin: auto;
+    margin:auto;
+}
+.big-img> img{
+    width:50%;
+    height: 50%;
+    border-radius: 20px;
+    margin-left:-150px;
+}
+
+/* items section */
+.items{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+}
+
+.items >.item{
+    width:30%;
+}
+
+.item >img{
+    width:50%;
+    height:30%;
+}
+
+/* the review box */
+.review-div{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height:fit-content;
+    background-color: bisque;
+    width: fit-content;
+    padding:8px;
+}
+
+.review-txt{
+    text-align: left;
+    align-self:flex-start;
+}
+.review{
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding:4px;
+    margin:8px;
+    height:50px;
+    text-align:center;
+    font-size:10px;
+    background-color: white;
+    border-radius:8px;
+    width:fit-content;
+}
+
+.review > div{
+    margin:7px;
+}
+.el{
+    background-color:rgb(145, 15, 145);
+    color:white;
+    height: 90%;
+    padding:5px;
+    width:17px;
+}
+
+#nm-leta{
+    font-weight: 100;
+    font-size: 15px;
+    text-align: center;
+    margin: auto;
+    margin-top:12px;
+}
+
+.review >.name-nd-com{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    text-align:center;
+}
+
+#rev{
+    margin-top:-17px;
+}
+
+/* footer */
+footer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(51, 48, 48);
+    padding:20px;
+    margin-top:20%;
+}
+
+footer > div, .buyer-seller{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: lighter;
+    text-align: left;
+}
+
+.quick-links{
+    cursor: pointer;
+}
+.buyer-seller{
+    display: none;
+    margin-top: -20px;
+}
+    
+footer > div> a, .buyer-seller> a{
+    color: white;
+    text-decoration:none;
+    font-weight: lighter;
+}
+
+/* media queries */
+@media screen and (max-width:1000px){
+
+}
