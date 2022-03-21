@@ -4,10 +4,30 @@
 
 {%block content%}
     <div class="profile-parent">
+        <h5 id="hello">Hello {{name}}</h5>
+        <!-- for vendors -->
+        {%if name.vendorprofile%}
+            <div class="profile-hero">
+                <img src="{{name.vendorprofile.profile_img.url}}" class="profile-pic" alt="profile-pic" type="img/jpg">
+                <h4 class="name">{{name}}</h4>
+            </div>
+            <div class="my_products">
+                <h5 id="my-products"> My products</h5>
+                {%for item in name.product_set.all()%}
+                    <div class="products">
+                        <h5 id="prod-name">{{item.product_name}}</h5>
+                        <img src="{{item.product_image.url}}" alt="">
+                        <p id="prod-dscr">{{item.product_description}}</p>
+                    <h3 id="price">{{item.price}}</h3>
+                    </div>
+                {%endfor%}
+            </div>
+        <!-- for buyers -->
+        {%else%}
         <div class="profile-hero">
-            <img src="" class="profile-pic" alt="profile-pic" type="img/jpg">
-            <h4 class="name">{{}}</h4>
+            <img src="{{name.buyerprofile.profile_img.url}}" class="profile-pic" alt="profile-pic" type="img/jpg">
+            <h4 class="name">{{name}}</h4>
         </div>
-        
+        {%endif%}
     </div>
 {%endblock%}
