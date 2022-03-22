@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-PG_PASS= os.environ.get('DEFAULTPG_PASS')
+PG_PASS= os.environ.get('PG_ACCESS')
 
 DATABASES = {
    'default': {
@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_FILES_DIRS = [os.path.join(BASE_DIR, 'Ebackend/static')]
-STATIC_ROOT= [os.path.join(BASE_DIR, '../static')]
+STATIC_ROOT= [os.path.join(BASE_DIR, 'static')]
 
 
 # media files uploaded by a user(Vendor or Buyer)
@@ -137,3 +137,6 @@ MEDIA_ROOT=[os.path.join(BASE_DIR, 'Media_files')]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# django settings file
+DJANGO_SETTINGS_MODULE = 'Ecommerce.settings'
