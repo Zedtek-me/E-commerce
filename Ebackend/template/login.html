@@ -1,7 +1,15 @@
 {%extends 'base.html'%}
 {%block title%}login{%endblock%}
+{%block login%}{%endblock%}
+{%block logout%}{%endblock%}
+
 
 {%block content%}
+{%if msgs%}
+    {%for msg in msgs%}
+    <div {%if msg.tags%}class="{{msg.tags}}"{%endif%}>{{msg}}</div>
+    {%endfor%}
+{%endif%}
 <div class="sign-in"><h5>Sign in here</h5> <hr class="sepr"></div>
 <form action="" method="post" class="sign-form">
     {%csrf_token%}

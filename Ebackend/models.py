@@ -15,12 +15,12 @@ class VendorProfile(models.Model):
     def __str__(self):
         return self.vendor
 
-    def save(self,*args, **kwargs):
-        super().save()
-        img = Image.open(self.profile_img.path)
-        thumb=(400,400)
-        img.thumbnail(thumb)
-        img.save()
+    # def save(self,*args, **kwargs):
+    #     super().save()
+    #     img = Image.open(self.profile_img.path)
+    #     thumb=(400,400)
+    #     img.thumbnail(thumb)
+    #     img.save()
 
 # buyer's table
 class BuyerProfile(models.Model):
@@ -33,12 +33,12 @@ class BuyerProfile(models.Model):
     def __str__(self):
         return self.buyer
 
-    def save(self,*args, **kwargs):
-        super().save()
-        img = Image.open(self.profile_img.path)
-        thumb=(400,400)
-        img.thumbnail(thumb)
-        img.save()
+    # def save(self,*args, **kwargs):
+    #     super().save()
+    #     img = Image.open(self.profile_img.path)
+    #     thumb=(400,400)
+    #     img.thumbnail(thumb)
+    #     img.save()
 
 # product's table referencing the user table, since both buyers and vendors are sellers
 class Product(models.Model):
@@ -53,9 +53,9 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-    def save(self,*args, **kwargs):
-        super().save()
-        img = Image.open(self.product_image.path)
-        thumb=(400,400)
-        img.thumbnail(thumb)
-        img.save()
+    # def save(self,*args, **kwargs):
+    #     super().save()
+    #     img = Image.open(self.product_image.path)
+    #     thumb=(400,400)
+    #     img.thumbnail(thumb)
+    #     img.save()

@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views, api_views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns=[
     # api urls below
     path('vendor/', api_views.get_vendor, name='vendors' ),
@@ -13,3 +15,6 @@ urlpatterns=[
     path('signup/', views.signup, name='signup' ),
     path('profile/', views.profile, name='profile' ),
 ]
+
+if settings.DEBUG == True:
+    urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -1,28 +1,35 @@
 {%extends 'base.html'%}
 {%block title%}signup{%endblock%}
+{%block login%}{%endblock%}
+{%block logout%}{%endblock%}
 
 {%block content%}
+{%if msgs%}
+    {%for msg in msgs%}
+    <div {%if msg.tags%} class="{{msg.tags}}"{%endif%}>{{msg}}</div>
+    {%endfor%}
+{%endif%}
 <div class="sign-up-guide">Sign-up here</div>
 <form action="" method="post" class="signup-form">
     {%csrf_token%}
     <div class="input-cont">
         <label for="name">Name*</label>
-        <input type="text" name="name" value="" placeholder="type in your full name here...">
+        <input type="text" name="name" value="" placeholder="type in your full name here..." required>
     </div>
     
     <div class="input-cont">
         <label for="email">Email*</label>
-        <input type="email" name="email" value="" placeholder="your email...">
+        <input type="email" name="email" value="" placeholder="your email..."  required>
     </div>
     
     <div class="input-cont">
         <label for="username">Username*</label>
-        <input type="text" name="username" value="" placeholder="type in your username here...">
+        <input type="text" name="username" value="" placeholder="type in your username here..."  required>
     </div>
     
     <div class="options input-cont">
         <label for="option">who are you?*</label>
-        <select name="usertype" id="usertype" class="option">
+        <select name="usertype" id="usertype" class="option"  required>
             <option value="vendor">vendor</option>
             <option value="buyer">buyer</option>
         </select>
@@ -30,12 +37,12 @@
 
     <div class="input-cont">
         <label for="password">Password</label>
-        <input type="password" name="password" value="" placeholder="type in your pass word...">
+        <input type="password" name="password" value="" placeholder="type in your pass word..."  required>
     </div>
     
     <div class="input-cont">
         <label for="password2">Retype-Password</label>
-        <input type="password" name="password2" value="" placeholder="type in your pass again">
+        <input type="password" name="password2" value="" placeholder="type in your pass again"  required>
     </div>
 
     <button type="submit" class="signup-btn">Signup</button>

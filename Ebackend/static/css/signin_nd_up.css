@@ -111,3 +111,25 @@ div.sign-up-guide{
     border:solid 2px black;
     align-self: flex-start;
 }
+
+.success{
+    margin:auto;
+    margin-top:20px;
+    text-align: center;
+    width:fit-content;
+    padding:5px;
+    background-color:lightgreen;
+    color: white;
+    border-radius:15px;
+}
+
+.error{
+    margin:auto;
+    margin-top:20px;
+    text-align: center;
+    width:fit-content;
+    padding:5px;
+    background-color: lightcoral;
+    color:white;
+    border-radius:15px;
+}

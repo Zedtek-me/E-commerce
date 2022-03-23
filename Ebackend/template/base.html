@@ -13,14 +13,18 @@
     </head>
     <body>
         <header>
-            <div class="logo">B<span id="chair-txt">chair</span></div>
+            <div class="logo"><a href="{%url 'home'%}">B<span id="chair-txt">chair</span></a></div>
             <ul class="nav-list">
                 <li><a href="">Mattress</a></li>
                 <li><a href="">Bedroom</a></li>
                 <li><a href="">Living Room</a></li>
                 <li><a href="">Kid Room</a></li>
-                <li class="float-right"><a href="{%url 'login'%}">Login</a></li>
             </ul>
+            <!-- login logout buttons -->
+            <div class="logs">
+                {%block login%}<li class="login"><a href="{%url 'login'%}">Login</a></li>{%endblock%}
+               {%block logout%} <li class="logout"><a href="{%url 'logout'%}">Logout</a></li>{%endblock%}
+            </div>
             <!-- icon -->
             <div class="icon">
                 <i class="fa-solid fa-magnifying-glass"></i>

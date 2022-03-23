@@ -2,6 +2,8 @@
 
 {%block title%}profile{%endblock%}
 
+{%block login%} {%endblock%}
+
 {%block content%}
     <div class="profile-parent">
         <h5 id="hello">Hello {{name}}</h5>
@@ -13,7 +15,7 @@
             </div>
             <div class="my_products">
                 <h5 id="my-products"> My products</h5>
-                {%for item in name.product_set.all()%}
+                {%for item in name.product_set.all%}
                     <div class="products">
                         <h5 id="prod-name">{{item.product_name}}</h5>
                         <img src="{{item.product_image.url}}" alt="">

@@ -1,4 +1,3 @@
-from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
@@ -19,7 +18,34 @@ def index(request):
         return render(request, 'index.html', context)
 
 def signup(request):
-    return render(request, 'signup.html', {})
+    if request.method == 'POST':
+        print(request.POST)
+        name= request.POST.get('name')
+        email= request.POST.get('email')
+        username= request.POST.get('username')
+        typeof_user= request.POST.get('usertype')
+        password= request.POST.get('password')
+        password2= request.POST.get('password2')
+
+        # check the the data gotten
+        if password == password2:
+            user= User.objects.create_user(first_name= name, username=username, password=password, email=email)
+            user.save()
+            # check which user it is (buyer or seller)
+            if typeof_user == 'buyer':
+                buyer= BuyerProfile(buyer= user)
+                buyer.save()
+                messages.success(request, 'account successfully created!')
+                return redirect('/login/')
+            vendor= VendorProfile(vendor= user)
+            vendor.save()
+            messages.success(request, 'account successfully created!')
+            return redirect('/login/')
+        # return error if passwords don't match
+        messages.error(request, 'Your passwords didn\'t match!')
+        return redirect('/signup/')
+    msgs= messages.get_messages(request)
+    return render(request, 'signup.html', {'msgs': msgs})
 
 
 def login_user(request):
@@ -31,18 +57,20 @@ def login_user(request):
         password= post.get('password')
         user= authenticate(request, username= username, password=password)
         if user is not None:
-            login(user)
+            login(request, user)
+            request.session.set_expiry(0)
             return redirect('/profile/')
         else:
             messages.error(request, 'username or password is incorrect!')
             return redirect('/login/')
     else:
-        msg= messages.get_messages(request)
-        return render(request, 'login.html', {'msgs': msg})
+        msgs= messages.get_messages(request)
+        return render(request, 'login.html', {'msgs': msgs})
         
 
 def logout_user(request):
     logout(request)
+    return redirect('/login/')
 
 @login_required(login_url='/login/')
 def profile(request):
