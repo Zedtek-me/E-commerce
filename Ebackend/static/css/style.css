@@ -25,7 +25,7 @@ header{
     background-color:white;
 }
 
-.logo+ a{
+.logo > a{
     font-weight: 400;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
@@ -74,7 +74,7 @@ header{
     padding:5px;
 }
 
-.logos > li a{
+.login > a, .logout > a{
     text-decoration: none;
     color:black;
 }
@@ -97,6 +97,7 @@ body{
 }
 
 .root-parent{
+    margin-top: 70px;
     background-image:url('../img/E-comBackground.png');
     background-size:cover;
     background-position:center;
@@ -272,7 +273,7 @@ footer{
     margin-top:20%;
 }
 
-footer > div, .buyer-seller{
+footer > div{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -282,12 +283,25 @@ footer > div, .buyer-seller{
     text-align: left;
 }
 
-.quick-links{
-    cursor: pointer;
-}
-.buyer-seller{
+/* first quick links class */
+.b-seller{
     display: none;
     margin-top: -20px;
+}
+
+/* toggleable link class */
+.buyer-seller{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: lighter;
+    text-align: left;
+}
+/* the quick links text */
+.quick-links{
+    cursor: pointer;
 }
     
 footer > div> a, .buyer-seller> a{
