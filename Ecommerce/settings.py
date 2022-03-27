@@ -126,12 +126,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_FILES_DIRS = [os.path.join(BASE_DIR, 'Ebackend/static')]
+# if I encounter an error in production that says something along the line of 'expected str, pathlike objec and not list', remove the directory pointer from the list.
 STATIC_ROOT= [os.path.join(BASE_DIR, 'static')]
 
 
 # media files uploaded by a user(Vendor or Buyer)
 MEDIA_ULR= '/media/'
-MEDIA_ROOT=[os.path.join(BASE_DIR, 'Media_files')]
+MEDIA_ROOT=os.path.join(BASE_DIR, 'Media_files')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

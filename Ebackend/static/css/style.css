@@ -299,6 +299,34 @@ footer > div{
     font-weight: lighter;
     text-align: left;
 }
+
+/* profile styling */
+
+.profile-parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top:10%;
+}
+
+.profile-hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width:50%;
+    height: 50%;
+}
+.profile-hero> .profile-pic{
+    width:30%;
+    height:30%;
+    border-radius:50%;
+    border:solid lightblue 2px;
+    cursor: pointer;
+}
 /* the quick links text */
 .quick-links{
     cursor: pointer;

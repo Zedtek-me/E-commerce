@@ -3,9 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
+from django.db import IntegrityError
 from .models import VendorProfile, BuyerProfile, Product
-
-# Create your views here.
 
 # index page--> accesible to all users (anonymous or not)
 def index(request):
@@ -27,10 +26,13 @@ def signup(request):
         password= request.POST.get('password')
         password2= request.POST.get('password2')
 
-        # check the the data gotten
+        # check whether passwords correspond. If so, check whether name is not taken
         if password == password2:
-            user= User.objects.create_user(first_name= name, username=username, password=password, email=email)
-            user.save()
+            try:
+                user= User.objects.create_user(first_name= name, username=username, password=password, email=email)
+            except IntegrityError:
+                messages.error(request, 'Username is already taken!')
+                return redirect('/signup/')
             # check which user it is (buyer or seller)
             if typeof_user == 'buyer':
                 buyer= BuyerProfile(buyer= user)

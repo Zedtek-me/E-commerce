@@ -1,4 +1,7 @@
 {%extends 'base.html'%}
+{%if name.is_authenticated%}
+{%block login%}<a href="{%url 'profile'%}" class="profile">Me</a>{%endblock%}
+{%endif%}
 {%block logout%}{%endblock%}
 {%block content%}
  <!-- main body items  -->

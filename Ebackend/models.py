@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, Permission
+from django.contrib.auth.models import User
 from PIL import Image
 
 # vendor's table
@@ -15,12 +15,17 @@ class VendorProfile(models.Model):
     def __str__(self):
         return self.vendor
 
-    # def save(self,*args, **kwargs):
-    #     super().save()
-    #     img = Image.open(self.profile_img.path)
-    #     thumb=(400,400)
-    #     img.thumbnail(thumb)
-    #     img.save()
+    def get_vendor_name(self):
+        name= self.vendor.username
+        return name
+
+    def save(self,*args, **kwargs):
+        super().save()
+        print(self.profile_img.path)
+        img = Image.open(self.profile_img.path)
+        thumb=(400,400)
+        img.thumbnail(thumb)
+        img.save()
 
 # buyer's table
 class BuyerProfile(models.Model):
@@ -33,19 +38,23 @@ class BuyerProfile(models.Model):
     def __str__(self):
         return self.buyer
 
-    # def save(self,*args, **kwargs):
-    #     super().save()
-    #     img = Image.open(self.profile_img.path)
-    #     thumb=(400,400)
-    #     img.thumbnail(thumb)
-    #     img.save()
+    def get_buyer_name(self):
+        name= self.buyer.username
+        return name
+
+    def save(self,*args, **kwargs):
+        super().save()
+        img = Image.open(self.profile_img.path)
+        thumb=(400,400)
+        img.thumbnail(thumb)
+        img.save()
 
 # product's table referencing the user table, since both buyers and vendors are sellers
 class Product(models.Model):
     buyer= models.ForeignKey(BuyerProfile, on_delete=models.CASCADE, null= True, blank=True)
     vendor= models.ForeignKey(VendorProfile, on_delete= models.CASCADE, null= True, blank= True)
     product_name= models.CharField(max_length=20000, blank= False, )
-    product_image= models.ImageField(default='default.jpg', blank= True, upload_to='products/', null=True)
+    product_image= models.ImageField(default='default.jpg', blank= True, upload_to='products/')
     description= models.TextField(max_length=2000000, null=True)
     price= models.FloatField(max_length=10, blank=False, default=0.00)
 
@@ -53,9 +62,9 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-    # def save(self,*args, **kwargs):
-    #     super().save()
-    #     img = Image.open(self.product_image.path)
-    #     thumb=(400,400)
-    #     img.thumbnail(thumb)
-    #     img.save()
+    def save(self,*args, **kwargs):
+        super().save()
+        img = Image.open(self.product_image.path)
+        thumb=(400,400)
+        img.thumbnail(thumb)
+        img.save()
