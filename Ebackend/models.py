@@ -13,7 +13,7 @@ class VendorProfile(models.Model):
                     ]
     
     def __str__(self):
-        return self.vendor
+        return self.vendor.username
 
     def get_vendor_name(self):
         name= self.vendor.username
@@ -36,7 +36,7 @@ class BuyerProfile(models.Model):
         permissions= [('can_view_products','can view products')]
 
     def __str__(self):
-        return self.buyer
+        return self.buyer.username
 
     def get_buyer_name(self):
         name= self.buyer.username

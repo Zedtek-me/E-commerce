@@ -3,7 +3,7 @@ from .models import VendorProfile, BuyerProfile, Product
 from django.contrib.auth.models import Group, Permission, User
 
 # defining a callback for adding vendors to group
-def add_to_vendor_group(instance, created, **kwargs):
+def add_to_vendor_group(sender, instance, created, **kwargs):
     if created:
         instance.vendor.groups.add(Group.objects.get(name='Vendors'))
 
