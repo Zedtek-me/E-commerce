@@ -327,6 +327,35 @@ footer > div{
     border:solid lightblue 2px;
     cursor: pointer;
 }
+
+.product-flex{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width:80%;
+    height:fit-content;
+    padding:10px;
+    text-align: center;
+}
+
+.your-products{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    align-self: center;
+    width:fit-content;
+    height:fit-content;
+    padding:20px;
+}
+.products{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
 /* the quick links text */
 .quick-links{
     cursor: pointer;

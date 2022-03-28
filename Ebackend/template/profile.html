@@ -13,16 +13,18 @@
                 <img src="{{name.vendorprofile.profile_img.url}}" class="profile-pic" alt="profile-pic" type="img/jpg">
                 <h4 class="name">{{name}}</h4>
             </div>
-            <div class="my_products">
-                <h5 id="my-products"> Your products</h5>
-                {%for item in name.product_set.all%}
-                    <div class="products">
-                        <h5 id="prod-name">{{item.product_name}}</h5>
-                        <img src="{{item.product_image.url}}" alt="">
-                        <p id="prod-dscr">{{item.product_description}}</p>
-                    <h3 id="price">{{item.price}}</h3>
-                    </div>
-                {%endfor%}
+            <div class="product-flex">
+                <h5 id="your-products"> Your products</h5>
+                <div class="your_products">
+                    {%for item in name.product_set.all%}
+                        <div class="products">
+                            <h5 id="prod-name">{{item.product_name}}</h5>
+                            <img src="{{item.product_image.url}}" alt="">
+                            <p id="prod-dscr">{{item.product_description}}</p>
+                        <h3 id="price">${{item.price}}</h3>
+                        </div>
+                    {%endfor%}
+                </div>
             </div>
         <!-- for buyers -->
         {%else%}

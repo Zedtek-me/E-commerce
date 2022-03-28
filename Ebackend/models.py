@@ -6,6 +6,8 @@ from PIL import Image
 class VendorProfile(models.Model):
     vendor= models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img= models.ImageField(blank=True, upload_to= 'vendor_image/', default='default.jpg')
+    # address
+    address= models.TextField(max_length=2000000)
 
     class Meta:
         permissions= [('can_edit_products','can edit products'),
@@ -31,6 +33,8 @@ class VendorProfile(models.Model):
 class BuyerProfile(models.Model):
     buyer= models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img= models.ImageField(blank=True, upload_to= 'buyer_image/', default='default.jpg')
+    # address
+    address= models.TextField(max_length=2000000)
 
     class Meta:
         permissions= [('can_view_products','can view products')]

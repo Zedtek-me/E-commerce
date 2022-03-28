@@ -74,6 +74,7 @@ def logout_user(request):
     logout(request)
     return redirect('/login/')
 
+# profile page for both buyers and sellers
 @login_required(login_url='/login/')
 def profile(request):
     user= request.user
@@ -82,3 +83,10 @@ def profile(request):
               'name': user
                     }
     return render(request, 'profile.html', context)
+
+def check_out(request, order_id):
+    user= request.user
+    # checking if buyer is logged in, to dynamically display information and items
+    if user.is_authenticated:
+        cart_items= user.buyerprofile.product_set.all()[0:5]
+        return render(request, 'checkout.html', {"user":user, "old_purchase": cart_items})

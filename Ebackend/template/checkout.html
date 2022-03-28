@@ -3,5 +3,30 @@
 {%block logout%}{%endblock%}
 <!-- custom content -->
 {%block content%}
+<div class="cart-order">
+    <div class="shipping-addr">
+        {%if user.is_authenticated%}
+        <form action="" method="post">
+            <input type="text" name="name" value="{{}}" readonly>
+            <input type="text" name="address" value="{{}}" readonly>
+            <input type="tel" name="phone" value="{{}}" readonly>
+            <input type="text" name="postal-code" value="{{}}" readonly>
+            <button type="submit">All good; Order Now?</button>
+        </form>
+        {%else%}
+        <form action="" method="post">
+            <input type="text" name="name" value="" placeholder="type in your name for this order" required>
+            <input type="text" name="address" value="" placeholder="what's your delievery address?" required>
+            <input type="tel" name="phone" value="" placeholder="give a phone number for ease of access" required>
+            <input type="text" name="postal-code" value="" placeholder='Know your postal code?'>
 
+            <button type="submit">All good; Order Now?</button>
+        </form>
+        {%endif%}
+
+    </div>
+    <div class="your-order">
+    
+    </div>
+</div>
 {%endblock%}

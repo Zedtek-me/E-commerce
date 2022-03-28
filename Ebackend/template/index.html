@@ -14,14 +14,18 @@
             </h1>
             <img src="../static/img/sofa1.jpg" alt="furniture">
             <span class="mordern-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aut!</span>
-            <div class="desc-btn">
-                <a href="" class="buy">Buy Now</a>
-                <p class="how-it-works">How it works?</p>
-            </div>
+            <!-- submitting form -->
+            <form action="{%url 'checkout'%}" method="get" class="desc-btn">
+                <input type="text" name="product_id" value="1">
+                <input type="submit" class="buy">Buy Now</a>
+            </form>
         </div>
 
         <div class="big-img">
-            <img src="../static/img/sofa2.jpg" alt="Child sofa">
+            <a href="">
+                <img src="../static/img/sofa2.jpg" alt="Child sofa">
+                <p class="how-it-works">How it works?</p>
+            </a>
         </div>
     </div>
     <!-- other parts -->
@@ -71,6 +75,22 @@
                 
             </div>
         </div>
+    </section>
+    <!-- mattresses -->
+    <section class="mattress" id="mattress">
+
+    </section>
+    <!-- bedroom -->
+    <section class="bedroom" id="bedroom">
+
+    </section>
+    <!-- living room -->
+    <section class="living-room" id="living-room">
+
+    </section>
+    <!-- kid room -->
+    <section class="kid-room" id="kid-room">
+
     </section>
 </div>
     {%endblock%}

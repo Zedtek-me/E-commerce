@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from . import views, api_views
 from django.conf import settings
@@ -14,6 +15,7 @@ urlpatterns=[
     path('logout', views.logout_user, name='logout' ),
     path('signup/', views.signup, name='signup' ),
     path('profile/', views.profile, name='profile' ),
+    path('checkout/', views.check_out, name='checkout'),
 ]
 
 if settings.DEBUG == True:
