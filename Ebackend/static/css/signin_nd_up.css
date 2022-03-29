@@ -132,6 +132,16 @@ div.sign-up-guide{
     border-radius:15px;
 }
 
+.info{
+    margin:auto;
+    text-align: center;
+    width:fit-content;
+    padding:5px;
+    background-color: lightblue;
+    color:white;
+    border-radius:15px;
+}
+
 .message{
     margin-top: 10%;
     margin-bottom:-9%;

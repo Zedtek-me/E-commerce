@@ -16,13 +16,13 @@
             <span class="mordern-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aut!</span>
             <!-- submitting form -->
             <form action="{%url 'checkout'%}" method="get" class="desc-btn">
-                <input type="text" name="product_id" value="1">
+                <input type="hidden" name="product_id" value="1" >
                 <input type="submit" class="buy">Buy Now</a>
             </form>
         </div>
 
         <div class="big-img">
-            <a href="">
+            <a href="" id="img-link">
                 <img src="../static/img/sofa2.jpg" alt="Child sofa">
                 <p class="how-it-works">How it works?</p>
             </a>

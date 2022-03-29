@@ -78,15 +78,20 @@ def logout_user(request):
 @login_required(login_url='/login/')
 def profile(request):
     user= request.user
+    print(request.session.items())
     msg= messages.get_messages(request)
     context= {'msg': msg,
               'name': user
                     }
     return render(request, 'profile.html', context)
 
-def check_out(request, order_id):
+def check_out(request):
     user= request.user
     # checking if buyer is logged in, to dynamically display information and items
-    if user.is_authenticated:
+    try:
+        # getting the preciously bought items saved into the db
         cart_items= user.buyerprofile.product_set.all()[0:5]
         return render(request, 'checkout.html', {"user":user, "old_purchase": cart_items})
+    except Exception:
+        messages.info(request, 'please sign up as a buyer for this purchase!')
+        return redirect('/signup/')

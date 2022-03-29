@@ -4,13 +4,14 @@
 <!-- custom content -->
 {%block content%}
 <div class="cart-order">
+    <!-- getting buyer's address from db if logged in. Otherwise, accept inputs-->
     <div class="shipping-addr">
         {%if user.is_authenticated%}
         <form action="" method="post">
-            <input type="text" name="name" value="{{}}" readonly>
-            <input type="text" name="address" value="{{}}" readonly>
-            <input type="tel" name="phone" value="{{}}" readonly>
-            <input type="text" name="postal-code" value="{{}}" readonly>
+            <input type="text" name="name" value="{{}}" readonly="readonly">
+            <input type="text" name="address" value="{{}}" readonly="readonly">
+            <input type="tel" name="phone" value="{{}}" readonly="readonly">
+            <input type="text" name="postal-code" value="{{}}" readonly="readonly">
             <button type="submit">All good; Order Now?</button>
         </form>
         {%else%}
