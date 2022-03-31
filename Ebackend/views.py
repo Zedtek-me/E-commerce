@@ -1,3 +1,4 @@
+from itertools import product
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
@@ -85,13 +86,17 @@ def profile(request):
                     }
     return render(request, 'profile.html', context)
 
+
+# checkout page for registered buyers and non registered buyers
+# expects only GET requests
 def check_out(request):
     user= request.user
-    # checking if buyer is logged in, to dynamically display information and items
-    try:
-        # getting the preciously bought items saved into the db
-        cart_items= user.buyerprofile.product_set.all()[0:5]
-        return render(request, 'checkout.html', {"user":user, "old_purchase": cart_items})
-    except Exception:
-        messages.info(request, 'please sign up as a buyer for this purchase!')
-        return redirect('/signup/')
+    product_id= int(request.GET['product_id'])
+    if user.is_authenticated and user.buyerprofile.buyer:
+        try:
+            product= Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            Product.objects.create(buyer= user, )
+            context={'user': user,'product': product}
+            return render(request, 'checkout.html', context)
+        

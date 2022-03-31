@@ -118,20 +118,24 @@ body{
 /* first container in hero */
 .mordern-cont{
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     text-align:left;
     width:50%;
-    margin-left:170px;
+    margin-left:70px;
 }
 
-.desc-btn{
+form.desc-btn{
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
     color:white;
+    margin-left:-8px;
+    margin-top:-10px;
+    align-self: flex-start;
 }
 
 .buy{
@@ -143,13 +147,8 @@ body{
     height: fit-content;
     padding:8px;
     text-align: center;
-    margin:15px;
-}
-
-.how-it-works{
-    color:black;
-    text-align: center;
-    margin:auto;
+    margin-right:70px;
+    cursor: pointer;
 }
 
 .mordern-cont > img{
@@ -169,24 +168,55 @@ body{
     text-align: unset;
 }
 
-/* second container in hero */
+/* second container in hero-section */
 .big-img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width:50%;
-    margin: auto;
-    margin:auto;
 }
-.big-img > #img-link> img{
-    width:50%;
+.big-img > img{
+    width:70%;
     height: 50%;
     border-radius: 20px;
     margin-left:-150px;
+}
+
+.how-it-works{
+    color:black;
+    text-align:center;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin-right:70px;
+    position: relative;
+    align-self: center;
+    cursor: pointer;
+}
+
+/* details on how it works */
+.detail{
+    display: none;
+    align-items: center;
+    width:150px;
+    background-color:bisque;
+    color:black;
+    font-weight: 100;
+    height: fit-content;
+    padding:10px;
+    margin-bottom:-2px;
+    box-shadow: 1px 1px 6px 1px orange;
+    position: absolute;
+    text-align: center;
 }
 
 /* items section */
 .items{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin:auto;
 }
@@ -198,6 +228,10 @@ body{
 .item >img{
     width:50%;
     height:30%;
+}
+
+.items >.item, .items >.review-div{
+    margin:8px;
 }
 
 /* the review box */

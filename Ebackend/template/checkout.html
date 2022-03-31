@@ -7,15 +7,19 @@
     <!-- getting buyer's address from db if logged in. Otherwise, accept inputs-->
     <div class="shipping-addr">
         {%if user.is_authenticated%}
-        <form action="" method="post">
-            <input type="text" name="name" value="{{}}" readonly="readonly">
-            <input type="text" name="address" value="{{}}" readonly="readonly">
-            <input type="tel" name="phone" value="{{}}" readonly="readonly">
-            <input type="text" name="postal-code" value="{{}}" readonly="readonly">
-            <button type="submit">All good; Order Now?</button>
-        </form>
+            {%if user.buyerprofile%}
+            <form action="" method="post">
+                {%csrf_token%}
+                <input type="text" name="name" value="{{user.buyerprofile.buyer}}" readonly="readonly">
+                <input type="text" name="address" value="{{user.buyerprofile.address}}" readonly="readonly">
+                <input type="tel" name="phone" value="" placeholder="type in your telephone number, please">
+                <input type="text" name="postal-code" value="" placeholder="what's your location postal code?">
+                <button type="submit">All good; Order Now?</button>
+            </form>
+            {%endif%}
         {%else%}
         <form action="" method="post">
+            {%csrf_token%}
             <input type="text" name="name" value="" placeholder="type in your name for this order" required>
             <input type="text" name="address" value="" placeholder="what's your delievery address?" required>
             <input type="tel" name="phone" value="" placeholder="give a phone number for ease of access" required>
