@@ -18,6 +18,8 @@
             <!-- submitting form -->
             <form action="{%url 'checkout'%}" method="get" class="desc-btn">
                 <input type="hidden" name="product_id" value="1" style="display: none;" >
+                <input type="hidden" name="price" value="50" style="display: none;" >
+                <input type="hidden" name="product_name" value="furniture" style="display: none;" >
                 <input type="submit" class="buy" value="Buy Now">
             </form>
         </div>
@@ -32,6 +34,12 @@
                     up sitting on this!
                 </p>
             </p>
+            <form action="{%url 'checkout'%}" method="get" class="desc-btn">
+                <input type="hidden" name="product_id" value="2" style="display: none;" >
+                <input type="hidden" name="price" value="100" style="display: none;" >
+                <input type="hidden" name="product_name" value="Second_furniture" style="display: none;" >
+                <input type="submit" class="buy" value="Buy Now">
+            </form>
         </div>
     </div>
     <!-- other parts -->
