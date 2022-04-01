@@ -1,6 +1,18 @@
 {%extends 'base.html'%}
 {%block title%}check out{%endblock%}
-{%block logout%}{%endblock%}
+
+<!-- decide whether to show the login or the logout button -->
+{%if user.is_authenticated%}
+
+{%block login%}
+{%endblock%}
+
+{%else%}
+
+{%block logout%}
+{%endblock%}
+
+{%endif%}
 <!-- custom content -->
 {%block content%}
 <div class="cart-order">
@@ -8,24 +20,55 @@
     <div class="shipping-addr">
         {%if user.is_authenticated%}
             {%if user.buyerprofile%}
-            <form action="" method="post">
+            <form action="" method="post" class="ship-form">
                 {%csrf_token%}
-                <input type="text" name="name" value="{{user.buyerprofile.buyer}}" readonly="readonly">
-                <input type="text" name="address" value="{{user.buyerprofile.address}}" readonly="readonly">
-                <input type="tel" name="phone" value="" placeholder="type in your telephone number, please">
-                <input type="text" name="postal-code" value="" placeholder="what's your location postal code?">
-                <button type="submit">All good; Order Now?</button>
+                <div class="check-cont">
+                    <label for="username">Your Name</label>
+                    <input type="text" name="name" value="{{user.buyerprofile.buyer}}" readonly="readonly">
+                </div>
+                
+                <div class="check-cont">
+                    <label for="address">Your Address</label>
+                    <input type="text" name="address" value="{{user.buyerprofile.address}}" readonly="readonly">
+                </div>       
+
+                <div class="check-cont">
+                    <label for="phone">Your Phone Number</label>
+                    <input type="tel" name="phone" value="{{user.buyerprofile.phone}}" readonly="readonly">
+                </div>       
+
+                <div class="check-cont">
+                    <label for="postal">Postal Code</label>
+                    <input type="text" name="name" value="{{user.buyerprofile.buyer}}">
+                </div>    
+                
+                <button type="submit" id="submit">All good; Order Now?</button>
             </form>
             {%endif%}
         {%else%}
-        <form action="" method="post">
+        <form action="" method="post" class="ship-form">
             {%csrf_token%}
-            <input type="text" name="name" value="" placeholder="type in your name for this order" required>
-            <input type="text" name="address" value="" placeholder="what's your delievery address?" required>
-            <input type="tel" name="phone" value="" placeholder="give a phone number for ease of access" required>
-            <input type="text" name="postal-code" value="" placeholder='Know your postal code?'>
+            <div class="check-cont">
+                <label for="username">Your Name</label>
+                <input type="text" name="name" value="">
+            </div>
+            
+            <div class="check-cont">
+                <label for="address">Your Address</label>
+                <input type="text" name="address" value="">
+            </div>       
 
-            <button type="submit">All good; Order Now?</button>
+            <div class="check-cont">
+                <label for="phone">Your Phone Number</label>
+                <input type="tel" name="phone" value="">
+            </div>       
+
+            <div class="check-cont">
+                <label for="postal">Postal Code</label>
+                <input type="text" name="name" value="">
+            </div> 
+
+            <button type="submit" id="submit">All good; Order Now?</button>
         </form>
         {%endif%}
 

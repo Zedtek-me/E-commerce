@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
@@ -6,6 +7,7 @@ from PIL import Image
 class VendorProfile(models.Model):
     vendor= models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img= models.ImageField(blank=True, upload_to= 'vendor_image/', default='default.jpg')
+    phone= models.IntegerField(blank= True, default=0)
     # address
     address= models.TextField(max_length=2000000,blank= True, null= True, default='Some address!')
 
@@ -33,6 +35,7 @@ class VendorProfile(models.Model):
 class BuyerProfile(models.Model):
     buyer= models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img= models.ImageField(blank=True, upload_to= 'buyer_image/', default='default.jpg')
+    phone= models.IntegerField(blank= True, default=0)
     # address
     address= models.TextField(max_length=2000000,blank= True, null= True, default='Some address!')
 

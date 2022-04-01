@@ -95,23 +95,26 @@ def check_out(request):
     # get all the data below, in case the product not in database.
     product_name= request.GET['product_name']
     product_price=int(request.GET['price'])
+
+    # an exception to prevent 'RelatedObjecttDoesNotExist' error, in the case of 'user.buyerprofile.buyer' below
     try:
+        # check if user is logged in and is a buyer, to get profile data from db into forms for checkout
         if user.is_authenticated and user.buyerprofile.buyer:
             try:
                 product= Product.objects.get(id=product_id)
                 return render(request, 'checkout.html', {'user':user,'product':product})
             except Product.DoesNotExist:
+                # store product into session first, before storing to Product table
                 request.session['my_product']= [product_name]
                 product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= product_price)
                 context={'user': user,'product': product}
                 return render(request, 'checkout.html', context)
         
         elif not user.is_authenticated:
-            context= {'user':user, 
+            context= {
                     'product_price': product_price,
                     'product_name': product_name,
                     }
             return render(request, 'checkout.html',context)
     except Exception as err:
-        print(user.buyerprofile.buyer)
         return HttpResponse(err)
