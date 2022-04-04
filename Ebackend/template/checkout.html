@@ -19,7 +19,7 @@
     <!-- getting buyer's address from db if logged in. Otherwise, accept inputs-->
     <div class="shipping-addr">
         {%if user.is_authenticated%}
-            {%if user.buyerprofile%}
+            {%if user.buyerprofile or user.vendorprofile%}
             <form action="" method="post" class="ship-form">
                 {%csrf_token%}
                 <div class="check-cont">

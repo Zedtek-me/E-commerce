@@ -7,7 +7,8 @@ from PIL import Image
 class VendorProfile(models.Model):
     vendor= models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img= models.ImageField(blank=True, upload_to= 'vendor_image/', default='default.jpg')
-    phone= models.IntegerField(blank= True, default=0)
+    phone= models.CharField(max_length=15, blank= True, null=True)
+
     # address
     address= models.TextField(max_length=2000000,blank= True, null= True, default='Some address!')
 
@@ -25,17 +26,17 @@ class VendorProfile(models.Model):
 
     def save(self,*args, **kwargs):
         super().save()
-        print(self.profile_img.path)
         img = Image.open(self.profile_img.path)
         thumb=(400,400)
         img.thumbnail(thumb)
-        img.save()
+        img.save(self.profile_img.path)
 
 # buyer's table
 class BuyerProfile(models.Model):
     buyer= models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img= models.ImageField(blank=True, upload_to= 'buyer_image/', default='default.jpg')
-    phone= models.IntegerField(blank= True, default=0)
+    phone= models.CharField(max_length=15, blank= True, null=True)
+
     # address
     address= models.TextField(max_length=2000000,blank= True, null= True, default='Some address!')
 
@@ -54,7 +55,7 @@ class BuyerProfile(models.Model):
         img = Image.open(self.profile_img.path)
         thumb=(400,400)
         img.thumbnail(thumb)
-        img.save()
+        img.save(self.profile_img.path)
 
 # product's table referencing the user table, since both buyers and vendors are sellers
 class Product(models.Model):
@@ -74,4 +75,4 @@ class Product(models.Model):
         img = Image.open(self.product_image.path)
         thumb=(400,400)
         img.thumbnail(thumb)
-        img.save()
+        img.save(self.product_image.path)
