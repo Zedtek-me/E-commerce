@@ -65,6 +65,7 @@ class Product(models.Model):
     product_image= models.ImageField(default='default.jpg', blank= True, upload_to='products/')
     description= models.TextField(max_length=2000000, null=True)
     price= models.FloatField(max_length=10, blank=False, default=0.00)
+    sold= models.BooleanField(default=False)
 
 
     def __str__(self):
