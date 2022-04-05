@@ -25,7 +25,7 @@ class VendorProfile(models.Model):
         return name
 
     def save(self,*args, **kwargs):
-        super().save()
+        super().save(*args, **kwargs)
         img = Image.open(self.profile_img.path)
         thumb=(400,400)
         img.thumbnail(thumb)
@@ -51,7 +51,7 @@ class BuyerProfile(models.Model):
         return name
 
     def save(self,*args, **kwargs):
-        super().save()
+        super().save(*args, **kwargs)
         img = Image.open(self.profile_img.path)
         thumb=(400,400)
         img.thumbnail(thumb)
