@@ -159,13 +159,15 @@ div.sign-up-guide{
 
 /*form parent*/.shipping-addr{
     width:60%;
-    height: fit-content;
+    height: 80%;
     padding: 20px;
 }
 
 /*form itself*/.ship-form{
 width: fit-content;
-padding: 30px;
+padding:20px;
+height: 100%;
+/* padding: 30px; */
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -180,6 +182,7 @@ margin: auto;
 
 .check-cont{
 margin:8px;
+width: 100%;
 display: flex;
 flex-flow: row wrap;
 justify-content: center;
@@ -187,13 +190,33 @@ align-items: center;
 text-align: left;
 }
 .check-cont > input{
-width:100%;
-height: 30px;
+width:50%;
+height: 30%;
 border:solid orange 1px;
 border-radius: 15px;
-padding:auto;
+padding:20px;
 text-align: center;
 width:fit-content;
 margin: auto;
 margin-left: 15px;
+}
+
+#p-num{
+    width:100px;
+    text-align: center;
+}
+
+.ship-form > .buyer-image{
+    width:50%;
+    height:50%;
+    cursor: pointer;
+    border-radius: 50%;
+    margin:auto;
+    margin-bottom: 30px;
+}
+
+.your-order > #p-img{
+    width:100%;
+    height: 100%;
+    border-radius: 10%;
 }

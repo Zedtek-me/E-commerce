@@ -23,6 +23,7 @@ header{
     left:0;
     border-bottom:solid black 2px;
     background-color:white;
+    z-index: 500;
 }
 
 .logo > a{

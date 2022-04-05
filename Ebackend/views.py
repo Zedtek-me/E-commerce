@@ -6,7 +6,8 @@ from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
 from django.db import IntegrityError
 from .models import VendorProfile, BuyerProfile, Product
-
+import os
+from django.conf import settings
 # index page--> accesible to all users (anonymous or not)
 def index(request):
     user= request.user
@@ -61,7 +62,6 @@ def login_user(request):
         user= authenticate(request, username= username, password=password)
         if user is not None:
             login(request, user)
-            request.session.set_expiry(0)
             return redirect('/profile/')
         else:
             messages.error(request, 'username or password is incorrect!')
@@ -97,27 +97,28 @@ def check_out(request):
         # get all the data below, in case the product not in database.
         product_name= request.GET['product_name']
         product_price=int(request.GET['price'])
-
+        elip, product_img_url= request.GET.get('product_img').split('../static/img/')
     # an exception handler to prevent 'RelatedObjecttDoesNotExist' error, in the case of 'user.buyerprofile.buyer' below
         try:
-            # check if user is logged in and is a buyer, to get profile data from db into forms for checkout
-            if user.is_authenticated and user.buyerprofile.buyer:
+            # check if user is a vendor or a buyer, to get profile data from db into forms for checkout
+            if user.user.buyerprofile.buyer or user.vendorprofile.vendor:
                 try:
                     product= Product.objects.get(id=product_id)
                     return render(request, 'checkout.html', {'user':user,'product':product})
                 except Product.DoesNotExist:
                     # store product into session first, before storing to Product table
                     request.session['my_product']= [product_name]
-                    product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= product_price)
+                    product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= product_price, product_image=product_img_url)
                     context={'user': user,'product': product}
                     return render(request, 'checkout.html', context)
             
             else:
                 context= {
+                        'product_img' :product_img_url,
                         'product_price': product_price,
                         'product_name': product_name,
                         }
                 return render(request, 'checkout.html',context)
         except Exception as err:
             return HttpResponse(err)
-    return render(request, 'checkout.html',{})
+    return render(request, 'checkout.html',{'no_item': 'No item in your cart'})

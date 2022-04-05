@@ -5,8 +5,6 @@ function displayLink(){
 }
 
 
-// adding product properties to form on sumbition for purchase.
-
 
 // how it works
 var detail= document.querySelector('.detail')

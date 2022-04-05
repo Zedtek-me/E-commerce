@@ -15,66 +15,74 @@
 {%endif%}
 <!-- custom content -->
 {%block content%}
+<h1 id="cart-head-text" style="float:center;margin-top: 15%;">Your Cart Items</h1>
 <div class="cart-order">
     <!-- getting buyer's address from db if logged in. Otherwise, accept inputs-->
     <div class="shipping-addr">
         {%if user.is_authenticated%}
             {%if user.buyerprofile or user.vendorprofile%}
+                <form action="" method="post" class="ship-form">
+                    {%csrf_token%}
+                    <p class="instruction">Please fill in the remaining part of the form below, {{user}}.</p>
+                    <img src="{{user.buyerprofile.profile_img.url}}" alt="your image" class="buyer-image">
+                    <div class="check-cont">
+                        <label for="username">Your Name</label>
+                        <input type="text" name="name" value="{{user.buyerprofile.buyer}}" readonly="readonly">
+                    </div>
+                    
+                    <div class="check-cont">
+                        <label for="address">Your Address</label>
+                        <input type="text" name="address" value="{{user.buyerprofile.address}}" readonly="readonly">
+                    </div>       
+
+                    <div class="check-cont">
+                        <label for="phone" id="p-num">Your Phone Number</label>
+                        <input type="tel" name="phone" value="{{user.buyerprofile.phone}}" readonly="readonly">
+                    </div>       
+
+                    <div class="check-cont">
+                        <label for="postal">Postal Code</label>
+                        <input type="text" name="name" value="{{user.buyerprofile.buyer}}">
+                    </div>    
+                    
+                    <button type="submit" id="submit">All good; Order Now?</button>
+                </form>
+            {%endif%}
+        {%else%}
             <form action="" method="post" class="ship-form">
                 {%csrf_token%}
+                <p class="instruction">Please fill the form below.
+                    
+                </p>
                 <div class="check-cont">
                     <label for="username">Your Name</label>
-                    <input type="text" name="name" value="{{user.buyerprofile.buyer}}" readonly="readonly">
+                    <input type="text" name="name" value="">
                 </div>
                 
                 <div class="check-cont">
                     <label for="address">Your Address</label>
-                    <input type="text" name="address" value="{{user.buyerprofile.address}}" readonly="readonly">
+                    <input type="text" name="address" value="">
                 </div>       
 
                 <div class="check-cont">
-                    <label for="phone">Your Phone Number</label>
-                    <input type="tel" name="phone" value="{{user.buyerprofile.phone}}" readonly="readonly">
+                    <label for="phone" id="p-num">Your Phone Number</label>
+                    <input type="tel" name="phone" value="">
                 </div>       
 
                 <div class="check-cont">
                     <label for="postal">Postal Code</label>
-                    <input type="text" name="name" value="{{user.buyerprofile.buyer}}">
-                </div>    
-                
+                    <input type="text" name="name" value="">
+                </div> 
                 <button type="submit" id="submit">All good; Order Now?</button>
             </form>
-            {%endif%}
-        {%else%}
-        <form action="" method="post" class="ship-form">
-            {%csrf_token%}
-            <div class="check-cont">
-                <label for="username">Your Name</label>
-                <input type="text" name="name" value="">
-            </div>
-            
-            <div class="check-cont">
-                <label for="address">Your Address</label>
-                <input type="text" name="address" value="">
-            </div>       
-
-            <div class="check-cont">
-                <label for="phone">Your Phone Number</label>
-                <input type="tel" name="phone" value="">
-            </div>       
-
-            <div class="check-cont">
-                <label for="postal">Postal Code</label>
-                <input type="text" name="name" value="">
-            </div> 
-
-            <button type="submit" id="submit">All good; Order Now?</button>
-        </form>
         {%endif%}
 
     </div>
     <div class="your-order">
-    
+        {%if user.is_authenticated%} 
+        <p id="your-order">Your Order</p>
+        <img src="{{product.product_image.url}}" alt="your item" id="p-img">
+        {%endif%}
     </div>
 </div>
 {%endblock%}

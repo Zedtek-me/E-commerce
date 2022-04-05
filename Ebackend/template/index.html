@@ -16,7 +16,8 @@
             <span class="mordern-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aut!</span>
             <h6 id="price">$50</h6>
             <!-- submitting form -->
-            <form action="{%url 'checkout'%}" method="get" class="desc-btn">
+            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                <input type="hidden" name="product_img" value="../static/img/sofa1.jpg" style="display: none;">
                 <input type="hidden" name="product_id" value="1" style="display: none;" >
                 <input type="hidden" name="price" value="50" style="display: none;" >
                 <input type="hidden" name="product_name" value="furniture" style="display: none;" >
@@ -34,7 +35,8 @@
                     up sitting on this!
                 </p>
             </p>
-            <form action="{%url 'checkout'%}" method="get" class="desc-btn">
+            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                <input type="hidden" name="product_img" value="../static/img/sofa2.jpg" style="display: none;" >
                 <input type="hidden" name="product_id" value="2" style="display: none;" >
                 <input type="hidden" name="price" value="100" style="display: none;" >
                 <input type="hidden" name="product_name" value="Second_furniture" style="display: none;" >
