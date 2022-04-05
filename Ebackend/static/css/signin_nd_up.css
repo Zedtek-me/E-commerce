@@ -199,6 +199,7 @@ text-align: center;
 width:fit-content;
 margin: auto;
 margin-left: 15px;
+overflow-x: scroll;
 }
 
 #p-num{

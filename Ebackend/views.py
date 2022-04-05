@@ -101,7 +101,7 @@ def check_out(request):
     # an exception handler to prevent 'RelatedObjecttDoesNotExist' error, in the case of 'user.buyerprofile.buyer' below
         try:
             # check if user is a vendor or a buyer, to get profile data from db into forms for checkout
-            if user.user.buyerprofile.buyer or user.vendorprofile.vendor:
+            if user.buyerprofile.buyer or user.vendorprofile.vendor:
                 try:
                     product= Product.objects.get(id=product_id)
                     return render(request, 'checkout.html', {'user':user,'product':product})
@@ -121,4 +121,6 @@ def check_out(request):
                 return render(request, 'checkout.html',context)
         except Exception as err:
             return HttpResponse(err)
-    return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
+    product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
+    print(product)
+    return render(request, 'checkout.html',{'no_item': 'No item in your cart', 'product':product})
