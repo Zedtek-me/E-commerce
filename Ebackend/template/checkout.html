@@ -80,6 +80,9 @@
         {%if user.is_authenticated%} 
         <p id="your-order">{%if request.GET.product_id%}Your Order{%else%}Your last viewed item{%endif%}</p>
         <img src="{{product.product_image.url}}" alt="your item" id="p-img">
+        {%else%}
+        <p id="your-order">{%if request.GET.product_id%}Your Order{%else%}Your last viewed item{%endif%}</p>
+        <img src="{{product_img_url}}" alt="your item" id="p-img">
         {%endif%}
     </div>
 </div>

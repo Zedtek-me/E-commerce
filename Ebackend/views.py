@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
@@ -8,6 +8,7 @@ from django.db import IntegrityError
 from .models import VendorProfile, BuyerProfile, Product
 import os
 from django.conf import settings
+import django
 # index page--> accesible to all users (anonymous or not)
 def index(request):
     user= request.user
@@ -100,27 +101,39 @@ def check_out(request):
         elip, product_img_url= request.GET.get('product_img').split('../static/img/')
     # an exception handler to prevent 'RelatedObjecttDoesNotExist' error, in the case of 'user.buyerprofile.buyer' below
         try:
-            # check if user is a vendor or a buyer, to get profile data from db into forms for checkout
-            if user.buyerprofile.buyer or user.vendorprofile.vendor:
-                try:
-                    product= Product.objects.get(id=product_id)
-                    return render(request, 'checkout.html', {'user':user,'product':product})
-                except Product.DoesNotExist:
-                    # store product into session first, before storing to Product table
-                    request.session['my_product']= [product_name]
-                    product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= product_price, product_image=product_img_url)
-                    context={'user': user,'product': product}
+            product= Product.objects.get(id=product_id)
+            return render(request, 'checkout.html', {'user':user,'product':product})
+        except Product.DoesNotExist:
+            # store product into session first, before storing to Product table
+            request.session['my_product']= [product_name]
+            try:
+                product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= product_price, product_image=product_img_url)
+             # catching an error, in case ther user is not a buyer or is an anonymous user(not signed up or logged in)
+            except AttributeError or django.contrib.auth.models.User.buyerprofile.RelatedObjectDoesNotExist:
+                # check if not anonymous (this means user is a vendor). Create a buyer profile for the vendor with its vendor details
+                if isinstance(user, User):
+                    bprof= BuyerProfile.objects.create(buyer=user, profile_img=user.vendorprofile.profile_img, phone= user.vendorprofile.phone, address= user.vendorprofile.address)
+                    # now, store the product into the Product table with the vendor's BuyerProfile instance, which is 'bprof'
+                    product= Product.objects.create(buyer= bprof, product_name= product_name, price= product_price, product_image=product_img_url)
+                    context= {'user': user,
+                            'product' :product,
+                            }
                     return render(request, 'checkout.html', context)
-            
-            else:
-                context= {
-                        'product_img' :product_img_url,
-                        'product_price': product_price,
-                        'product_name': product_name,
-                        }
-                return render(request, 'checkout.html',context)
-        except Exception as err:
-            return HttpResponse(err)
+                # otherwise, if user is anonmymous, do something else below.
+                else:
+                    context= {
+                            'product_img' :product_img_url,
+                            'product_price': product_price,
+                            'product_name': product_name,
+                            }
+                    return render(request, 'checkout.html', context)
+
     product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
     print(product)
     return render(request, 'checkout.html',{'no_item': 'No item in your cart', 'product':product})
+
+
+    # except Product.DoesNotExist:
+    #            
+
+    
