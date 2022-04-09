@@ -20,7 +20,7 @@
     <!-- getting buyer's address from db if logged in. Otherwise, accept inputs-->
     <div class="shipping-addr">
         {%if user.is_authenticated%}
-            <form action="" method="post" class="ship-form">
+            <form action="/payment/" method="post" class="ship-form">
                 {%csrf_token%}
                 <p class="instruction">Please fill in the remaining part of the form below, {{user}}.</p>
                 <img src="{{user.buyerprofile.profile_img.url}}" alt="your image" class="buyer-image">
@@ -47,10 +47,10 @@
                 <button type="submit" id="submit">All good; Order Now?</button>
             </form>
         {%else%}
-            <form action="" method="post" class="ship-form">
+            <form action="/payment/" method="post" class="ship-form">
                 {%csrf_token%}
-                <p class="instruction">Please fill the form below.
-                    
+                <p class="instruction">
+                    Please fill the form below.
                 </p>
                 <div class="check-cont">
                     <label for="username">Your Name</label>
@@ -77,12 +77,30 @@
 
     </div>
     <div class="your-order">
-        {%if user.is_authenticated%} 
-        <p id="your-order">{%if request.GET.product_id%}Your Order{%else%}Your last viewed item{%endif%}</p>
-        <img src="{{product.product_image.url}}" alt="your item" id="p-img">
+        <!-- Display text based on whether it's a direct request or from product -->
+        {%if request.GET.product_id%}
+                <p id="your-order">Your Order</p>
+            {%if user.is_authenticated%} 
+                <img src="{{product.product_image.url}}" alt="your item" id="p-img">
+                <p>{{product_name}}</p>
+            {%else%}
+                <img src="{{anonym_product.product_image.url}}" alt="your item" id="p-img">
+                <p>{{anonym_product.product_name}}</p>
+            {%endif%}
         {%else%}
-        <p id="your-order">{%if request.GET.product_id%}Your Order{%else%}Your last viewed item{%endif%}</p>
-        <img src="{{product_img_url}}" alt="your item" id="p-img">
+            {%if user.is_authenticated%}
+                {%if session_product%}
+                    <p id="your-order">Your Last Viewed Item</p>
+                    <img src="{{session_product.product_image.url}}" alt="your item" id="p-img">
+                    <p>{{session_product.product_name}}</p>
+                {%else%}
+                    <h6 id="no-item">Not Items in Cart</h6>
+                    <p id="instruct">Items you choose should appear here, {{user}}.</p>
+                {%endif%}
+            {%else%}
+            <h6 id="no-item">Not Items in Cart!</h6>
+            <p id="instruct">Items you choose should appear here.</p>
+            {%endif%}
         {%endif%}
     </div>
 </div>

@@ -12,10 +12,11 @@ urlpatterns=[
     # urls to template views
     path('', views.index, name='home' ),
     path('login/', views.login_user, name='login' ),
-    path('logout', views.logout_user, name='logout' ),
+    path('logout/', views.logout_user, name='logout' ),
     path('signup/', views.signup, name='signup' ),
     path('profile/', views.profile, name='profile' ),
     path('checkout/', views.check_out, name='checkout'),
+    path('payment/', views.payment_method, name= 'payment')
 ]
 
 if settings.DEBUG:

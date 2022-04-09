@@ -80,7 +80,6 @@ def logout_user(request):
 @login_required(login_url='/login/')
 def profile(request):
     user= request.user
-    print(request.session.items())
     msg= messages.get_messages(request)
     context= {'msg': msg,
               'name': user
@@ -92,48 +91,57 @@ def profile(request):
 # expects only GET requests
 def check_out(request):
     user= request.user
+    # get all the data below, in case the product not in database.
+    product_id= request.GET.get('product_id')
+    product_name= request.GET.get('product_name')
+    product_price=request.GET.get('price')
     # controls whether the page is requested through a product or directly with its url
-    if request.GET.get('product_id'):
-        product_id= int(request.GET['product_id'])
-        # get all the data below, in case the product not in database.
-        product_name= request.GET['product_name']
-        product_price=int(request.GET['price'])
+    if product_id:
+        # if the page requested through a product, split the img exention here. This to avoid attribute error(using 'split' method on None type) if not so.
         elip, product_img_url= request.GET.get('product_img').split('../static/img/')
-    # an exception handler to prevent 'RelatedObjecttDoesNotExist' error, in the case of 'user.buyerprofile.buyer' below
+        # an exception handler in the case product not in the database
         try:
-            product= Product.objects.get(id=product_id)
+            request.session['my_product']= [product_name]
+            product= Product.objects.get(id=int(product_id))
+            print(product.product_img.url)
             return render(request, 'checkout.html', {'user':user,'product':product})
         except Product.DoesNotExist:
             # store product into session first, before storing to Product table
             request.session['my_product']= [product_name]
             try:
-                product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= product_price, product_image=product_img_url)
-             # catching an error, in case ther user is not a buyer or is an anonymous user(not signed up or logged in)
+                product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= int(product_price), product_image=product_img_url)
+                context= {'user': user,
+                            'product' :product,
+                            }
+                return render(request, 'checkout.html', context)
+            # catching an error, in case ther user is not a buyer or is an anonymous user(not signed up or logged in)
             except AttributeError or django.contrib.auth.models.User.buyerprofile.RelatedObjectDoesNotExist:
                 # check if not anonymous (this means user is a vendor). Create a buyer profile for the vendor with its vendor details
                 if isinstance(user, User):
                     bprof= BuyerProfile.objects.create(buyer=user, profile_img=user.vendorprofile.profile_img, phone= user.vendorprofile.phone, address= user.vendorprofile.address)
                     # now, store the product into the Product table with the vendor's BuyerProfile instance, which is 'bprof'
-                    product= Product.objects.create(buyer= bprof, product_name= product_name, price= product_price, product_image=product_img_url)
+                    product= Product.objects.create(buyer= bprof, product_name= product_name, price= int(product_price), product_image=product_img_url)
                     context= {'user': user,
                             'product' :product,
                             }
                     return render(request, 'checkout.html', context)
-                # otherwise, if user is anonmymous, do something else below.
+                # otherwise, if user is anonmymous, display the product details without creating a profile.
                 else:
+                    anonym_product= Product.objects.create(product_name= product_name, price= int(product_price), product_image=product_img_url)
                     context= {
-                            'product_img' :product_img_url,
-                            'product_price': product_price,
-                            'product_name': product_name,
+                            'anonym_product': anonym_product
                             }
                     return render(request, 'checkout.html', context)
+    # this way, they used the checkout url directly or the upper "if condition" ran with neither success nor errors
+    else:
+        if request.session.get('my_product'):
+            session_product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
+            print(session_product.product_image.url)
+            return render(request, 'checkout.html',{'no_item': 'No item in your cart', 'session_product':session_product})
+        else:
+            return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 
-    product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
-    print(product)
-    return render(request, 'checkout.html',{'no_item': 'No item in your cart', 'product':product})
 
-
-    # except Product.DoesNotExist:
-    #            
-
+def payment_method(request):
+    pass
     
