@@ -13,3 +13,4 @@ const howItWorks= ()=>{
     detail.style.display= 'flex';
     setTimeout(()=>{detail.style.display='none'}, 5000)
 }
+

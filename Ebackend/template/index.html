@@ -1,7 +1,5 @@
 {%extends 'base.html'%}
-{%if name.is_authenticated%}
-{%block login%}<a href="{%url 'profile'%}" class="profile">Me</a>{%endblock%}
-{%endif%}
+{%block login%}{%endblock%}
 {%block logout%}{%endblock%}
 {%block content%}
  <!-- main body items  -->
@@ -16,13 +14,16 @@
             <span class="mordern-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aut!</span>
             <h6 id="price">$50</h6>
             <!-- submitting form -->
-            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
-                <input type="hidden" name="product_img" value="../static/img/sofa1.jpg" style="display: none;">
-                <input type="hidden" name="product_id" value="1" style="display: none;" >
-                <input type="hidden" name="price" value="50" style="display: none;" >
-                <input type="hidden" name="product_name" value="furniture" style="display: none;" >
-                <input type="submit" class="buy" value="Buy Now">
-            </form>
+            <div class="buy-nd-cart">
+                <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                    <input type="hidden" name="product_img" value="../static/img/sofa1.jpg" style="display: none;">
+                    <input type="hidden" name="product_id" value="1" style="display: none;" >
+                    <input type="hidden" name="price" value="50" style="display: none;" >
+                    <input type="hidden" name="product_name" value="furniture" style="display: none;" >
+                    <input type="submit" class="buy" value="Buy Now">
+                </form>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
         </div>
 
         <div class="big-img">
@@ -35,13 +36,16 @@
                     up sitting on this!
                 </p>
             </p>
-            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
-                <input type="hidden" name="product_img" value="../static/img/sofa2.jpg" style="display: none;" >
-                <input type="hidden" name="product_id" value="2" style="display: none;" >
-                <input type="hidden" name="price" value="100" style="display: none;" >
-                <input type="hidden" name="product_name" value="Second_furniture" style="display: none;" >
-                <input type="submit" class="buy" value="Buy Now">
-            </form>
+            <div class="buy-nd-cart">
+                <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                    <input type="hidden" name="product_img" value="../static/img/sofa2.jpg" style="display: none;" >
+                    <input type="hidden" name="product_id" value="2" style="display: none;" >
+                    <input type="hidden" name="price" value="100" style="display: none;" >
+                    <input type="hidden" name="product_name" value="Second_furniture" style="display: none;" >
+                    <input type="submit" class="buy" value="Buy Now">
+                </form>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
         </div>
     </div>
     <!-- other parts -->
@@ -73,7 +77,9 @@
                     <p id="rev">Lorem ipsum.</p>
                 </div>
                 <div class="rate-icon">
-                    *****
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
             </div>
             <!-- review 2 -->
@@ -86,7 +92,9 @@
                     <p id="rev">Lorem ipsum.</p>
                 </div>
                 <div class="rate-icon">
-                    *****
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
                 
             </div>

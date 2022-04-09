@@ -82,7 +82,7 @@
                 <p id="your-order">Your Order</p>
             {%if user.is_authenticated%} 
                 <img src="{{product.product_image.url}}" alt="your item" id="p-img">
-                <p>{{product_name}}</p>
+                <p>{{product.product_name}}</p>
             {%else%}
                 <img src="{{anonym_product.product_image.url}}" alt="your item" id="p-img">
                 <p>{{anonym_product.product_name}}</p>
