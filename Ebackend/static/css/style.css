@@ -65,6 +65,14 @@ header{
     padding: 8px;
 }
 
+.icon{
+    width:fit-content;
+    padding:10px;
+}
+
+.icon > i{
+    margin: 5px;
+}
 .logs > li{
     margin:5px;
     list-style: none;
