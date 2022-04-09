@@ -175,6 +175,11 @@ form.desc-btn{
     cursor: pointer;
 }
 
+.checkout{
+    text-decoration:none;
+    color: black;
+}
+
 /* the add to cart div */
 .buy-nd-cart{
     display: flex;
@@ -391,8 +396,13 @@ footer > div{
 
 /* profile icon on the index page */ 
 .profile{
-    width: 50px;;
+    width: 100px;;
     padding:8px;
+    color: black;
+    text-decoration: none;
+}
+.fa-image-portrait{
+    width: 100%;
 }
 
 .profile-parent{

@@ -79,26 +79,26 @@
     <div class="your-order">
         <!-- Display text based on whether it's a direct request or from product -->
         {%if request.GET.product_id%}
-                <p id="your-order">Your Order</p>
+                <h3 id="your-order">Your Order</h3>
             {%if user.is_authenticated%} 
                 <img src="{{product.product_image.url}}" alt="your item" id="p-img">
-                <p>{{product.product_name}}</p>
+                <p id="p-name">{{product.product_name}}</p>
             {%else%}
                 <img src="{{anonym_product.product_image.url}}" alt="your item" id="p-img">
-                <p>{{anonym_product.product_name}}</p>
+                <p id="p-name">{{anonym_product.product_name}}</p>
             {%endif%}
         {%else%}
             {%if user.is_authenticated%}
                 {%if session_product%}
-                    <p id="your-order">Your Last Viewed Item</p>
+                    <h3 id="your-order">Your Last Viewed Item</h3>
                     <img src="{{session_product.product_image.url}}" alt="your item" id="p-img">
-                    <p>{{session_product.product_name}}</p>
+                    <p id="p-name">{{session_product.product_name}}</p>
                 {%else%}
-                    <h6 id="no-item">Not Items in Cart</h6>
+                    <h3 id="no-item">Not Items in Cart</h3>
                     <p id="instruct">Items you choose should appear here, {{user}}.</p>
                 {%endif%}
             {%else%}
-            <h6 id="no-item">Not Items in Cart!</h6>
+            <h3 id="no-item">Not Items in Cart!</h3>
             <p id="instruct">Items you choose should appear here.</p>
             {%endif%}
         {%endif%}
