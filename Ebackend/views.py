@@ -102,12 +102,14 @@ def check_out(request):
         # an exception handler in the case product not in the database
         try:
             request.session['my_product']= [product_name]
+            request.session.modified = True
             product= Product.objects.get(id=int(product_id))
             print(product.product_img.url)
             return render(request, 'checkout.html', {'user':user,'product':product})
         except Product.DoesNotExist:
             # store product into session first, before storing to Product table
             request.session['my_product']= [product_name]
+            request.session.modified = True
             try:
                 product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= int(product_price), product_image=product_img_url)
                 context= {'user': user,
@@ -136,7 +138,6 @@ def check_out(request):
     else:
         if request.session.get('my_product'):
             session_product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
-            print(session_product.product_image.url)
             return render(request, 'checkout.html',{'no_item': 'No item in your cart', 'session_product':session_product})
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
