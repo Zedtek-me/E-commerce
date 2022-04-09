@@ -211,10 +211,14 @@ form.desc-btn{
 }
 
 /* submit form in the big image container itself */
-.big-img > form.desc-btn{
-    margin:auto;
-    margin-top:-70px;
+.big-img >.buy-nd-cart{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top:-50px;
 }
+
 .big-img > img{
     width:70%;
     height: 50%;
