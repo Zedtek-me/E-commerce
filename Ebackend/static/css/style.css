@@ -394,8 +394,8 @@ footer > div{
 
 /* profile styling */
 
-/* profile icon on the index page */ 
-.profile{
+
+.profile{/* profile icon on the index page */ 
     width: 100px;;
     padding:8px;
     color: black;
@@ -431,6 +431,7 @@ footer > div{
     cursor: pointer;
 }
 
+/* products */
 .product-flex{
     display: flex;
     flex-direction: column;
@@ -443,7 +444,10 @@ footer > div{
     text-align: center;
 }
 
-.your-products{
+#your-products{
+    margin: auto;
+}
+.your_products{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
@@ -458,6 +462,27 @@ footer > div{
     justify-content: center;
     align-items: center;
     text-align: left;
+    border: solid 1px orange;
+    border-radius: 10px;
+}
+#prod-img{
+    width: 150px;
+    height: 150px;
+}
+
+.add-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+form.upload-form{
+    margin:10px;
+    width: fit-content;
+    padding: 10px;
+    border:solid lightblue 1px;
 }
 /* the quick links text */
 .quick-links{

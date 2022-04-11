@@ -86,10 +86,12 @@ def profile(request):
         prodDesc= request.POST.get('description')
         prodPrice= request.POST.get('product_price')
         category= request.POST.get('category')
-        prodImg= request.FILES.get('product_img')
+        prodImg= request.FILES.get('product_image')
+        print(prodImg)
         # create product in the database, including its category if post data is sent.
-        prod= Product.objects.create(vendor= user, product_name=prodName, product_image=prodImg,description=prodDesc, price=prodPrice)
+        prod= Product.objects.create(vendor= user.vendorprofile, product_name=prodName, product_image=prodImg,description=prodDesc, price=prodPrice)
         Category.productType.create(product=prod, category=category)
+        messages.success(request, 'Your product was successfully added, %s!' %user)
         return redirect('profile')
     # otherwise, get method for both vendor and buyer
     msg= messages.get_messages(request)

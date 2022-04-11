@@ -11,7 +11,7 @@
             <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}</div>
             {%endfor%}
         {%endif%}
-        <h5 id="hello">Hello {{name}}</h5>
+        <h3 id="hello">Hello {{name}}</h3>
         <!-- for vendors -->
         {%if name.vendorprofile%}
             <div class="profile-hero">
@@ -22,13 +22,13 @@
             <div class="product-flex">
                 <h1 id="your-products"> Your products</h1>
                 <div class="your_products">
-                    {%for item in name.product_set.all%}
+                    {%for item in name.vendorprofile.product_set.all%}
                         <div class="products">
                             <h5 id="prod-name">{{item.product_name}}</h5>
-                            <img src="{{item.product_image.url}}" alt="">
-                            <p id="prod-dscr">{{item.product_description}}</p>
+                            <img src="{{item.product_image.url}}" alt="" id="prod-img">
+                            <p id="prod-dscr">{{item.description}}</p>
                             <h3 id="price">${{item.price}}</h3>
-                            <h5 id="prod-status">Status:{%if item.sold == False%}In stock{%else%} Sold{%endif%}</h5>
+                            <h5 id="prod-status">Status:{%if item.sold%} Sold{%else%} In stock{%endif%}</h5>
                         </div>
                     {%endfor%}
                 </div>
@@ -37,7 +37,7 @@
             <div class="add-products">
                 <h3 id="add-headsUp">Upload New Products for Sale, below.</h3>
                 <img src="" alt="product image"  class="product_img" style="display: none;">
-                <form action="{%url 'profile'%}" method="post" class="upload-form">
+                <form action="{%url 'profile'%}" method="post" class="upload-form" enctype="multipart/form-data">
                     {%csrf_token%}
                     <label for="product image">Product Image</label><input type="file" accept="image/*" name="product_image" id="product_img" required>
                     <label for="product name">Product Name</label><input type="text" name="product_name" required>
