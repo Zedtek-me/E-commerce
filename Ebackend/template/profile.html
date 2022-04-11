@@ -24,7 +24,13 @@
                 <div class="your_products">
                     {%for item in name.vendorprofile.product_set.all%}
                         <div class="products">
-                            <h5 id="prod-name">{{item.product_name}}</h5>
+                            <div id="name-nd-toggle-prod">
+                                <h5 id="prod-name" style="margin: 7px;">{{item.product_name}}</h5> <i class="fa-solid fa-angle-down prod-tog"></i>
+                                <div class="edits">
+                                    <div class="optionz">Remove Product</div>
+                                    <div class="optionz">Edit Product</div>
+                                </div>
+                            </div>
                             <img src="{{item.product_image.url}}" alt="" id="prod-img">
                             <p id="prod-dscr">{{item.description}}</p>
                             <h3 id="price">${{item.price}}</h3>

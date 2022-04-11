@@ -431,7 +431,7 @@ footer > div{
     cursor: pointer;
 }
 
-/* products */
+/* products section */
 .product-flex{
     display: flex;
     flex-direction: column;
@@ -444,10 +444,10 @@ footer > div{
     text-align: center;
 }
 
-#your-products{
+#your-products{/*Your product text*/
     margin: auto;
 }
-.your_products{
+.your_products{/*product parent container*/
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
@@ -456,7 +456,7 @@ footer > div{
     height:fit-content;
     padding:20px;
 }
-.products{
+.products{/*actual product container*/
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -464,6 +464,40 @@ footer > div{
     text-align: left;
     border: solid 1px orange;
     border-radius: 10px;
+    padding:5px;
+}
+
+#name-nd-toggle-prod{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 6px;
+    margin-top:20px;
+    position: relative;
+    right: auto;
+    left: auto;
+}
+
+.edits{
+    display: none;
+}
+.edit-options{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:25;
+    left: 80;
+    right: 20;
+    background-color: aliceblue;
+    color: black;
+}
+
+.prod-tog{
+    z-index: 500;
 }
 #prod-img{
     width: 150px;

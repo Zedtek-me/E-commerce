@@ -7,7 +7,20 @@ function displayLink(){
     arrowDown.classList.toggle('fa-angle-up')
 }
 
-
+const toggleEdit= ()=>{
+    let toggleArrows= document.querySelectorAll('.prod-tog')
+    let editDivs= document.querySelectorAll('.edits')
+    console.log(toggleArrows)
+    for(let count= 0; count < toggleArrows.length; count++){
+        console.log(toggleArrows.length)
+        toggleArrows[count].addEventListener('click', (e)=>{
+            editDivs[count].classList.toggle('edit-options');
+            toggleArrows[count].classList.toggle('fa-angle-up')
+            toggleArrows[count].classList.toggle('fa-angle-up')
+        })
+    }
+}
+toggleEdit()
 
 // how it works
 var detail= document.querySelector('.detail')

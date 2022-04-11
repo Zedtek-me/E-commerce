@@ -87,7 +87,6 @@ def profile(request):
         prodPrice= request.POST.get('product_price')
         category= request.POST.get('category')
         prodImg= request.FILES.get('product_image')
-        print(prodImg)
         # create product in the database, including its category if post data is sent.
         prod= Product.objects.create(vendor= user.vendorprofile, product_name=prodName, product_image=prodImg,description=prodDesc, price=prodPrice)
         Category.productType.create(product=prod, category=category)
