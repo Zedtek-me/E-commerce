@@ -1,5 +1,5 @@
-from email.policy import default
 from django.db import models
+from django.db.models import Manager
 from django.contrib.auth.models import User
 from PIL import Image
 
@@ -77,3 +77,11 @@ class Product(models.Model):
         thumb=(400,400)
         img.thumbnail(thumb)
         img.save(self.product_image.path)
+
+# category Table for each product--> This would help later when I just need to display product categories only.
+class Category(models.Model):
+    product=models.OneToOneField(Product, on_delete=models.CASCADE)
+    category= models.CharField(max_length=100, blank= False)
+
+    # category manager
+    productType= Manager()

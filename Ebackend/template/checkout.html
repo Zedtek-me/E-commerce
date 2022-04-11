@@ -77,7 +77,7 @@
 
     </div>
     <div class="your-order">
-        <!-- Display text based on whether it's a direct request or from product -->
+        <!-- Display text based on whether it's a direct request or from product, and whether user is authenticated or nots.-->
         {%if request.GET.product_id%}
                 <h3 id="your-order">Your Order</h3>
             {%if user.is_authenticated%} 

@@ -17,3 +17,10 @@ const howItWorks= ()=>{
     setTimeout(()=>{detail.style.display='none'}, 5000)
 }
 
+// display a preview of product uploaded by a vendor
+let img_file= document.querySelector('#product_img')
+img_file.addEventListener('change', (e)=>{
+    let product_img= document.querySelector('.product_img')/*image tag to hold the image for a quick display*/
+    product_img.src= URL.createObjectURL(e.target.files[0])
+}
+)

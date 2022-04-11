@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
 from django.db import IntegrityError
-from .models import VendorProfile, BuyerProfile, Product
+from .models import VendorProfile, BuyerProfile, Product, Category
 import os
 from django.conf import settings
 import django
@@ -80,8 +79,21 @@ def logout_user(request):
 @login_required(login_url='/login/')
 def profile(request):
     user= request.user
+    # post method when vendor uploads a product
+    if request.method == 'POST':
+        print(request.POST)
+        prodName= request.POST.get('product_name')
+        prodDesc= request.POST.get('description')
+        prodPrice= request.POST.get('product_price')
+        category= request.POST.get('category')
+        prodImg= request.FILES.get('product_img')
+        # create product in the database, including its category if post data is sent.
+        prod= Product.objects.create(vendor= user, product_name=prodName, product_image=prodImg,description=prodDesc, price=prodPrice)
+        Category.productType.create(product=prod, category=category)
+        return redirect('profile')
+    # otherwise, get method for both vendor and buyer
     msg= messages.get_messages(request)
-    context= {'msg': msg,
+    context= {'msgs': msg,
               'name': user
                     }
     return render(request, 'profile.html', context)
