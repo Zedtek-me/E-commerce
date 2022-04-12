@@ -5,12 +5,12 @@
 {%block login%} {%endblock%}
 
 {%block content%}
+    {%if msgs%}
+        {%for msg in msgs%}
+        <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}</div>
+        {%endfor%}
+    {%endif%}
     <div class="profile-parent">
-        {%if msgs%}
-            {%for msg in msgs%}
-            <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}</div>
-            {%endfor%}
-        {%endif%}
         <h3 id="hello">Hello {{name}}</h3>
         <!-- for vendors -->
         {%if name.vendorprofile%}
@@ -27,8 +27,15 @@
                             <div id="name-nd-toggle-prod">
                                 <h5 id="prod-name" style="margin: 7px;">{{item.product_name}}</h5> <i class="fa-solid fa-angle-down prod-tog"></i>
                                 <div class="edits">
-                                    <div class="optionz">Remove Product</div>
+                                    <div class="optionz remove-prod">Remove Product</div>
                                     <div class="optionz">Edit Product</div>
+                                </div>
+                                <!-- form for product edit -->
+                                <div class="edit-form">
+                                    <form action="{%url 'remove-prod'%}" method="get" style="display: none;">
+                                        <input type="hidden" name="product_id" value="{{item.id}}">
+                                        <button type="submit" id="removeProd">remove_prod</button>
+                                    </form>
                                 </div>
                             </div>
                             <img src="{{item.product_image.url}}" alt="" id="prod-img">

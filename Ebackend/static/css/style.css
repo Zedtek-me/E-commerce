@@ -23,7 +23,7 @@ header{
     left:0;
     border-bottom:solid black 2px;
     background-color:white;
-    z-index: 500;
+    z-index: 1000;
 }
 
 .logo > a{
@@ -466,7 +466,7 @@ footer > div{
     border-radius: 10px;
     padding:5px;
 }
-
+/* product toggle container and its child items */
 #name-nd-toggle-prod{
     display: flex;
     justify-content: space-around;
@@ -480,6 +480,10 @@ footer > div{
     left: auto;
 }
 
+.optionz{
+    cursor: pointer;
+}
+
 .edits{
     display: none;
 }
@@ -487,13 +491,19 @@ footer > div{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
     position: absolute;
     top:25;
     left: 80;
-    right: 20;
+    right: 8;
     background-color: aliceblue;
     color: black;
+    font-weight: 100;
+    font-size: 11px;
+    border-radius: 5px;
+    width: 100%;
+    padding:5px;
 }
 
 .prod-tog{

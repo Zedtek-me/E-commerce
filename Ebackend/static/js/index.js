@@ -7,22 +7,21 @@ function displayLink(){
     arrowDown.classList.toggle('fa-angle-up')
 }
 
+// the toggles for editing each product.
 const toggleEdit= ()=>{
     let toggleArrows= document.querySelectorAll('.prod-tog')
     let editDivs= document.querySelectorAll('.edits')
-    console.log(toggleArrows)
     for(let count= 0; count < toggleArrows.length; count++){
-        console.log(toggleArrows.length)
         toggleArrows[count].addEventListener('click', (e)=>{
             editDivs[count].classList.toggle('edit-options');
             toggleArrows[count].classList.toggle('fa-angle-up')
-            toggleArrows[count].classList.toggle('fa-angle-up')
+            toggleArrows[count].classList.toggle('fa-angle-down')
         })
     }
 }
 toggleEdit()
 
-// how it works
+// "how it works"--> a hover effect that displays how a product works
 var detail= document.querySelector('.detail')
 var detailParent= document.querySelector('.how-it-works')
 const howItWorks= ()=>{
@@ -37,3 +36,13 @@ img_file.addEventListener('change', (e)=>{
     product_img.src= URL.createObjectURL(e.target.files[0])
 }
 )
+
+// form submission event for product removal
+let removeBtns= document.querySelectorAll('.remove-prod')
+let formBtns= document.querySelectorAll('#removeProd')
+console.log(formBtns)
+for(let i= 0; i < removeBtns.length; i++){
+    removeBtns[i].addEventListener('click', (e)=>{
+       formBtns[i].click()
+    })
+}

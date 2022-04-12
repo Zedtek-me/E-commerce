@@ -155,6 +155,14 @@ def check_out(request):
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 
+# endpoint to remover products
+def remove_prod(request):
+    user= request.user
+    prodId= int(request.GET.get('product_id'))
+    print(prodId)
+    Product.objects.get(id=prodId).delete()
+    messages.info(request, 'product successfully removed from the database.')
+    return redirect('profile')
 
 def payment_method(request):
     pass
