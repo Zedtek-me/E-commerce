@@ -31,16 +31,16 @@ const howItWorks= ()=>{
 
 // display a preview of product uploaded by a vendor
 let img_file= document.querySelector('#product_img')
+let product_img= document.querySelector('.product_img')/*image tag to hold the image for a quick display*/
 img_file.addEventListener('change', (e)=>{
-    let product_img= document.querySelector('.product_img')/*image tag to hold the image for a quick display*/
     product_img.src= URL.createObjectURL(e.target.files[0])
+    product_img.style.display= 'flex'
 }
 )
 
 // form submission event for product removal
 let removeBtns= document.querySelectorAll('.remove-prod')
 let formBtns= document.querySelectorAll('#removeProd')
-console.log(formBtns)
 for(let i= 0; i < removeBtns.length; i++){
     removeBtns[i].addEventListener('click', (e)=>{
        formBtns[i].click()

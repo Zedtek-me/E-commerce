@@ -83,5 +83,8 @@ class Category(models.Model):
     product=models.OneToOneField(Product, on_delete=models.CASCADE)
     category= models.CharField(max_length=100, blank= False)
 
+    def __str__(self):
+        return self.category
+
     # category manager
     productType= Manager()

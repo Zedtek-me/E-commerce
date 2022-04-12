@@ -49,8 +49,8 @@
             <!-- product upload section -->
             <div class="add-products">
                 <h3 id="add-headsUp">Upload New Products for Sale, below.</h3>
-                <img src="" alt="product image"  class="product_img" style="display: none;">
                 <form action="{%url 'profile'%}" method="post" class="upload-form" enctype="multipart/form-data">
+                    <img src="" alt="product image"  class="product_img" style="display: none; width:20%; height: 20%;border-radius: 50%;border:solid orange 2px;">
                     {%csrf_token%}
                     <label for="product image">Product Image</label><input type="file" accept="image/*" name="product_image" id="product_img" required>
                     <label for="product name">Product Name</label><input type="text" name="product_name" required>

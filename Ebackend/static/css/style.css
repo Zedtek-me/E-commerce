@@ -524,9 +524,27 @@ footer > div{
 
 form.upload-form{
     margin:10px;
-    width: fit-content;
+    width: 100%;
     padding: 10px;
     border:solid lightblue 1px;
+}
+.upload-form > input ~ select{
+    width:30%;
+    height:30px;
+    border:solid 1px orange;
+    border-radius:10px;
+}
+
+.upload-form > select> option{
+    background-color: lightblue;
+    color: purple;
+    border-radius: 15px;
+}
+.upload-form >input{
+    /* border: none; */
+    width:50%;
+    height:30px;
+    margin: 5px;
 }
 /* the quick links text */
 .quick-links{
