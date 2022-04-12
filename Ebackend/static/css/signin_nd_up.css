@@ -149,6 +149,11 @@ div.sign-up-guide{
 
 /* checkout page */
 
+#cart-head-text{
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+}
 /*parent div*/  .cart-order{
     display:flex;
     flex-flow: row wrap;

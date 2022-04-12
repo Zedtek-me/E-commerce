@@ -13,14 +13,15 @@ def index(request):
     user= request.user
     if request.method == 'GET':
         msg= messages.get_messages(request)
+        products= Product.objects.all()
         context= {'msg': msg,
-                  'name': user
+                  'name': user,
+                  'products':products
                     }
         return render(request, 'index.html', context)
 
 def signup(request):
     if request.method == 'POST':
-        print(request.POST)
         name= request.POST.get('name')
         email= request.POST.get('email')
         username= request.POST.get('username')
@@ -116,8 +117,7 @@ def check_out(request):
         try:
             request.session['my_product']= [product_name]
             request.session.modified = True
-            product= Product.objects.get(id=int(product_id))
-            print(product.product_img.url)
+            product= Product.objects.get(product_name=product_name)
             return render(request, 'checkout.html', {'user':user,'product':product})
         except Product.DoesNotExist:
             # store product into session first, before storing to Product table
@@ -155,7 +155,8 @@ def check_out(request):
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 
-# endpoint to remover products
+# endpoint to remover products--> reserved for only vendors 
+@permission_required('Ebackend.can_edit_products', raise_exception=True)
 def remove_prod(request):
     user= request.user
     prodId= int(request.GET.get('product_id'))

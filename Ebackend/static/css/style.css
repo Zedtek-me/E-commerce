@@ -354,6 +354,18 @@ form.desc-btn{
     margin-top:-17px;
 }
 
+/* products from the database */
+.mattress, .bedroom, .living-room, .kid-room{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.prodct >img{/*images within section at the index page*/
+    width: 150px;
+    height: 150px;
+}
+
 /* footer */
 footer{
     display: flex;
@@ -487,7 +499,7 @@ footer > div{
 .edits{
     display: none;
 }
-.edit-options{
+.edit-options{/*a class to toggle when the edit arrow is clicked--> this displays the edit options for each product*/
     display: flex;
     flex-direction: column;
     justify-content: center;

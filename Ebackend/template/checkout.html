@@ -15,7 +15,7 @@
 {%endif%}
 <!-- custom content -->
 {%block content%}
-<h1 id="cart-head-text" style="float:center;margin-top: 15%;">Your Cart Items</h1>
+<h1 id="cart-head-text">Your Cart Items</h1>
 <div class="cart-order">
     <!-- getting buyer's address from db if logged in. Otherwise, accept inputs-->
     <div class="shipping-addr">
@@ -102,6 +102,10 @@
             <p id="instruct">Items you choose should appear here.</p>
             {%endif%}
         {%endif%}
+    </div>
+    <!-- suggestion div -->
+    <div class="you-might-like">
+
     </div>
 </div>
 {%endblock%}

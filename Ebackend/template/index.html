@@ -100,21 +100,44 @@
             </div>
         </div>
     </section>
+    {%for product in products%}
     <!-- mattresses -->
-    <section class="mattress" id="mattress">
-
-    </section>
-    <!-- bedroom -->
-    <section class="bedroom" id="bedroom">
-
-    </section>
-    <!-- living room -->
-    <section class="living-room" id="living-room">
-
-    </section>
-    <!-- kid room -->
-    <section class="kid-room" id="kid-room">
-
-    </section>
+        {%if product.category.category == mattress%}
+            <section class="mattress" id="mattress">
+                <div class="prodct">
+                    <img src="{{product.product_image.url}}" alt="no product">
+                    <h4 id="product-name">{{product.product_name}}</h4>
+                    {{product.category.category}}
+                </div>
+            </section>
+        {%elif product.category.category == bed%}
+            <!-- bedroom -->
+            <section class="bedroom" id="bedroom">
+                <div class="prodct">
+                    <img src="{{product.product_image.url}}" alt="no product">
+                    <h4 id="product-name">{{product.product_name}}</h4>
+                    {{product.category.category}}
+                </div>
+            </section>
+        {%elif product.category.category == living%}
+            <!-- living room -->
+            <section class="living-room" id="living-room">
+                <div class="prodct">
+                    <img src="{{product.product_image.url}}" alt="no product">
+                    <h4 id="product-name">{{product.product_name}}</h4>
+                    {{product.category.category}}
+                </div>
+            </section>
+        {%else%}
+            <!-- kid room -->
+            <section class="kid-room" id="kid-room">
+                <div class="prodct">
+                    <img src="{{product.product_image.url}}" alt="no product">
+                    <h4 id="product-name">{{product.product_name}}</h4>
+                    {{product.category.category}}
+                </div>
+            </section>
+        {%endif%}
+    {%endfor%}
 </div>
     {%endblock%}
