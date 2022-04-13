@@ -151,7 +151,7 @@ def check_out(request):
     else:
         if request.session.get('my_product'):
             session_product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
-            return render(request, 'checkout.html',{'no_item': 'No item in your cart', 'session_product':session_product})
+            return render(request, 'checkout.html',{'session_product':session_product})
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 

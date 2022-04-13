@@ -1,3 +1,26 @@
+// displaying product form db
+const productDisplay= ()=>{
+    let parentCont= document.querySelector('.root-parent')
+    fetch(`product/`)
+    .then((res)=>{return res.json()})
+    .then((prod)=>{prod.map((i, item)=>{
+        // 
+        let section= document.createElement('SECTION')
+        let productCont=document.createElement('DIV')
+        let productName= document.createElement('H4')
+        let productImg= document.createElement('IMG')
+        productImg.src= i.product_image
+        productName.textContent= i.product_name
+        productCont.appendChild(productImg)
+        productCont.appendChild(productName)
+        section.appendChild(productCont)
+        parentCont.appendChild(section)
+        console.log(section)
+    })})
+}
+
+productDisplay()
+
 // display quick links
 var links= document.querySelector('.b-seller')
 var arrowDown= document.querySelector('.fa-angle-down')
@@ -5,6 +28,15 @@ function displayLink(){
     links.classList.toggle('buyer-seller')
     arrowDown.classList.toggle('fa-angle-down')
     arrowDown.classList.toggle('fa-angle-up')
+}
+
+
+// "how it works"--> a hover effect that displays how a product works
+var detail= document.querySelector('.detail')
+var detailParent= document.querySelector('.how-it-works')
+const howItWorks= ()=>{
+    detail.style.display= 'flex';
+    setTimeout(()=>{detail.style.display='none'}, 5000)
 }
 
 // the toggles for editing each product.
@@ -20,14 +52,6 @@ const toggleEdit= ()=>{
     }
 }
 toggleEdit()
-
-// "how it works"--> a hover effect that displays how a product works
-var detail= document.querySelector('.detail')
-var detailParent= document.querySelector('.how-it-works')
-const howItWorks= ()=>{
-    detail.style.display= 'flex';
-    setTimeout(()=>{detail.style.display='none'}, 5000)
-}
 
 // display a preview of product uploaded by a vendor
 let img_file= document.querySelector('#product_img')
@@ -46,3 +70,4 @@ for(let i= 0; i < removeBtns.length; i++){
        formBtns[i].click()
     })
 }
+
