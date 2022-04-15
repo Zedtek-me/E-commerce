@@ -42,11 +42,10 @@ const howItWorks= ()=>{
 // details about the cart functionality
 var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
 var cart_detail= document.querySelectorAll('.cart-detail')/*the details when hover */
-for(var j= 0; j<addToCart.length; j++){
+for(let j= 0; j<addToCart.length; j++){
     addToCart[j].addEventListener('mouseover', (e)=>{
         cart_detail[j].style.display='flex';
         setTimeout(()=>{cart_detail[j].style.display='none'}, 5000)})
-        console.log(typeof cart_detail[j])
         };
 
 console.log(typeof addToCart.childItem)

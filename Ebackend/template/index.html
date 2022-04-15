@@ -121,6 +121,7 @@
                     <h4 id="product-name">{{product.product_name}}</h4>
                     <p class="aboutproduct">{%if product.description%}{{product.description}}{%endif%}</p>
                     <h5 id="price">Price: ${{product.price}}</h5>
+                    <h5 id="prod-status">Status:{%if item.sold%} Sold{%else%} In stock{%endif%}</h5>
                     <div class="buy-nd-cart">
                         <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
                             <input type="hidden" name="product_img" value="{{product.product_image}}" style="display: none;">
@@ -140,6 +141,9 @@
                 </div>
             </div>
         {%endfor%}
+    </div>
+    <div class="more-to-see">
+        <h1 id="more" style="text-align: center;">There's still more to see from Bchair</h1>
     </div>
 </div>
     {%endblock%}
