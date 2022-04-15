@@ -84,8 +84,8 @@
                 <img src="{{product.product_image.url}}" alt="your item" id="p-img">
                 <p id="p-name">{{product.product_name}}</p>
             {%else%}
-                <img src="{{anonym_product.product_image.url}}" alt="your item" id="p-img">
-                <p id="p-name">{{anonym_product.product_name}}</p>
+                <img src="{{product.product_image.url}}" alt="your item" id="p-img">
+                <p id="p-name">{{product.product_name}}</p>
             {%endif%}
         {%else%}
             {%if user.is_authenticated%}

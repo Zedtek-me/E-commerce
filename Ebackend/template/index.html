@@ -12,17 +12,23 @@
             </h1>
             <img src="../static/img/sofa1.jpg" alt="furniture">
             <span class="mordern-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aut!</span>
-            <h6 id="price">$50</h6>
+            <h3 id="price">$50</h3>
             <!-- submitting form -->
             <div class="buy-nd-cart">
                 <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
-                    <input type="hidden" name="product_img" value="../static/img/sofa1.jpg" style="display: none;">
+                    <input type="hidden" name="product_img" value="sofa1.jpg" style="display: none;">
                     <input type="hidden" name="product_id" value="1" style="display: none;" >
                     <input type="hidden" name="price" value="50" style="display: none;" >
                     <input type="hidden" name="product_name" value="Pink Sofa" style="display: none;" >
                     <input type="submit" class="buy" value="Buy Now">
                 </form>
-                <div class="add-to-cart">Add to cart</div>
+                <div class="add-to-cart">
+                    Add to cart
+                    <p class="cart-detail">
+                        To check items you add to your cart, click on CART icon
+                        on the navigation menu above.
+                     </p>
+                </div>
             </div>
         </div>
 
@@ -38,13 +44,19 @@
             </p>
             <div class="buy-nd-cart">
                 <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
-                    <input type="hidden" name="product_img" value="../static/img/sofa2.jpg" style="display: none;" >
+                    <input type="hidden" name="product_img" value="sofa2.jpg" style="display: none;" >
                     <input type="hidden" name="product_id" value="2" style="display: none;" >
                     <input type="hidden" name="price" value="100" style="display: none;" >
                     <input type="hidden" name="product_name" value="Blue Sofa" style="display: none;" >
                     <input type="submit" class="buy" value="Buy Now">
                 </form>
-                <div class="add-to-cart">Add to cart</div>
+                <div class="add-to-cart">
+                    Add to cart
+                    <p class="cart-detail">
+                        To check items you add to your cart, click on CART icon
+                        on the navigation menu above.
+                     </p>
+                </div>
             </div>
         </div>
     </div>
@@ -100,44 +112,34 @@
             </div>
         </div>
     </section>
-    <!-- {%for product in products%} -->
-    <!-- mattresses -->
-        <!-- <section class="mattress" id="mattress">
-            {%if product.category.category == mattress%}
-            <div class="prodct">
-                <img src="{{product.product_image.url}}" alt="no product">
-                <h4 id="product-name">{{product.product_name}}</h4>
-                {{product.category.category}}
+    <!-- products from db -->
+    <div class="vendor-products">
+        {%for product in products%}
+            <div class="product-cont" id="product">
+                <div class="product">
+                    <img src="{{product.product_image.url}}" alt="no product">
+                    <h4 id="product-name">{{product.product_name}}</h4>
+                    <p class="aboutproduct">{%if product.description%}{{product.description}}{%endif%}</p>
+                    <h5 id="price">Price: ${{product.price}}</h5>
+                    <div class="buy-nd-cart">
+                        <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                            <input type="hidden" name="product_img" value="{{product.product_image}}" style="display: none;">
+                            <input type="hidden" name="product_id" value="{{product.id}}" style="display: none;" >
+                            <input type="hidden" name="price" value="{{product.price}}" style="display: none;" >
+                            <input type="hidden" name="product_name" value="{{product.product_name}}" style="display: none;" >
+                            <input type="submit" class="buy" value="Buy Now">
+                        </form>
+                        <div class="add-to-cart">
+                            Add to cart
+                            <p class="cart-detail">
+                                To check items you add to your cart, click on CART icon
+                                on the navigation menu above.
+                             </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section> -->
-        <!-- bedroom -->
-        <!-- <section class="bedroom" id="bedroom">
-            {%elif product.category.category == bed%}
-            <div class="prodct">
-                <img src="{{product.product_image.url}}" alt="no product">
-                <h4 id="product-name">{{product.product_name}}</h4>
-                {{product.category.category}}
-            </div>
-        </section> -->
-        <!-- living room -->
-        <!-- <section class="living-room" id="living-room">
-            {%elif product.category.category == living%}
-            <div class="prodct">
-                <img src="{{product.product_image.url}}" alt="no product">
-                <h4 id="product-name">{{product.product_name}}</h4>
-                {{product.category.category}}
-            </div>
-        </section> -->
-        <!-- kid room -->
-        <!-- <section class="kid-room" id="kid-room">
-            {%else%}
-            <div class="prodct">
-                <img src="{{product.product_image.url}}" alt="no product">
-                <h4 id="product-name">{{product.product_name}}</h4>
-                {{product.category.category}}
-            </div>
-            {%endif%}
-        </section> -->
-    <!-- {%endfor%} -->
+        {%endfor%}
+    </div>
 </div>
     {%endblock%}

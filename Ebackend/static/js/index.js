@@ -1,25 +1,25 @@
 // displaying product form db
-const productDisplay= ()=>{
-    let parentCont= document.querySelector('.root-parent')
-    fetch(`product/`)
-    .then((res)=>{return res.json()})
-    .then((prod)=>{prod.map((i, item)=>{
-        // 
-        let section= document.createElement('SECTION')
-        let productCont=document.createElement('DIV')
-        let productName= document.createElement('H4')
-        let productImg= document.createElement('IMG')
-        productImg.src= i.product_image
-        productName.textContent= i.product_name
-        productCont.appendChild(productImg)
-        productCont.appendChild(productName)
-        section.appendChild(productCont)
-        parentCont.appendChild(section)
-        console.log(section)
-    })})
-}
+// const productDisplay= ()=>{
+//     let parentCont= document.querySelector('.root-parent')
+//     fetch(`product/`)
+//     .then((res)=>{return res.json()})
+//     .then((prod)=>{prod.map((i, item)=>{
+//         // 
+//         let section= document.createElement('SECTION')
+//         let productCont=document.createElement('DIV')
+//         let productName= document.createElement('H4')
+//         let productImg= document.createElement('IMG')
+//         productImg.src= i.product_image
+//         productName.textContent= i.product_name
+//         productCont.appendChild(productImg)
+//         productCont.appendChild(productName)
+//         section.appendChild(productCont)
+//         parentCont.appendChild(section)
+//         console.log(section)
+//     })})
+// }
 
-productDisplay()
+// productDisplay()
 
 // display quick links
 var links= document.querySelector('.b-seller')
@@ -39,6 +39,17 @@ const howItWorks= ()=>{
     setTimeout(()=>{detail.style.display='none'}, 5000)
 }
 
+// details about the cart functionality
+var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
+var cart_detail= document.querySelectorAll('.cart-detail')/*the details when hover */
+for(var j= 0; j<addToCart.length; j++){
+    addToCart[j].addEventListener('mouseover', (e)=>{
+        cart_detail[j].style.display='flex';
+        setTimeout(()=>{cart_detail[j].style.display='none'}, 5000)})
+        console.log(typeof cart_detail[j])
+        };
+
+console.log(typeof addToCart.childItem)
 // the toggles for editing each product.
 const toggleEdit= ()=>{
     let toggleArrows= document.querySelectorAll('.prod-tog')

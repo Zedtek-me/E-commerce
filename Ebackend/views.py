@@ -112,17 +112,15 @@ def check_out(request):
     # controls whether the page is requested through a product or directly with its url
     if product_id:
         # if the page requested through a product, split the img exention here. This to avoid attribute error(using 'split' method on None type) if not so.
-        elip, product_img_url= request.GET.get('product_img').split('../static/img/')
+        product_img_url= request.GET.get('product_img')
         # an exception handler in the case product not in the database
         try:
             request.session['my_product']= [product_name]
-            request.session.modified = True
             product= Product.objects.get(product_name=product_name)
             return render(request, 'checkout.html', {'user':user,'product':product})
         except Product.DoesNotExist:
             # store product into session first, before storing to Product table
             request.session['my_product']= [product_name]
-            request.session.modified = True
             try:
                 product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= int(product_price), product_image=product_img_url)
                 context= {'user': user,
@@ -142,9 +140,9 @@ def check_out(request):
                     return render(request, 'checkout.html', context)
                 # otherwise, if user is anonmymous, display the product details without creating a profile.
                 else:
-                    anonym_product= Product.objects.create(product_name= product_name, price= int(product_price), product_image=product_img_url)
+                    product= Product.objects.create(product_name= product_name, price= int(product_price), product_image=product_img_url)
                     context= {
-                            'anonym_product': anonym_product
+                            'product': product
                             }
                     return render(request, 'checkout.html', context)
     # this way, they used the checkout url directly or the upper "if condition" ran with neither success nor errors

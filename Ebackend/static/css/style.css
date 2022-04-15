@@ -106,6 +106,8 @@ body{
 }
 
 .root-parent{
+    display:flex;
+    flex-direction: column;
     margin-top: 70px;
     background-image:url('../img/E-comBackground.png');
     background-size:cover;
@@ -186,8 +188,16 @@ form.desc-btn{
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 
+.mordern-cont >.buy-nd-cart{ /*specific to 'mordern container alone'*/
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: flex-start;
+}
 .mordern-cont > img{
     width:50%;
     height:10%;
@@ -243,11 +253,12 @@ form.desc-btn{
     cursor: pointer;
 }
 
-/* details on how it works */
-.detail{
+/* details on how it works, and how to view cart */
+.detail, .cart-detail{
     display: none;
     align-items: center;
-    width:150px;
+    justify-content: flex-start;
+    width:195px;
     background-color:bisque;
     color:black;
     font-weight: 100;
@@ -256,7 +267,7 @@ form.desc-btn{
     margin-bottom:-2px;
     box-shadow: 1px 1px 6px 1px orange;
     position: absolute;
-    text-align: center;
+    text-align: left;
 }
 
 /* items section */
@@ -355,16 +366,37 @@ form.desc-btn{
 }
 
 /* products from the database */
-.mattress, .bedroom, .living-room, .kid-room{
+.vendor-products{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
+    gap: 15px;
+    margin: auto;
+    width: 93%;
 }
 
-.prodct >img{/*images within section at the index page*/
-    width: 150px;
-    height: 150px;
+.product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    border: solid 1px orange;
+    border-radius: 10px;
+    padding:5px;
 }
+.product >img{/*images within section at the index page*/
+    width: 250px;
+    height: 250px;
+    align-self: center;
+    border-radius:15px;
+    flex-grow: 1;
+}
+
+.product > *{
+    margin:3px;
+}
+
+
 
 /* footer */
 footer{
@@ -478,6 +510,9 @@ footer > div{
     border-radius: 10px;
     padding:5px;
 }
+.products >*{
+    margin:3px;
+}
 /* product toggle container and its child items */
 #name-nd-toggle-prod{
     display: flex;
@@ -522,8 +557,9 @@ footer > div{
     z-index: 500;
 }
 #prod-img{
-    width: 150px;
-    height: 150px;
+    width: 80%;
+    height: 40%;
+    border-radius: 15px;
 }
 
 .add-products{
