@@ -1,9 +1,3 @@
-*{
-    margin:none;
-    border:none;
-    font-family: poppins;
-}
-
 @font-face{
     font-family:poppins;
     src: url('../Poppins/Poppins-Medium.ttf'),
@@ -11,6 +5,13 @@
     url('../Poppins/Poppins-ExtraLightItalic.ttf'),
     url('../Poppins/Poppins-ExtraLight.ttf');
 }
+
+*{
+    margin:none;
+    border:none;
+    font-family: poppins;
+}
+
 /* header section */
 header{
     display: flex;
@@ -611,7 +612,10 @@ footer > div> a, .buyer-seller> a{
     font-weight: lighter;
 }
 
-/* media queries */
-@media screen and (max-width:1000px){
-
+.more-to-see{/*more to see*/
+    background-image: linear-gradient(to right,white, lightblue);
+    background-repeat: no-repeat;
+    background-color:orange ;
+    background-size:100%;
+    text-align: center;
 }

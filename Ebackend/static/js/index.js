@@ -1,26 +1,3 @@
-// displaying product form db
-// const productDisplay= ()=>{
-//     let parentCont= document.querySelector('.root-parent')
-//     fetch(`product/`)
-//     .then((res)=>{return res.json()})
-//     .then((prod)=>{prod.map((i, item)=>{
-//         // 
-//         let section= document.createElement('SECTION')
-//         let productCont=document.createElement('DIV')
-//         let productName= document.createElement('H4')
-//         let productImg= document.createElement('IMG')
-//         productImg.src= i.product_image
-//         productName.textContent= i.product_name
-//         productCont.appendChild(productImg)
-//         productCont.appendChild(productName)
-//         section.appendChild(productCont)
-//         parentCont.appendChild(section)
-//         console.log(section)
-//     })})
-// }
-
-// productDisplay()
-
 // display quick links
 var links= document.querySelector('.b-seller')
 var arrowDown= document.querySelector('.fa-angle-down')
