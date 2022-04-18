@@ -84,7 +84,7 @@
             <p id="p-name">{{product.product_name}}</p>
             <div class="quantity">
                 <label for="quantity">Quantity</label>
-                <input type="text" id="quantity-tag" name="quantity">
+                <input type="number" id="quantity-tag" name="quantity">
             </div>
         {%else%}
             {%if session_product%}
@@ -93,7 +93,7 @@
                 <p id="p-name">{{session_product.product_name}}</p>
                 <div class="quantity">
                     <label for="quantity">Quantity</label>
-                    <input type="text" id="quantity-tag" name="quantity" value="1">
+                    <input type="number" id="quantity-tag" name="quantity" value="1">
                 </div>
             {%else%}
                 <h3 id="no-item">{{no_item}}</h3>

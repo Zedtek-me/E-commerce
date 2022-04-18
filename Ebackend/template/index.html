@@ -114,33 +114,99 @@
     </section>
     <!-- products from db -->
     <div class="vendor-products">
-        {%for product in products%}
-            <div class="product-cont" id="product">
-                <div class="product">
-                    <img src="{{product.product_image.url}}" alt="no product">
-                    <h4 id="product-name">{{product.product_name}}</h4>
-                    <p class="aboutproduct">{%if product.description%}{{product.description}}{%endif%}</p>
-                    <h5 id="price">Price: ${{product.price}}</h5>
-                    <h5 id="prod-status">Status:{%if item.sold%} Sold{%else%} In stock{%endif%}</h5>
-                    <div class="buy-nd-cart">
-                        <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
-                            <input type="hidden" name="product_img" value="{{product.product_image}}" style="display: none;">
-                            <input type="hidden" name="product_id" value="{{product.id}}" style="display: none;" >
-                            <input type="hidden" name="price" value="{{product.price}}" style="display: none;" >
-                            <input type="hidden" name="product_name" value="{{product.product_name}}" style="display: none;" >
-                            <input type="submit" class="buy" value="Buy Now">
-                        </form>
-                        <div class="add-to-cart">
-                            Add to cart
-                            <p class="cart-detail">
-                                To check items you add to your cart, click on CART icon
-                                on the navigation menu above.
-                             </p>
+        <!-- mattress -->
+        <h1 id="mattress">Mattress</h1>
+        <section class="mattress">
+            {%for product in mattress%}
+                <div class="product-cont" id="product">
+                    <div class="product">
+                        <img src="{{product.product.product_image.url}}" alt="no product">
+                        <h4 id="product-name">{{product.product.product_name}}</h4>
+                        <p class="aboutproduct">{%if product.product.description%}{{product.product.description}}{%endif%}</p>
+                        <h5 id="price">Price: ${{product.product.price}}</h5>
+                        <h5 id="prod-status">Status:{%if product.product.sold%} Sold{%else%} In stock{%endif%}</h5>
+                        <div class="buy-nd-cart">
+                            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                                <input type="hidden" name="product_img" value="{{product.product.product_image}}" style="display: none;">
+                                <input type="hidden" name="product_id" value="{{product.product.id}}" style="display: none;" >
+                                <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
+                                <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
+                                <input type="submit" class="buy" value="Buy Now">
+                            </form>
+                            <div class="add-to-cart">
+                                Add to cart
+                                <p class="cart-detail">
+                                    To check items you add to your cart, click on CART icon
+                                    on the navigation menu above.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {%endfor%}
+            {%endfor%}
+        </section>
+        <!-- bedroom -->
+        <h1 id="bedroom">Beds</h1>
+        <section class="bedroom">
+            {%for product in bed%}
+                <div class="product-cont" id="product">
+                    <div class="product">
+                        <img src="{{product.product.product_image.url}}" alt="no product">
+                        <h4 id="product-name">{{product.product.product_name}}</h4>
+                        <p class="aboutproduct">{%if product.product.description%}{{product.product.description}}{%endif%}</p>
+                        <h5 id="price">Price: ${{product.product.price}}</h5>
+                        <h5 id="prod-status">Status:{%if product.product.sold%} Sold{%else%} In stock{%endif%}</h5>
+                        <div class="buy-nd-cart">
+                            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                                <input type="hidden" name="product_img" value="{{product.product.product_image}}" style="display: none;">
+                                <input type="hidden" name="product_id" value="{{product.product.id}}" style="display: none;" >
+                                <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
+                                <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
+                                <input type="submit" class="buy" value="Buy Now">
+                            </form>
+                            <div class="add-to-cart">
+                                Add to cart
+                                <p class="cart-detail">
+                                    To check items you add to your cart, click on CART icon
+                                    on the navigation menu above.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </section>
+        <!-- living room -->
+        <h1 id="living-room">Living_room</h1>
+        <section class="living-room">
+            {%for product in living_room%}
+                <div class="product-cont" id="product">
+                    <div class="product">
+                        <img src="{{product.product.product_image.url}}" alt="no product">
+                        <h4 id="product-name">{{product.product.product_name}}</h4>
+                        <p class="aboutproduct">{%if product.product.description%}{{product.product.description}}{%endif%}</p>
+                        <h5 id="price">Price: ${{product.product.price}}</h5>
+                        <h5 id="prod-status">Status:{%if product.product.sold%} Sold{%else%} In stock{%endif%}</h5>
+                        <div class="buy-nd-cart">
+                            <form action="{%url 'checkout'%}" method="get" class="desc-btn" enctype="multipart/form-data">
+                                <input type="hidden" name="product_img" value="{{product.product.product_image}}" style="display: none;">
+                                <input type="hidden" name="product_id" value="{{product.product.id}}" style="display: none;" >
+                                <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
+                                <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
+                                <input type="submit" class="buy" value="Buy Now">
+                            </form>
+                            <div class="add-to-cart">
+                                Add to cart
+                                <p class="cart-detail">
+                                    To check items you add to your cart, click on CART icon
+                                    on the navigation menu above.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </section>
     </div>
     <div class="more-to-see">
         <h1 id="more">There's still more to see from Bchair</h1>

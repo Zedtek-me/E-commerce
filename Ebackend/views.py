@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
@@ -13,10 +14,18 @@ def index(request):
     user= request.user
     if request.method == 'GET':
         msg= messages.get_messages(request)
-        products= Product.objects.all()
+        products= Product.objects.all()#all products
+        # get all categories to be passed into view dynamically:
+        mattress= Category.productType.filter(category='mattress')
+        living_room= Category.productType.filter(category='living')
+        bed=Category.productType.filter(category='bed')
+
         context= {'msg': msg,
                   'name': user,
-                  'products':products
+                  'products':products,
+                  'mattress':mattress,
+                  'living_room': living_room,
+                  'bed': bed,
                     }
         return render(request, 'index.html', context)
 

@@ -402,13 +402,20 @@ form.desc-btn{
 
 /* products from the database */
 .vendor-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:15px;
+}
+
+.vendor-products> section{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     margin: auto;
     width: 93%;
 }
-
 .product{
     display: flex;
     flex-direction: column;
