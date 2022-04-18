@@ -67,12 +67,51 @@ header{
 }
 
 .icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width:fit-content;
-    padding:10px;
+    padding:15px;
 }
 
-.icon > i{
-    margin: 8px;
+.checkout{ /*the anchor tag that hold cart icon*/
+    text-decoration:none;
+    color: black;
+    /* z-index: 400; */
+}
+
+
+.icon > i, .checkout{
+    margin: 15px;
+}
+
+.cart-item{/*a container holding the anchor tag with the cart icon*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: fit-content;
+}
+
+.cart-count{/*the cart item count div*/
+    border-radius:50%;
+    width:fit-content;
+    height: fit-content;
+    background-color:tomato;
+    position: absolute;
+    bottom: 65;
+    top: 5;
+    right: 0;
+    left: 15;
+    margin-right: 5px;
+    padding: 2px;
+    margin-bottom: 15px;
+    color:white;
+    /* z-index: 300; */
 }
 .logs > li{
     margin:5px;
@@ -176,11 +215,6 @@ form.desc-btn{
     margin-left: -50px;
     margin-top: -10px;
     cursor: pointer;
-}
-
-.checkout{
-    text-decoration:none;
-    color: black;
 }
 
 /* the add to cart div */

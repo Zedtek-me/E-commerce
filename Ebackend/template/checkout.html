@@ -26,17 +26,17 @@
                 <img src="{{user.buyerprofile.profile_img.url}}" alt="your image" class="buyer-image">
                 <div class="check-cont">
                     <label for="username">Your Name</label>
-                    <input type="text" name="name" value="{{user.buyerprofile.buyer}}" readonly="readonly">
+                    <input type="text" name="name" value="{{user.buyerprofile.buyer}} {{user.buyerprofile.buyer.last_name}}" readonly="readonly">
                 </div>
                 
                 <div class="check-cont">
                     <label for="address">Your Address</label>
-                    <input type="text" name="address" value="{{user.buyerprofile.address}}" readonly="readonly">
+                    <input type="text" name="address" value="{{user.buyerprofile.address}}">
                 </div>       
 
                 <div class="check-cont">
                     <label for="phone" id="p-num">Your Phone Number</label>
-                    <input type="tel" name="phone" value="{{user.buyerprofile.phone}}" readonly="readonly">
+                    <input type="tel" name="phone" value="{{user.buyerprofile.phone}}">
                 </div>       
 
                 <div class="check-cont">
@@ -77,29 +77,27 @@
 
     </div>
     <div class="your-order">
-        <!-- Display text based on whether it's a direct request or from product, and whether user is authenticated or nots.-->
+        <!-- Display text based on whether it's a direct request or from product-->
         {%if request.GET.product_id%}
-                <h3 id="your-order">Your Order</h3>
-            {%if user.is_authenticated%} 
-                <img src="{{product.product_image.url}}" alt="your item" id="p-img">
-                <p id="p-name">{{product.product_name}}</p>
-            {%else%}
-                <img src="{{product.product_image.url}}" alt="your item" id="p-img">
-                <p id="p-name">{{product.product_name}}</p>
-            {%endif%}
+            <h3 id="your-order">Your Order</h3>
+            <img src="{{product.product_image.url}}" alt="your item" id="p-img">
+            <p id="p-name">{{product.product_name}}</p>
+            <div class="quantity">
+                <label for="quantity">Quantity</label>
+                <input type="text" id="quantity-tag" name="quantity">
+            </div>
         {%else%}
-            {%if user.is_authenticated%}
-                {%if session_product%}
-                    <h3 id="your-order">Your Last Viewed Item</h3>
-                    <img src="{{session_product.product_image.url}}" alt="your item" id="p-img">
-                    <p id="p-name">{{session_product.product_name}}</p>
-                {%else%}
-                    <h3 id="no-item">{{no_item}}</h3>
-                    <p id="instruct">Items you choose should appear here, {{user}}.</p>
-                {%endif%}
+            {%if session_product%}
+                <h3 id="your-order">Your Last Viewed Item</h3>
+                <img src="{{session_product.product_image.url}}" alt="your item" id="p-img">
+                <p id="p-name">{{session_product.product_name}}</p>
+                <div class="quantity">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" id="quantity-tag" name="quantity" value="1">
+                </div>
             {%else%}
-            <h3 id="no-item">{{no_item}}</h3>
-            <p id="instruct">Items you choose should appear here.</p>
+                <h3 id="no-item">{{no_item}}</h3>
+                <p id="instruct">Items you choose should appear here.</p>
             {%endif%}
         {%endif%}
     </div>

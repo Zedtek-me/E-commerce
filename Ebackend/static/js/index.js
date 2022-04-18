@@ -17,15 +17,30 @@ const howItWorks= ()=>{
 }
 
 // details about the cart functionality
-var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
-var cart_detail= document.querySelectorAll('.cart-detail')/*the details when hover */
-for(let j= 0; j<addToCart.length; j++){
-    addToCart[j].addEventListener('mouseover', (e)=>{
-        cart_detail[j].style.display='flex';
-        setTimeout(()=>{cart_detail[j].style.display='none'}, 5000)})
-        };
+const cartDetail= ()=>{
+    var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
+    var cart_detail= document.querySelectorAll('.cart-detail')/*the details when hover */
+    for(let j= 0; j<addToCart.length; j++){
+        addToCart[j].addEventListener('mouseover', (e)=>{
+            cart_detail[j].style.display='flex';
+            setTimeout(()=>{cart_detail[j].style.display='none'}, 5000)})
+            };
+}
+cartDetail()
 
-console.log(typeof addToCart.childItem)
+// add to cart implementation
+
+const cartCount= ()=>{
+    var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
+    var cart_count= document.querySelector('.cart-count')/*the cart content container--> increases in number when an item is added to cart*/
+    for(let j= 0; j<addToCart.length; j++){
+        addToCart[j].addEventListener('click', (e)=>{
+            cart_count.textContent=Number(cart_count.textContent)+1;
+            })
+        }
+}
+cartCount()
+
 // the toggles for editing each product.
 const toggleEdit= ()=>{
     let toggleArrows= document.querySelectorAll('.prod-tog')
@@ -53,8 +68,5 @@ img_file.addEventListener('change', (e)=>{
 let removeBtns= document.querySelectorAll('.remove-prod')
 let formBtns= document.querySelectorAll('#removeProd')
 for(let i= 0; i < removeBtns.length; i++){
-    removeBtns[i].addEventListener('click', (e)=>{
-       formBtns[i].click()
-    })
+    removeBtns[i].addEventListener('click', (e)=>{formBtns[i].click()})
 }
-

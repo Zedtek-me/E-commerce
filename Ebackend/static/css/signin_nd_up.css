@@ -230,11 +230,27 @@ overflow-x: scroll;
     align-self: flex-start;
 }
 
-#your-order, #p-image, #p-name{
-    margin: 15px;
+.your-order > *{
+    margin: 7px;
 }
 .your-order > #p-img{
     width:100%;
     height: 100%;
     border-radius: 10px;
+}
+
+.quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.quantity >*{
+    margin: 5px;
+}
+#quantity-tag{
+    border:solid 1px orange;
+    border-radius:15px;
+    width:50px;
+    text-align: center;
+    padding: 5px;
 }
