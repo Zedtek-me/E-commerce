@@ -22,6 +22,14 @@
                     <input type="hidden" name="product_name" value="Pink Sofa" style="display: none;" >
                     <input type="submit" class="buy" value="Buy Now">
                 </form>
+                {# form for data when add to cart is triggered #}
+                <form action="" method="post" class="desc-btn cart-form" enctype="multipart/form-data" style="display: none;">
+                    {%csrf_token%}
+                    <input type="hidden" name="product_img" value="sofa1.jpg" style="display: none;">
+                    <input type="hidden" name="product_id" value="1" style="display: none;" >
+                    <input type="hidden" name="price" value="50" style="display: none;" >
+                    <input type="hidden" name="product_name" value="Pink Sofa" style="display: none;">
+                </form>
                 <div class="add-to-cart">
                     Add to cart
                     <p class="cart-detail">
@@ -49,6 +57,14 @@
                     <input type="hidden" name="price" value="100" style="display: none;" >
                     <input type="hidden" name="product_name" value="Blue Sofa" style="display: none;" >
                     <input type="submit" class="buy" value="Buy Now">
+                </form>
+                {# form for data when add to cart is triggered #}
+                <form action="" method="post" class="desc-btn cart-form" enctype="multipart/form-data" style="display: none;">
+                    {%csrf_token%}
+                    <input type="hidden" name="product_img" value="sofa2.jpg" style="display: none;" >
+                    <input type="hidden" name="product_id" value="2" style="display: none;" >
+                    <input type="hidden" name="price" value="100" style="display: none;" >
+                    <input type="hidden" name="product_name" value="Blue Sofa" style="display: none;" >
                 </form>
                 <div class="add-to-cart">
                     Add to cart
@@ -133,6 +149,14 @@
                                 <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
                                 <input type="submit" class="buy" value="Buy Now">
                             </form>
+                            {# form for data when add to cart is triggered #}
+                            <form action="" method="post" class="desc-btn cart-form" enctype="multipart/form-data" style="display: none;">
+                                {%csrf_token%}
+                                <input type="hidden" name="product_img" value="{{product.product.product_image}}" style="display: none;">
+                                <input type="hidden" name="product_id" value="{{product.product.id}}" style="display: none;" >
+                                <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
+                                <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
+                            </form>
                             <div class="add-to-cart">
                                 Add to cart
                                 <p class="cart-detail">
@@ -164,6 +188,14 @@
                                 <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
                                 <input type="submit" class="buy" value="Buy Now">
                             </form>
+                            {# form for data when add to cart is triggered #}
+                            <form action="" method="post" class="desc-btn cart-form" enctype="multipart/form-data" style="display: none;">
+                                {%csrf_token%}
+                                <input type="hidden" name="product_img" value="{{product.product.product_image}}" style="display: none;">
+                                <input type="hidden" name="product_id" value="{{product.product.id}}" style="display: none;" >
+                                <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
+                                <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
+                            </form>
                             <div class="add-to-cart">
                                 Add to cart
                                 <p class="cart-detail">
@@ -194,6 +226,14 @@
                                 <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
                                 <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
                                 <input type="submit" class="buy" value="Buy Now">
+                            </form>
+                            {# form for data when add to cart is triggered #}
+                            <form action="" method="post" class="desc-btn cart-form" enctype="multipart/form-data" style="display: none;">
+                                {%csrf_token%}
+                                <input type="hidden" name="product_img" value="{{product.product.product_image}}" style="display: none;">
+                                <input type="hidden" name="product_id" value="{{product.product.id}}" style="display: none;" >
+                                <input type="hidden" name="price" value="{{product.product.price}}" style="display: none;" >
+                                <input type="hidden" name="product_name" value="{{product.product.product_name}}" style="display: none;" >
                             </form>
                             <div class="add-to-cart">
                                 Add to cart

@@ -29,12 +29,21 @@ const cartDetail= ()=>{
 cartDetail()
 
 // add to cart implementation
-
 const cartCount= ()=>{
     var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
     var cart_count= document.querySelector('.cart-count')/*the cart content container--> increases in number when an item is added to cart*/
+    var cartForm= document.querySelectorAll('.cart-form')
     for(let j= 0; j<addToCart.length; j++){
         addToCart[j].addEventListener('click', (e)=>{
+            // get product data when cart button is clicked;
+            formInfo= new FormData(cartForm[j])
+            // send data to backend for storage, and display at checkout.
+            fetch('/add_to_cart/', {
+                method:'POST',
+                body: formInfo
+            })
+            .then((response)=>{console.log(response.json)})
+
             cart_count.textContent=Number(cart_count.textContent)+1;
             })
         }

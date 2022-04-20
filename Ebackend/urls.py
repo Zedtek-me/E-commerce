@@ -17,7 +17,8 @@ urlpatterns=[
     path('profile/', views.profile, name='profile' ),
     path('checkout/', views.check_out, name='checkout'),
     path('payment/', views.payment_method, name= 'payment'),
-    path('remove-prod/', views.remove_prod, name= 'remove-prod')
+    path('remove-prod/', views.remove_prod, name= 'remove-prod'),
+    path('add_to_cart/', views.add_to_cart, name= 'add_to_cart')
 ]
 
 if settings.DEBUG:

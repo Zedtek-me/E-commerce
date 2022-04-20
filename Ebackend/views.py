@@ -1,4 +1,4 @@
-from unicodedata import category
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
@@ -9,6 +9,7 @@ from .models import VendorProfile, BuyerProfile, Product, Category
 import os
 from django.conf import settings
 import django
+import json
 # index page--> accesible to all users (anonymous or not)
 def index(request):
     user= request.user
@@ -174,4 +175,10 @@ def remove_prod(request):
 
 def payment_method(request):
     pass
-    
+
+def add_to_cart(request):
+    data= request.POST
+    if data:
+        print(data)
+        return HttpResponse('items posted: %s' %data)
+

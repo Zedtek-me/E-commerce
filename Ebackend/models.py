@@ -88,3 +88,8 @@ class Category(models.Model):
 
     # category manager
     productType= Manager()
+
+
+
+class Cart(models.Model):
+    pass
