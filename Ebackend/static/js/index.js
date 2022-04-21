@@ -30,9 +30,10 @@ cartDetail()
 
 // add to cart implementation
 const cartCount= ()=>{
-    var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
-    var cart_count= document.querySelector('.cart-count')/*the cart content container--> increases in number when an item is added to cart*/
-    var cartForm= document.querySelectorAll('.cart-form')
+    let addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
+    let cart_count= document.querySelector('.cart-count')/*the cart content container--> increases in number when an item is added to cart*/
+    let removeCart= document.querySelectorAll('.remove-cart')/*remove item from cart button */
+    let cartForm= document.querySelectorAll('.cart-form')
     for(let j= 0; j<addToCart.length; j++){
         addToCart[j].addEventListener('click', (e)=>{
             // get product data when cart button is clicked;
@@ -42,9 +43,10 @@ const cartCount= ()=>{
                 method:'POST',
                 body: formInfo
             })
-            .then((response)=>{console.log(response.json)})
+            .then((response)=>{console.log(response)})
 
             cart_count.textContent=Number(cart_count.textContent)+1;
+            removeCart[j].style.display='flex';
             })
         }
 }
