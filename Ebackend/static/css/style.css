@@ -435,10 +435,6 @@ form.desc-btn{
     width: 100%;
 }
 
-.product-cont{
-    width: 100%;
-}
-
 .product{
     display: flex;
     flex-direction: column;
@@ -447,7 +443,7 @@ form.desc-btn{
     text-align: left;
     border: solid 1px orange;
     border-radius: 10px;
-    width: 100%;
+    width: fit-content;
     padding:5px;
 }
 .product >img{/*images within section at the index page*/
