@@ -18,15 +18,35 @@ const howItWorks= ()=>{
 
 // details about the cart functionality
 const cartDetail= ()=>{
-    var addToCart= document.querySelectorAll('.add-to-cart')/*the add to cart parent */
-    var cart_detail= document.querySelectorAll('.cart-detail')/*the details when hover */
+    var addToCart= document.querySelectorAll('.add-to-cart')//the add to cart parent
+    var cart_detail= document.querySelectorAll('.cart-detail')//the details when hover 
     for(let j= 0; j<addToCart.length; j++){
         addToCart[j].addEventListener('mouseover', (e)=>{
             cart_detail[j].style.display='flex';
             setTimeout(()=>{cart_detail[j].style.display='none'}, 5000)})
             };
 }
+
 cartDetail()
+
+// remove cart item button at the index page
+const removeCartItem= ()=>{
+    let removeCart= document.querySelectorAll('.remove-cart')
+    let cart_count= document.querySelector('.cart-count')
+    for(let j= 0; j<removeCart.length; j++){
+        removeCart[j].addEventListener('click',(e)=>{
+            cart_count.textContent=Number(cart_count.textContent)-1;
+            if(cart_count.textContent == 0){
+                cart_count.textContent= ''
+            }
+            removeCart[j].style.display='none'
+            // remember to send the detail of what is removed to the backend, to expunge from session
+        })
+        
+    }
+}
+
+removeCartItem()
 
 // add to cart implementation
 const cartCount= ()=>{
