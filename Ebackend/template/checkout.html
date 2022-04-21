@@ -88,7 +88,7 @@
             </div>
         {%else%}
             {%if session_product%}
-                <h3 id="your-order">Your Last Viewed Item</h3>
+                <h3 id="your-order">All Items in Your Cart</h3>
                 <img src="{{session_product.product_image.url}}" alt="your item" id="p-img">
                 <p id="p-name">{{session_product.product_name}}</p>
                 <div class="quantity">

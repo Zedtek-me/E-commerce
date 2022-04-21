@@ -127,17 +127,12 @@ def profile(request):
                     }
     return render(request, 'profile.html', context)
 
-# getting items added to the cart, and storing for easy retrival on the cart page.
+# getting items added to the cart, and storing it in session for easy retrival on the cart page.
 def add_to_cart(request):
     data= request.POST
-    # check if i've assigned a cart_id to them or not
-    if request.session.get('cart_id'):
-        request.session['cart_item'].append(data['product_id'])
-        request.session.modified = True
-    else:
-        request.session['cart_id']= str(uuid.uuid4())
-        request.session['cart_item'].append(data['product_id'])
-        request.session.modified = True
+    # add item to the cart_item of session, created at index page
+    request.session['cart_item'].append(data['product_id'])
+    request.session.modified = True
     print(request.session.items())
     return HttpResponse('')
     
