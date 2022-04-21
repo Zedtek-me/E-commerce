@@ -10,9 +10,13 @@ import os
 from django.conf import settings
 import django
 import json
+import uuid
+
+
 # index page--> accesible to all users (anonymous or not)
 def index(request):
     user= request.user
+    request.session['cart_item']= []
     if request.method == 'GET':
         msg= messages.get_messages(request)
         products= Product.objects.all()#all products
@@ -110,6 +114,22 @@ def profile(request):
                     }
     return render(request, 'profile.html', context)
 
+# getting items added to the cart, and storing for easy retrival on the cart page.
+def add_to_cart(request):
+    data= request.POST
+    # check if i've assigned a cart_id to them or not
+    if request.session.get('cart_id'):
+        request.session['cart_item'].append(data['product_id'])
+        request.session.modified = True
+        print(request.session.items())
+        
+    else:
+        request.session['cart_id']= str(uuid.uuid4())
+        request.session['cart_item'].append(data['product_id'])
+        request.session.modified = True
+        print(request.session.items())
+    return HttpResponse('')
+    
 
 # checkout page for registered buyers and non registered buyers
 # expects only GET requests
@@ -176,9 +196,5 @@ def remove_prod(request):
 def payment_method(request):
     pass
 
-def add_to_cart(request):
-    data= request.POST
-    if data:
-        print(data)
-        return HttpResponse('items posted: %s' %data)
+    
 
