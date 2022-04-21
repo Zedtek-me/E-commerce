@@ -1,7 +1,7 @@
 // display quick links
-var links= document.querySelector('.b-seller')
-var arrowDown= document.querySelector('.fa-angle-down')
 function displayLink(){
+    let links= document.querySelector('.b-seller')
+    let arrowDown= document.querySelector('.fa-angle-down')
     links.classList.toggle('buyer-seller')
     arrowDown.classList.toggle('fa-angle-down')
     arrowDown.classList.toggle('fa-angle-up')
@@ -9,9 +9,9 @@ function displayLink(){
 
 
 // "how it works"--> a hover effect that displays how a product works
-var detail= document.querySelector('.detail')
-var detailParent= document.querySelector('.how-it-works')
 const howItWorks= ()=>{
+    let detail= document.querySelector('.detail')
+    let detailParent= document.querySelector('.how-it-works')
     detail.style.display= 'flex';
     setTimeout(()=>{detail.style.display='none'}, 5000)
 }
@@ -26,7 +26,6 @@ const cartDetail= ()=>{
             setTimeout(()=>{cart_detail[j].style.display='none'}, 5000)})
             };
 }
-
 cartDetail()
 
 // remove cart item button at the index page
@@ -45,7 +44,6 @@ const removeCartItem= ()=>{
         
     }
 }
-
 removeCartItem()
 
 // add to cart implementation
@@ -87,17 +85,24 @@ const toggleEdit= ()=>{
 toggleEdit()
 
 // display a preview of product uploaded by a vendor
-let img_file= document.querySelector('#product_img')
-let product_img= document.querySelector('.product_img')/*image tag to hold the image for a quick display*/
-img_file.addEventListener('change', (e)=>{
-    product_img.src= URL.createObjectURL(e.target.files[0])
-    product_img.style.display= 'flex'
+function preView(){
+    let img_file= document.querySelector('#product_img')
+    let product_img= document.querySelector('.product_img')/*image tag to hold the image for a quick display*/
+    img_file.addEventListener('change', (e)=>{
+        product_img.src= URL.createObjectURL(e.target.files[0])
+        product_img.style.display= 'flex'
+    })
 }
-)
+preView()
+
 
 // form submission event for product removal
-let removeBtns= document.querySelectorAll('.remove-prod')
-let formBtns= document.querySelectorAll('#removeProd')
-for(let i= 0; i < removeBtns.length; i++){
-    removeBtns[i].addEventListener('click', (e)=>{formBtns[i].click()})
+function removeProd(){
+    let removeBtns= document.querySelectorAll('.remove-prod')
+    let formBtns= document.querySelectorAll('#removeProd')
+    for(let i= 0; i < removeBtns.length; i++){
+        removeBtns[i].addEventListener('click', (e)=>{formBtns[i].click()})
+    }
+
 }
+removeProd()
