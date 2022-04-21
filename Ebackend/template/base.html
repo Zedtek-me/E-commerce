@@ -31,7 +31,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <div class="cart-item">
                     <a href="/checkout/" class="checkout"><i class="fa-solid fa-cart-shopping"></i></a>
-                    <div class="cart-count"></div>
+                    <div class="cart-count">{%if session_data%}{{session_data}}{%endif%}</div>
                 </div>
                 <i class="fa-solid fa-bell"></i>
             </div>

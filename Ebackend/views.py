@@ -16,7 +16,18 @@ import uuid
 # index page--> accesible to all users (anonymous or not)
 def index(request):
     user= request.user
-    request.session['cart_item']= []
+    # get the items in the cart, if any.
+    session_data= request.session.get('cart_item')
+    cart_id= request.session.get('cart_id')
+    data_length= ''
+    # check if items are present in cart, so as to indicate on cart icon, by how many items.
+    if session_data:
+        data_length += str(len(session_data))
+        print(session_data)
+    # if no session data, create a cart_id and set a cart_item to an empty list
+    else:
+        request.session['cart_id']= str(uuid.uuid4())
+        request.session['cart_item']=[]
     if request.method == 'GET':
         msg= messages.get_messages(request)
         products= Product.objects.all()#all products
@@ -31,6 +42,7 @@ def index(request):
                   'mattress':mattress,
                   'living_room': living_room,
                   'bed': bed,
+                  'session_data':data_length,
                     }
         return render(request, 'index.html', context)
 
@@ -76,6 +88,7 @@ def login_user(request):
         password= post.get('password')
         user= authenticate(request, username= username, password=password)
         if user is not None:
+            logout(request)
             login(request, user)
             return redirect('/profile/')
         else:
@@ -121,13 +134,11 @@ def add_to_cart(request):
     if request.session.get('cart_id'):
         request.session['cart_item'].append(data['product_id'])
         request.session.modified = True
-        print(request.session.items())
-        
     else:
         request.session['cart_id']= str(uuid.uuid4())
         request.session['cart_item'].append(data['product_id'])
         request.session.modified = True
-        print(request.session.items())
+    print(request.session.items())
     return HttpResponse('')
     
 
@@ -145,12 +156,12 @@ def check_out(request):
         product_img_url= request.GET.get('product_img')
         # an exception handler in the case product not in the database
         try:
-            request.session['my_product']= [product_name]
+            request.session['cart_item'].append(product_id)
             product= Product.objects.get(product_name=product_name)
             return render(request, 'checkout.html', {'user':user,'product':product})
         except Product.DoesNotExist:
             # store product into session first, before storing to Product table
-            request.session['my_product']= [product_name]
+            request.session['cart_item'].append(product_id)
             try:
                 product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= int(product_price), product_image=product_img_url)
                 context= {'user': user,
@@ -170,6 +181,7 @@ def check_out(request):
                     return render(request, 'checkout.html', context)
                 # otherwise, if user is anonmymous, display the product details without creating a profile.
                 else:
+                    request.session['cart_item'].append(product_id)
                     product= Product.objects.create(product_name= product_name, price= int(product_price), product_image=product_img_url)
                     context= {
                             'product': product
@@ -177,9 +189,16 @@ def check_out(request):
                     return render(request, 'checkout.html', context)
     # this way, they used the checkout url directly or the upper "if condition" ran with neither success nor errors
     else:
-        if request.session.get('my_product'):
-            session_product= Product.objects.filter(product_name=request.session['my_product'][0])[0]
-            return render(request, 'checkout.html',{'session_product':session_product})
+        if request.session.get('cart_item'):
+            # work more on this section cuz I'd need to display all items in cart if cart item is present--> not one item
+            try:
+                session_product= Product.objects.get(id=int(request.session['cart_item'][0]))
+                print(request.session['cart_item'][0])
+                print(session_product)
+                return render(request, 'checkout.html',{'session_product':session_product})
+            except Product.DoesNotExist:
+                Product.objects.create(id=int(request.session['cart_item'][0]))
+                return redirect('checkout')
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 
@@ -197,4 +216,3 @@ def payment_method(request):
     pass
 
     
-
