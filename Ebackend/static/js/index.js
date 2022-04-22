@@ -32,14 +32,20 @@ cartDetail()
 const removeCartItem= ()=>{
     let removeCart= document.querySelectorAll('.remove-cart')
     let cart_count= document.querySelector('.cart-count')
+    let cartForm= document.querySelectorAll('.cart-form')
     for(let j= 0; j<removeCart.length; j++){
         removeCart[j].addEventListener('click',(e)=>{
-            cart_count.textContent=Number(cart_count.textContent)-1;
-            if(cart_count.textContent == 0){
+            cart_count.textContent=Number(cart_count.textContent)-1;//first, deduct 1 from the cart count.
+            if(cart_count.textContent == 0){//if the count is deducted down to Zero, assign an empty string instead of 0
                 cart_count.textContent= ''
             }
-            removeCart[j].style.display='none'
-            // remember to send the detail of what is removed to the backend, to expunge from session
+            const formInfo= new FormData(cartForm[j])
+            fetch('/remove_from_cart/', {
+                method:'POST',
+                body: formInfo
+            })
+            .then((response)=>{console.log(response)})
+            removeCart[j].style.display='none'//remove the button
         })
         
     }

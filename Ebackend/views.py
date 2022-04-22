@@ -9,7 +9,6 @@ from .models import VendorProfile, BuyerProfile, Product, Category
 import os
 from django.conf import settings
 import django
-import json
 import uuid
 
 
@@ -23,7 +22,6 @@ def index(request):
     # check if items are present in cart, so as to indicate on cart icon, by how many items.
     if session_data:
         data_length += str(len(session_data))
-        print(session_data)
     # if no session data, create a cart_id and set a cart_item to an empty list
     else:
         request.session['cart_id']= str(uuid.uuid4())
@@ -133,7 +131,6 @@ def add_to_cart(request):
     # add item to the cart_item of session, created at index page
     request.session['cart_item'].append(data['product_id'])
     request.session.modified = True
-    print(request.session.items())
     return HttpResponse('')
     
 
@@ -197,6 +194,13 @@ def check_out(request):
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 
+
+# remove item from cart
+def remove_from_cart(request):
+    item_data= request.POST
+    request.session.get('cart_item').remove(item_data['product_id'])
+    request.session.modified = True
+    return HttpResponse('success')
 # endpoint to remover products--> reserved for only vendors 
 @permission_required('Ebackend.can_edit_products', raise_exception=True)
 def remove_prod(request):
