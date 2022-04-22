@@ -184,8 +184,8 @@ def check_out(request):
         if request.session.get('cart_item'):
             # work more on this section cuz I'd need to display all items in cart if cart item is present--> not one item
             try:
-                session_product= Product.objects.get(id=int(request.session['cart_item'][0]))
-                print(request.session['cart_item'][0])
+                session_product= Product.objects.get(id=int(request.session['cart_item'][len(request.session.get('cart_item'))-1]))
+                print(request.session['cart_item'][len(request.session.get('cart_item'))-1])
                 print(session_product)
                 return render(request, 'checkout.html',{'session_product':session_product})
             except Product.DoesNotExist:
@@ -201,6 +201,7 @@ def remove_from_cart(request):
     request.session.get('cart_item').remove(item_data['product_id'])
     request.session.modified = True
     return HttpResponse('success')
+
 # endpoint to remover products--> reserved for only vendors 
 @permission_required('Ebackend.can_edit_products', raise_exception=True)
 def remove_prod(request):
