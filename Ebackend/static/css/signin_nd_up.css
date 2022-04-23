@@ -269,6 +269,7 @@ overflow-x: scroll;
     color: white;
     font-size: 10px;
     text-align: center;
+    cursor: pointer;
 }
 /* .your-order > *{
     

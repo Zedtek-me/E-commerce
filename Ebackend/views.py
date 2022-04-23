@@ -187,6 +187,7 @@ def check_out(request):
         # check if items are in their session cart, as saved on the index page
         if request.session.get('cart_item'):
             cart_items= request.session.get('cart_item')
+            print(cart_items)
             data_length=len(cart_items)
             retrieved_products= []
             # loop through the cart products, and get them from the database, so they become 'Product' table instances, so I can access their attributes in template throught 'retrieved_products' variable
@@ -206,11 +207,19 @@ def check_out(request):
 
 # remove item from cart
 def remove_from_cart(request):
-    item_data= request.POST
-    request.session.get('cart_item').remove(item_data['product_id'])
-    request.session.modified = True
-    return HttpResponse('success')
-
+    if request.method == 'POST':
+        item_data= request.POST
+        request.session.get('cart_item').remove(item_data['product_id'])
+        request.session.modified = True
+        return HttpResponse('success')
+    else:
+        items_in_cart= request.session.get('cart_item')
+        print(items_in_cart)
+        from_cart= request.GET.get('prod-in-checkout')
+        items_in_cart.remove(from_cart)
+        request.session.modified = True
+        print(items_in_cart)
+        return redirect('checkout')
 # endpoint to remove products--> reserved for only vendors 
 @permission_required('Ebackend.can_edit_products', raise_exception=True)
 def remove_prod(request):
