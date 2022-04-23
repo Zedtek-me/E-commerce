@@ -207,11 +207,14 @@ def check_out(request):
 
 # remove item from cart
 def remove_from_cart(request):
+    # product removal from index page == method is post
     if request.method == 'POST':
         item_data= request.POST
         request.session.get('cart_item').remove(item_data['product_id'])
         request.session.modified = True
         return HttpResponse('success')
+        
+    # product removal from checkout page == method is get
     else:
         items_in_cart= request.session.get('cart_item')
         print(items_in_cart)
