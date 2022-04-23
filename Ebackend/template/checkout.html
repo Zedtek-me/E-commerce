@@ -87,7 +87,7 @@
                     <div class="quantity">
                         <label for="quantity">Quantity</label>
                         <input type="number" id="quantity-tag" name="quantity" value="1">
-                        <input type="button" name="remove-prod" value="Remove Product">
+                        <input type="button" name="remove-prod" value="Remove Product" class="remove-in-checkout">
                     </div>
                 </div>
             </div>
@@ -99,10 +99,11 @@
                         <div class="retrieved">
                             <img src="{{prod.product_image.url}}" alt="your item" id="p-img">
                             <p id="p-name">{{prod.product_name}}</p>
+                            <p id="p-price">Price: ${{prod.price}} </p>
                             <div class="quantity">
                                 <label for="quantity">Quantity</label>
                                 <input type="number" id="quantity-tag" name="quantity" value="1">
-                                <input type="button" name="remove-prod" value="Remove Product" class="remove-cart" style="display:flex;">
+                                <input type="button" name="remove-prod" value="Remove Product" class="remove-in-checkout">
                             </div>
                         </div>
                     {%endfor%}
