@@ -184,16 +184,21 @@ def check_out(request):
                     return render(request, 'checkout.html', context)
     # this way, they used the checkout url directly or the upper "if condition" ran with neither success nor errors
     else:
+        # check if items are in their session cart, as saved on the index page
         if request.session.get('cart_item'):
-            # work more on this section cuz I'd need to display all items in cart if cart item is present--> not one item
-            try:
-                session_product= Product.objects.get(id=int(request.session['cart_item'][len(request.session.get('cart_item'))-1]))
-                print(request.session['cart_item'][len(request.session.get('cart_item'))-1])
-                print(session_product)
-                return render(request, 'checkout.html',{'session_product':session_product})
-            except Product.DoesNotExist:
-                Product.objects.create(id=int(request.session['cart_item'][0]))
-                return redirect('checkout')
+            cart_items= request.session.get('cart_item')
+            retrieved_products= []
+            # loop through the cart products, and get them from the database, so they become 'Product' table instances, so I can access their attributes in template throught 'retrieved_products' variable
+            for id in cart_items:
+                try:
+                    cart_prod= Product.objects.get(id=int(id))
+                    retrieved_products.append(cart_prod)
+                except Product.DoesNotExist:
+                    Product.objects.create(id=int(id))
+                    retrieved_products.append(cart_prod)
+                    return redirect('checkout')
+            return render(request, 'checkout.html', {'retrieved_products': retrieved_products})
+        # the 'else' below, runs if no product in 'cart'
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
 
@@ -205,7 +210,7 @@ def remove_from_cart(request):
     request.session.modified = True
     return HttpResponse('success')
 
-# endpoint to remover products--> reserved for only vendors 
+# endpoint to remove products--> reserved for only vendors 
 @permission_required('Ebackend.can_edit_products', raise_exception=True)
 def remove_prod(request):
     user= request.user

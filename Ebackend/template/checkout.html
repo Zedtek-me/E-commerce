@@ -23,10 +23,10 @@
             <form action="/payment/" method="post" class="ship-form">
                 {%csrf_token%}
                 <p class="instruction">Please fill in the remaining part of the form below, {{user}}.</p>
-                <img src="{{user.buyerprofile.profile_img.url}}" alt="your image" class="buyer-image">
+                {%if user.buyerprofile%}<img src="{{user.buyerprofile.profile_img.url}}" alt="your image" class="buyer-image">{%endif%}
                 <div class="check-cont">
                     <label for="username">Your Name</label>
-                    <input type="text" name="name" value="{{user.buyerprofile.buyer}} {{user.buyerprofile.buyer.last_name}}" readonly="readonly">
+                    <input type="text" name="name" value="{{user.buyerprofile.buyer}} {{user.buyerprofile.buyer.last_name}}">
                 </div>
                 
                 <div class="check-cont">
@@ -87,13 +87,19 @@
                 <input type="number" id="quantity-tag" name="quantity" value="1">
             </div>
         {%else%}
-            {%if session_product%}
-                <h3 id="your-order">All Items in Your Cart</h3>
-                <img src="{{session_product.product_image.url}}" alt="your item" id="p-img">
-                <p id="p-name">{{session_product.product_name}}</p>
-                <div class="quantity">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" id="quantity-tag" name="quantity" value="1">
+            {%if retrieved_products%}
+                <div class="cart-items">
+                    <h3 id="your-order">All Items in Your Cart</h3>
+                    {%for prod in retrieved_products%}
+                        <div class="retrieved">
+                            <img src="{{prod.product_image.url}}" alt="your item" id="p-img">
+                            <p id="p-name">{{prod.product_name}}</p>
+                            <div class="quantity">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity-tag" name="quantity" value="1">
+                            </div>
+                        </div>
+                    {%endfor%}
                 </div>
             {%else%}
                 <h3 id="no-item">{{no_item}}</h3>
