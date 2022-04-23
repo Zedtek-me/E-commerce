@@ -18,7 +18,7 @@ def index(request):
     # get the items in the cart, if any.
     session_data= request.session.get('cart_item')
     cart_id= request.session.get('cart_id')
-    data_length= ''
+    data_length= ''#a non-local variable to hold cart item length, and be used in any child scope below.
     # check if items are present in cart, so as to indicate on cart icon, by how many items.
     if session_data:
         data_length += str(len(session_data))
@@ -187,6 +187,7 @@ def check_out(request):
         # check if items are in their session cart, as saved on the index page
         if request.session.get('cart_item'):
             cart_items= request.session.get('cart_item')
+            data_length=len(cart_items)
             retrieved_products= []
             # loop through the cart products, and get them from the database, so they become 'Product' table instances, so I can access their attributes in template throught 'retrieved_products' variable
             for id in cart_items:
@@ -197,7 +198,7 @@ def check_out(request):
                     Product.objects.create(id=int(id))
                     retrieved_products.append(cart_prod)
                     return redirect('checkout')
-            return render(request, 'checkout.html', {'retrieved_products': retrieved_products})
+            return render(request, 'checkout.html', {'retrieved_products': retrieved_products, 'session_data':data_length})
         # the 'else' below, runs if no product in 'cart'
         else:
             return render(request, 'checkout.html',{'no_item': 'No item in your cart'})
