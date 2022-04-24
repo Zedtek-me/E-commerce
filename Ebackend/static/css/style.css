@@ -218,6 +218,7 @@ form.desc-btn{
     margin-left: -50px;
     margin-top: -10px;
     cursor: pointer;
+    font-size: 13px;
 }
 
 .remove-cart{
@@ -227,7 +228,7 @@ form.desc-btn{
     width: fit-content;
     padding: 8px;
     height: fit-content;
-    font-size: 15px;
+    font-size: 10px;
     background-color: red;
     color: white;
     border-radius: 10px;
@@ -297,6 +298,10 @@ form.desc-btn{
 }
 
 .how-it-works{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color:black;
     text-align:center;
     width: fit-content;
@@ -306,7 +311,16 @@ form.desc-btn{
     position: relative;
     align-self: center;
     cursor: pointer;
+    font-weight: 100;
 }
+
+.how-it-works > *{
+    margin: 5px;
+}
+
+/*the text in 'how-it-works' #how-it-works{
+    font-weight: 100;
+}*/
 
 /* details on how it works, and how to view cart */
 .detail, .cart-detail{
@@ -323,6 +337,7 @@ form.desc-btn{
     box-shadow: 1px 1px 6px 1px orange;
     position: absolute;
     text-align: left;
+    font-size: 10px;
 }
 
 /* items section */

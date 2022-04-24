@@ -105,6 +105,8 @@ def logout_user(request):
 @login_required(login_url='/login/')
 def profile(request):
     user= request.user
+    cart_items= request.session.get('cart_item')
+    data_length=len(cart_items)
     # post method when vendor uploads a product
     if request.method == 'POST':
         print(request.POST)
@@ -121,7 +123,8 @@ def profile(request):
     # otherwise, get method for both vendor and buyer
     msg= messages.get_messages(request)
     context= {'msgs': msg,
-              'name': user
+              'name': user,
+              'session_data': data_length,
                     }
     return render(request, 'profile.html', context)
 
@@ -187,7 +190,6 @@ def check_out(request):
         # check if items are in their session cart, as saved on the index page
         if request.session.get('cart_item'):
             cart_items= request.session.get('cart_item')
-            print(cart_items)
             data_length=len(cart_items)
             retrieved_products= []
             # loop through the cart products, and get them from the database, so they become 'Product' table instances, so I can access their attributes in template throught 'retrieved_products' variable
