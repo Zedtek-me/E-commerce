@@ -84,10 +84,14 @@
                 <div class="retrieved">
                     <img src="{{product.product_image.url}}" alt="your item" id="p-img">
                     <p id="p-name">{{product.product_name}}</p>
+                    <p id="p-price">Price: ${{product.price}} </p>
                     <div class="quantity">
                         <label for="quantity">Quantity</label>
                         <input type="number" id="quantity-tag" name="quantity" value="1">
-                        <input type="button" name="remove-prod" value="Remove Product" class="remove-in-checkout">
+                        <form action="/remove_from_cart/" method="get">
+                            <input type="hidden" name="prod-in-checkout" value="{{product.id}}">
+                            <input type="submit" name="remove-prod" value="Remove Product" class="remove-in-checkout">
+                        </form>
                     </div>
                 </div>
             </div>
