@@ -106,7 +106,9 @@ def logout_user(request):
 def profile(request):
     user= request.user
     cart_items= request.session.get('cart_item')
-    data_length=len(cart_items)
+    data_length= ''
+    if cart_items:
+        data_length +=str(len(cart_items))
     # post method when vendor uploads a product
     if request.method == 'POST':
         print(request.POST)
@@ -225,6 +227,7 @@ def remove_from_cart(request):
         request.session.modified = True
         print(items_in_cart)
         return redirect('checkout')
+
 # endpoint to remove products--> reserved for only vendors 
 @permission_required('Ebackend.can_edit_products', raise_exception=True)
 def remove_prod(request):
