@@ -111,7 +111,6 @@ def profile(request):
         data_length +=str(len(cart_items))
     # post method when vendor uploads a product
     if request.method == 'POST':
-        print(request.POST)
         prodName= request.POST.get('product_name')
         prodDesc= request.POST.get('description')
         prodPrice= request.POST.get('product_price')
@@ -163,6 +162,7 @@ def check_out(request):
             request.session.modified = True
             try:
                 product= Product.objects.create(buyer= user.buyerprofile, product_name= product_name, price= int(product_price), product_image=product_img_url)
+                print(product.product_image)
                 context= {'user': user,
                             'product' :product,
                             }
@@ -221,11 +221,9 @@ def remove_from_cart(request):
     # product removal from checkout page == method is get
     else:
         items_in_cart= request.session.get('cart_item')
-        print(items_in_cart)
         from_cart= request.GET.get('prod-in-checkout')
         items_in_cart.remove(from_cart)
         request.session.modified = True
-        print(items_in_cart)
         return redirect('checkout')
 
 # endpoint to remove products--> reserved for only vendors 
@@ -233,7 +231,6 @@ def remove_from_cart(request):
 def remove_prod(request):
     user= request.user
     prodId= int(request.GET.get('product_id'))
-    print(prodId)
     Product.objects.get(id=prodId).delete()
     messages.info(request, 'product successfully removed from the database.')
     return redirect('profile')

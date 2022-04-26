@@ -76,6 +76,20 @@ const cartCount= ()=>{
 }
 cartCount()
 
+// get the total of products selected
+const totalAmount = ()=>{
+    let productPrice = document.querySelectorAll('#p-price')
+    let total= document.querySelector('.total')
+    sum= 0
+    for( let i= 0; i< productPrice.length; i++){
+        sum += Number(productPrice[i].textContent.split('Price: $')[1])
+    }
+    total.textContent +=`$${sum}.0`
+}
+
+totalAmount()
+
+
 // the toggles for editing each product.
 const toggleEdit= ()=>{
     let toggleArrows= document.querySelectorAll('.prod-tog')
