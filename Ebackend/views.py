@@ -202,7 +202,7 @@ def check_out(request):
                 except Product.DoesNotExist:
                     Product.objects.create(id=int(id))
                     retrieved_products.append(cart_prod)
-                    return redirect('checkout')
+                    # return redirect('checkout')
             return render(request, 'checkout.html', {'retrieved_products': retrieved_products, 'session_data':data_length})
         # the 'else' below, runs if no product in 'cart'
         else:
@@ -232,6 +232,11 @@ def remove_prod(request):
     user= request.user
     prodId= int(request.GET.get('product_id'))
     Product.objects.get(id=prodId).delete()
+    # if a vendor deletes a product, and a buyer is purchasing the product at the moment, remove the product from the cart
+    if request.session.get('cart_item'):
+        if (prodId in request.session.get('cart_item')):
+            request.session.get('cart_item').remove(prodId)
+            request.session.modified = True
     messages.info(request, 'product successfully removed from the database.')
     return redirect('profile')
 
