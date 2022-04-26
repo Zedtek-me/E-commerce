@@ -67,8 +67,6 @@ const cartCount= ()=>{
                 method:'POST',
                 body: formInfo
             })
-            .then((response)=>{console.log(response)})
-
             cart_count.textContent=Number(cart_count.textContent)+1;
             removeCart[j].style.display='flex';
             })
@@ -79,12 +77,34 @@ cartCount()
 // get the total of products selected
 const totalAmount = ()=>{
     let productPrice = document.querySelectorAll('#p-price')
+    let quantity = document.querySelectorAll('#quantity-tag')
     let total= document.querySelector('.total')
     sum= 0
     for( let i= 0; i< productPrice.length; i++){
         sum += Number(productPrice[i].textContent.split('Price: $')[1])
+        let initialQuantity = Number(quantity[i].value) // keeping track of the initial quantity to check for increament of decrement
+        quantity[i].addEventListener('change', (e)=>{ //checking whether the quantity has changed, for each product
+            initialQuantity += Number(e.target.value)
+            console.log(initialQuantity)
+            if(Number(e.target.value) < initialQuantity){  //checking if I should deduct or add to the total amount
+                sum -= Number(productPrice[i].textContent.split('Price: $')[1])
+            }
+            else if(Number(e.target.value) > initialQuantity){
+                sum += Number(productPrice[i].textContent.split('Price: $')[1])
+            }
+        } )
     }
     total.textContent +=`$${sum}.0`
 }
-
 totalAmount()
+
+// increase or decrease the amount of product to be purchased
+// const increaseNdDecreaseAmount= ()=>{
+//     let quantity = document.querySelectorAll('#quantity-tag')
+//     let total= document.querySelector('.total')
+//      for (let j= 0; j< quantity.length; j++){
+//          console.log(quantity[j].value)
+//      }
+// }
+
+// increaseNdDecreaseAmount()
