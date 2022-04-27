@@ -104,7 +104,7 @@ const increaseNdDecreaseAmount= ()=>{
             }
             else if(Number(e.target.value < initialQuantity))//this means a decrease in quantity
             {
-                // initialQuantity = Number(e.target.value)
+                initialQuantity = Number(e.target.value)
                 productPrice[j].innerText= `Price: $${initialProductPrice * Number(e.target.value)}`
                 total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) - initialProductPrice}.0`
             }
