@@ -77,7 +77,7 @@ cartCount()
 // get the total of products selected
 const totalAmount = ()=>{
     let productPrice = document.querySelectorAll('#p-price')
-    let quantity = document.querySelectorAll('#quantity-tag')//the quantity element
+    let quantity = document.querySelectorAll('#quantity-tag')//the quantity elements
     let total= document.querySelector('.total')
     sum= 0
     for( let i= 0; i< productPrice.length; i++){
@@ -93,13 +93,15 @@ const increaseNdDecreaseAmount= ()=>{
     let quantity = document.querySelectorAll('#quantity-tag')
     let total= document.querySelector('.total')
     for (let j= 0; j< quantity.length; j++){
-        initialQuantity= Number(quantity[j].value)//tracking the initial state(or quantity) of the product, to identify increase/decrease
+        let initialProductPrice= Number(productPrice[j].innerText.split('Price: $')[1])// inital price of the product which will be multiplied by the quantity provided.
+        console.log(initialProductPrice)
+        let initialQuantity= Number(quantity[j].value)//tracking the initial state(or quantity) of the product, to identify increase/decrease
         quantity[j].addEventListener('change', (e)=>{
             if(Number(e.target.value > initialQuantity))//this means an increase in quantity
             {
-                productPrice[j].textContent= `Price: $${Number(productPrice[j].textContent.split('Price: $')[1]) * Number(e.target.value)}`
-                total.textContent= Number(total.textContent.split('Total: $')) + Number(productPrice[j].textContent.split('Price: $')[1])
-                console.log(total.textContent)
+                productPrice[j].innerText= `Price: $${initialProductPrice * Number(e.target.value)}`
+                total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) + Number(productPrice[j].innerText.split('Price: $')[1])}`
+                console.log(total.innerText)
             }
         })//event listener ends here
     }
