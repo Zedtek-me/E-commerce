@@ -628,7 +628,9 @@ footer > div{
 }
 
 .remove-nd-edit{/*the parent housing 'remove-form' and 'edit-form'*/
-    align-self: flex-end;
+    position: absolute;
+    top:12px;
+
 }
 .edit-form{/*form that sends new details for a product*/
     display: flex;
@@ -637,20 +639,21 @@ footer > div{
     align-items: center;
     border: solid purple 1px;
     border-radius: 5px;
+    background-color: aliceblue;
     width: fit-content;
     height: fit-content;
-    padding: 5px;
+    padding: 8px;
 }
 
 .edit-form > input, #change-description{/*inputs within edit form*/
-    width: 50%;
+    width: 70%;
     height:10%;
     margin: 5px;
     text-align: center;
     padding:3px;
 
 }
-#change-description, #change-description:active{
+#change-description, #change-description:active{/*the textarea element in the edit form*/
     border: solid orange 1px;
     border-radius: 5px;
 }
@@ -661,7 +664,7 @@ footer > div{
     align-items: flex-start;
     text-align: left;
     position: absolute;
-    top:25;
+    top:10;
     left: 80;
     right: 8;
     background-color: aliceblue;
