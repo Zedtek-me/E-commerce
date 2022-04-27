@@ -239,6 +239,10 @@ def remove_prod(request):
             request.session.modified = True
     messages.info(request, 'product successfully removed from the database.')
     return redirect('profile')
+    
+@permission_required('Eback.can_edit_products')
+def edit_product(request):
+    pass
 
 def payment_method(request):
     user= request.user
