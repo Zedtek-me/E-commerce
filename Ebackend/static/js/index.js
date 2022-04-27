@@ -89,11 +89,18 @@ totalAmount()
 
 // increase or decrease the amount of product to be purchased
 const increaseNdDecreaseAmount= ()=>{
+    let productPrice = document.querySelectorAll('#p-price')
     let quantity = document.querySelectorAll('#quantity-tag')
     let total= document.querySelector('.total')
     for (let j= 0; j< quantity.length; j++){
+        initialQuantity= Number(quantity[j].value)//tracking the initial state(or quantity) of the product, to identify increase/decrease
         quantity[j].addEventListener('change', (e)=>{
-
+            if(Number(e.target.value > initialQuantity))//this means an increase in quantity
+            {
+                productPrice[j].textContent= `Price: $${Number(productPrice[j].textContent.split('Price: $')[1]) * Number(e.target.value)}`
+                total.textContent= Number(total.textContent.split('Total: $')) + Number(productPrice[j].textContent.split('Price: $')[1])
+                console.log(total.textContent)
+            }
         })//event listener ends here
     }
 }
