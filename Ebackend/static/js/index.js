@@ -100,7 +100,7 @@ const increaseNdDecreaseAmount= ()=>{
             if(Number(e.target.value > initialQuantity))//this means an increase in quantity
             {
                 productPrice[j].innerText= `Price: $${initialProductPrice * Number(e.target.value)}`
-                total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) + Number(productPrice[j].innerText.split('Price: $')[1])}`
+                total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) + initialProductPrice}`
                 console.log(total.innerText)
             }
         })//event listener ends here
