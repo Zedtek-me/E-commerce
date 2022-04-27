@@ -1,7 +1,7 @@
 // display quick links
 function displayLink(){
     let links= document.querySelector('.b-seller')
-    let arrowDown= document.querySelector('.fa-angle-down')
+    let arrowDown= document.querySelector('.reveal')
     links.classList.toggle('buyer-seller')
     arrowDown.classList.toggle('fa-angle-down')
     arrowDown.classList.toggle('fa-angle-up')
