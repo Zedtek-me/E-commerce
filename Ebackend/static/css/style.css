@@ -616,8 +616,36 @@ footer > div{
     cursor: pointer;
 }
 
-.edits{
+.edits{/*the edit options that show when arrow is toggled*/
     display: none;
+}
+
+.remove-nd-edit{/*the parent housing 'remove-form' and 'edit-form'*/
+    align-self: flex-end;
+}
+.edit-form{/*form that sends new details for a product*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid purple 1px;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}
+
+.edit-form > input, #change-description{/*inputs within edit form*/
+    width: 50%;
+    height:10%;
+    margin: 5px;
+    text-align: center;
+    padding:3px;
+
+}
+#change-description, #change-description:active{
+    border: solid orange 1px;
+    border-radius: 5px;
 }
 .edit-options{/*a class to toggle when the edit arrow is clicked--> this displays the edit options for each product*/
     display: flex;

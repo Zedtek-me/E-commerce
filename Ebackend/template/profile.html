@@ -26,15 +26,24 @@
                         <div class="products">
                             <div id="name-nd-toggle-prod">
                                 <h5 id="prod-name" style="margin: 7px;">{{item.product_name}}</h5> <i class="fa-solid fa-angle-down prod-tog"></i>
+                                <!-- edit product elements-> displays and hides when the icon above is toggled -->
                                 <div class="edits">
                                     <div class="optionz remove-prod">Remove Product</div>
                                     <div class="optionz">Edit Product</div>
                                 </div>
-                                <!-- form for product edit -->
-                                <div class="edit-form">
+                               
+                                <!-- form for product removal -->
+                                <div class="remove-nd-edit">
                                     <form action="{%url 'remove-prod'%}" method="get" style="display: none;">
                                         <input type="hidden" name="product_id" value="{{item.id}}">
                                         <button type="submit" id="removeProd">remove_prod</button>
+                                    </form>
+                                    <!-- form to update(edit) product details -->
+                                    <form action="{%url 'remove-prod'%}" method="get" enctype="multipart/form-data" class="edit-form">
+                                        <input type="text"  name="product_name" value="{{item.product_name}}" id="change-name">
+                                        <input type="text" name="price" id="" value="{{item.price}}" id="change-price">
+                                        <textarea type="text" name="description" value="" cols="8" rows="3" id="change-description">{{item.description}} </textarea>
+                                        <button type="submit" id="updateProd">update</button>
                                     </form>
                                 </div>
                             </div>

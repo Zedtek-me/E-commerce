@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{%block title%}
+Payment Gateway
+{%endblock%}
+
+{%if user.is_authenticated%}
+    {%block login%}
+    {%endblock%}
+{%else%}
+    {%block logout%}
+    {%endblock%}
+{%endif%}

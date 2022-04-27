@@ -241,6 +241,8 @@ def remove_prod(request):
     return redirect('profile')
 
 def payment_method(request):
-    pass
+    user= request.user
+    print(user)
+    return render(request, 'payment.html',{'user': user})
 
     
