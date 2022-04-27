@@ -630,10 +630,12 @@ footer > div{
 .remove-nd-edit{/*the parent housing 'remove-form' and 'edit-form'*/
     position: absolute;
     top:12px;
+    width: inherit;
 }
 
 .cancel{/*cancel icon in each 'edit form'*/
     align-self: flex-end;
+    cursor: pointer;
 }
 .edit-form{/*form that sends new details for a product*/
     display: flex;
@@ -643,12 +645,12 @@ footer > div{
     border: solid purple 1px;
     border-radius: 5px;
     background-color: aliceblue;
-    width: fit-content;
+    width: inherit;
     height: fit-content;
     padding: 8px;
 }
 
-.edit-form > h6{
+.edit-form > h6{/*labels describing new details*/
     margin: 2px;
 }
 
