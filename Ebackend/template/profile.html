@@ -40,9 +40,12 @@
                                     </form>
                                     <!-- form to update(edit) product details -->
                                     <form action="{%url 'edit-prod'%}" method="get" enctype="multipart/form-data" class="edit-form">
-                                        <div class="cancel"></div>
+                                        <div class="cancel"><i class="fa-solid fa-xmark"></i></div>
+                                        <h6>New Name</h6>
                                         <input type="text"  name="product_name" value="{{item.product_name}}" id="change-name">
+                                        <h6>New Price</h6>
                                         <input type="text" name="price" id="" value="{{item.price}}" id="change-price">
+                                        <h6>New Description</h6>
                                         <textarea type="text" name="description" value="" cols="8" rows="3" id="change-description">{{item.description}} </textarea>
                                         <button type="submit" id="updateProd">update</button>
                                     </form>

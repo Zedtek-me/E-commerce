@@ -630,7 +630,10 @@ footer > div{
 .remove-nd-edit{/*the parent housing 'remove-form' and 'edit-form'*/
     position: absolute;
     top:12px;
+}
 
+.cancel{/*cancel icon in each 'edit form'*/
+    align-self: flex-end;
 }
 .edit-form{/*form that sends new details for a product*/
     display: flex;
@@ -643,6 +646,10 @@ footer > div{
     width: fit-content;
     height: fit-content;
     padding: 8px;
+}
+
+.edit-form > h6{
+    margin: 2px;
 }
 
 .edit-form > input, #change-description{/*inputs within edit form*/
