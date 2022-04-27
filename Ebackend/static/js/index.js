@@ -94,14 +94,19 @@ const increaseNdDecreaseAmount= ()=>{
     let total= document.querySelector('.total')
     for (let j= 0; j< quantity.length; j++){
         let initialProductPrice= Number(productPrice[j].innerText.split('Price: $')[1])// inital price of the product which will be multiplied by the quantity provided.
-        console.log(initialProductPrice)
         let initialQuantity= Number(quantity[j].value)//tracking the initial state(or quantity) of the product, to identify increase/decrease
         quantity[j].addEventListener('change', (e)=>{
             if(Number(e.target.value > initialQuantity))//this means an increase in quantity
             {
+                initialQuantity = Number(e.target.value)
                 productPrice[j].innerText= `Price: $${initialProductPrice * Number(e.target.value)}`
-                total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) + initialProductPrice}`
-                console.log(total.innerText)
+                total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) + initialProductPrice}.0`
+            }
+            else if(Number(e.target.value < initialQuantity))//this means a decrease in quantity
+            {
+                // initialQuantity = Number(e.target.value)
+                productPrice[j].innerText= `Price: $${initialProductPrice * Number(e.target.value)}`
+                total.innerText= `Total: $${Number(total.innerText.split('Total: $')[1]) - initialProductPrice}.0`
             }
         })//event listener ends here
     }
