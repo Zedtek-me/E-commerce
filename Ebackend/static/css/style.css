@@ -627,11 +627,14 @@ footer > div{
     display: none;
 }
 
+
 .remove-nd-edit{/*the parent housing 'remove-form' and 'edit-form'*/
+    display: none;
     position: absolute;
     top:12px;
     width: inherit;
 }
+
 
 .cancel{/*cancel icon in each 'edit form'*/
     align-self: flex-end;

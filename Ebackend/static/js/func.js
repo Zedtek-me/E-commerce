@@ -34,3 +34,19 @@ function removeProd(){
 
 }
 removeProd()
+
+//displays the product update form
+const updateProd= ()=>{
+    let editBtns= document.querySelectorAll('.edit-prod')
+    let cancelBtns= document.querySelectorAll('.cancel')
+    let editConts= document.querySelectorAll('.remove-nd-edit')
+    for(let i= 0; i< editBtns.length; i++){
+        editBtns[i].addEventListener('click', (e)=>{
+            editConts[i].style.display= 'flex'
+        })//end of first event listener, for display
+        cancelBtns[i].addEventListener('click',(e)=>{
+            editConts[i].style.display= 'none'
+        })//end of second event listener to undisplay
+    }
+}
+updateProd()
