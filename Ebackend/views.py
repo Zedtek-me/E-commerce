@@ -239,10 +239,21 @@ def remove_prod(request):
             request.session.modified = True
     messages.info(request, 'product successfully removed from the database.')
     return redirect('profile')
-    
-@permission_required('Eback.can_edit_products')
+
+@permission_required('Ebackend.can_edit_products')
 def edit_product(request):
-    pass
+    product= Product.objects.get(id=int(request.GET.get('product_id')))
+    new_name= request.GET.get('new_name')
+    new_price= request.GET.get('new_price')
+    new_describe= request.GET.get('new_description')
+    if new_name and new_price and new_describe:
+        product.product_name= new_name
+        product.price= new_price
+        product.description= new_describe
+        product.save()
+        messages.success(request, 'update successful!')
+    # the if statement above isn't necessary cuz, I apparently expect all the data: be it changed or the default. I might adjust this later sha.
+    return redirect('profile')
 
 def payment_method(request):
     user= request.user
