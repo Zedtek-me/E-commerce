@@ -237,7 +237,7 @@ def remove_prod(request):
         if (prodId in request.session.get('cart_item')):
             request.session.get('cart_item').remove(prodId)
             request.session.modified = True
-    messages.info(request, 'product successfully removed from the database.')
+    messages.info(request, 'product removed!')
     return redirect('profile')
 
 @permission_required('Ebackend.can_edit_products')
