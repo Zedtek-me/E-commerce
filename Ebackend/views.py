@@ -239,7 +239,7 @@ def remove_prod(request):
             request.session.modified = True
     messages.info(request, 'product removed!')
     return redirect('profile')
-
+# endpoint to edit products--> reserved for only vendors 
 @permission_required('Ebackend.can_edit_products')
 def edit_product(request):
     product= Product.objects.get(id=int(request.GET.get('product_id')))
@@ -258,6 +258,9 @@ def edit_product(request):
 def payment_method(request):
     user= request.user
     print(user)
-    return render(request, 'payment.html',{'user': user})
+    if request.session.get('cart_item'):
+            cart_items= request.session.get('cart_item')
+            data_length=len(cart_items)
+    return render(request, 'payment.html',{'user': user, 'session_data': data_length})
 
     

@@ -1,3 +1,5 @@
+import datetime
+import django
 from django.db import models
 from django.db.models import Manager
 from django.contrib.auth.models import User
@@ -57,7 +59,7 @@ class BuyerProfile(models.Model):
         img.thumbnail(thumb)
         img.save(self.profile_img.path)
 
-# product's table referencing the user table, since both buyers and vendors are sellers
+# product's table referencing the users'(buyers and vendors) table, since both buyers and vendors are users
 class Product(models.Model):
     buyer= models.ForeignKey(BuyerProfile, on_delete=models.CASCADE, null= True, blank=True)
     vendor= models.ForeignKey(VendorProfile, on_delete= models.CASCADE, null= True, blank= True)
@@ -89,3 +91,15 @@ class Category(models.Model):
     # category manager
     productType= Manager()
 
+
+class PurchasedProducts(models.Model):
+    product= models.OneToOneField(Product, on_delete=models.CASCADE, blank= False, null= False)
+    quantity= models.SmallIntegerField(default=1, blank= False)
+    owned_by= models.ForeignKey(VendorProfile, on_delete=models.CASCADE)
+    bought_by= models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
+    date= models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return (
+                    'Vendor %s\'s %s, purchased on %s, by %s' %(self.owned_by.vendor.username, self.product.product_name, self.date, self.bought_by)
+                )
