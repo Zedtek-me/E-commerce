@@ -234,7 +234,7 @@ def remove_prod(request):
     Product.objects.get(id=prodId).delete()
     # if a vendor deletes a product, and a buyer is purchasing the product at the moment, remove the product from the cart
     if request.session.get('cart_item'):
-        if (prodId in request.session.get('cart_item')):
+        if prodId in request.session.get('cart_item'):
             request.session.get('cart_item').remove(prodId)
             request.session.modified = True
     messages.info(request, 'product removed!')
