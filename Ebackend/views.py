@@ -258,9 +258,11 @@ def edit_product(request):
 def payment_method(request):
     user= request.user
     # get the amount of items in cart
+    data_length= 0
     if request.session.get('cart_item'):
             cart_items= request.session.get('cart_item')
             data_length=len(cart_items)
+    
     # other logics(like perhaps, if whatsapp payment option's available or need to get user data to fetch api) come in below.
     return render(request, 'payment.html',{'user': user, 'session_data': data_length})
 

@@ -747,3 +747,9 @@ footer > div> a, .buyer-seller> a{
     background-size:100%;
     text-align: center;
 }
+
+/* payment platform styling */
+.pay-parent{
+    margin-top: 15%;
+    text-align-last: center; 
+}
