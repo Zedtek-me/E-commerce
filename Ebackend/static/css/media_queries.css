@@ -2,4 +2,35 @@
     *{
         font-size: 15px;
     }
+
+    html{
+        width: 100vw;
+    }
+    
+    .hero-section, .items, .mordern-cont{
+        width: 100%;
+    }
+
+    header > .laptop-view{
+        display: none;
+    }
+
+    .hamburger{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+        width: fit-content;       
+        height: fit-content;
+    }
+    .hamburger >div{
+        width: 18px;
+        height: 3px;
+        background-color: lightblue;
+        margin: 2px;
+    }
+
+    .vendor-products{
+        width: 100%;
+    }
 }

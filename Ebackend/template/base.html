@@ -14,29 +14,31 @@
     <body>
         <header>
             <div class="logo"><a href="{%url 'home'%}">B<span id="chair-txt">chair</span></a></div>
-            <ul class="nav-list">
-                <li><a href="#mattress">Mattress</a></li>
-                <li><a href="#bedroom">Bedroom</a></li>
-                <li><a href="#living-room">Living Room</a></li>
-                <li><a href="#kid-room">Kid Room</a></li>
-            </ul>
-            <!-- profile link -->
-            <a href="{%url 'profile'%}" class="profile"><i class="fa-solid fa-image-portrait"></i></a>
-            <!-- login logout buttons -->
-            <div class="logs">
-                {%block login%}<li class="login"><a href="{%url 'login'%}">Login</a></li>{%endblock%}
-               {%block logout%} <li class="logout"><a href="{%url 'logout'%}">Logout</a></li>{%endblock%}
-            </div>
-            <!-- icon -->
-            <div class="icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="cart-item">
-                    <a href="/checkout/" class="checkout"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count">{%if session_data%}{{session_data}}{%endif%}</div></a>
+            <div class="laptop-view">
+                <ul class="nav-list">
+                    <li><a href="#mattress">Mattress</a></li>
+                    <li><a href="#bedroom">Bedroom</a></li>
+                    <li><a href="#living-room">Living Room</a></li>
+                    <li><a href="#kid-room">Kid Room</a></li>
+                </ul>
+                <!-- profile link -->
+                <a href="{%url 'profile'%}" class="profile"><i class="fa-solid fa-image-portrait"></i></a>
+                <!-- login logout buttons -->
+                <div class="logs">
+                    {%block login%}<li class="login"><a href="{%url 'login'%}">Login</a></li>{%endblock%}
+                {%block logout%} <li class="logout"><a href="{%url 'logout'%}">Logout</a></li>{%endblock%}
                 </div>
-                <i class="fa-solid fa-bell"></i>
+                <!-- icon -->
+                <div class="icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="cart-item">
+                        <a href="/checkout/" class="checkout"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count">{%if session_data%}{{session_data}}{%endif%}</div></a>
+                    </div>
+                    <i class="fa-solid fa-bell"></i>
+                </div>
             </div>
             <!-- hamburgger -->
-            <div class="harmburger">
+            <div class="hamburger">
                 <div></div>
                 <div></div>
                 <div></div>
