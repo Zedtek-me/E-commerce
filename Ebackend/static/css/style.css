@@ -753,3 +753,10 @@ footer > div> a, .buyer-seller> a{
     margin-top: 15%;
     text-align-last: center; 
 }
+
+#account-pointer{
+    cursor:pointer;
+}
+#acc-number{
+    display: none;
+}

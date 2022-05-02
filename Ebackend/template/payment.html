@@ -3,7 +3,7 @@
 Payment Gateway
 {%endblock%}
 
-{%if user.is_authenticated%}
+{%if user.is_authenticated%}<!-- trying to display 'login' logout button. base on user authentication status-->
     {%block login%}
     {%endblock%}
 {%else%}
@@ -13,8 +13,8 @@ Payment Gateway
 
 {%block content%}
     <div class="pay-parent">
-       <h5 class="pay-quest">Would you like to pay through a bank transfer? click <i>here</i> to see account details.</h5> 
-
+       <h5 class="pay-quest">Would you like to pay through a bank transfer? click <i id="account-pointer">here</i> to see account details.</h5> 
+        <span id="acc-number">5223571821 GTB. Bchair Group of companies</span>
        <h2>Payment Platform API</h2>
     </div>
 {%endblock%}
