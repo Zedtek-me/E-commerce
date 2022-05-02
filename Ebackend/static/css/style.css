@@ -27,7 +27,7 @@ header{
     z-index: 1000;
     padding: 10px;
 }
- .laptop-view{
+ .laptop-view{/*navigation for larg screen*/
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -460,6 +460,10 @@ form.desc-btn{
     width: 100%;
 }
 
+.product-cont{
+    width: 100%;
+    height: fit-content;
+}
 .product{
     display: flex;
     flex-direction: column;

@@ -44,7 +44,7 @@ const removeCartItem= ()=>{
                 method:'POST',
                 body: formInfo
             })
-            .then((response)=>{console.log(response)})
+            // .then((response)=>{console.log(response)})
             removeCart[j].style.display='none'//remove the button
         })
         
