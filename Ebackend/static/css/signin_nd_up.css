@@ -154,22 +154,31 @@ div.sign-up-guide{
     margin-top: 10%;
     text-align: center;
 }
+
+.instruction{
+    text-align: center;
+}
 /*parent div*/  .cart-order{
     display:flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
+    margin: auto;
 }
 
 /*form parent*/.shipping-addr{
+    display: flex;
+    justify-content: center;
     width:60%;
     height: 80%;
     padding: 20px;
+    margin: auto;
 }
 
 /*form itself*/.ship-form{
 width: fit-content;
+justify-self: center;
 padding:20px;
 height: 100%;
 /* padding: 30px; */
