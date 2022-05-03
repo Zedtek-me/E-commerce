@@ -30,8 +30,9 @@ header{
  .laptop-view{/*navigation for larg screen*/
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 20px;
 }
 
 .logo > a{
@@ -450,6 +451,7 @@ form.desc-btn{
     justify-content: center;
     align-items: center;
     padding:15px;
+    width: 100%;
 }
 
 .vendor-products> section{

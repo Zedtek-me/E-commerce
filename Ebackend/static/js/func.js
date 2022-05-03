@@ -35,23 +35,6 @@ function removeProd(){
 }
 removeProd()
 
-// the diplay account number function-- useful at the payment page
-const displayAcc= ()=>{
-    let pointer= document.querySelector('#account-pointer')
-    let accountNumber= document.querySelector('#acc-number')
-    console.log(pointer, accountNumber)
-    pointer.addEventListener('click', (e)=>{
-        if (accountNumber.style.display == 'flex'){
-            accountNumber.style.display= 'none'
-        }
-        else{
-            accountNumber.style.display ='flex'
-        }
-    })
-}
-
-displayAcc()
-
 //displays the product update form
 const updateProd= ()=>{
     let editBtns= document.querySelectorAll('.edit-prod')
@@ -68,3 +51,19 @@ const updateProd= ()=>{
 }
 updateProd()
 
+// the diplay account number function-- useful at the payment page
+const displayAcc= ()=>{
+    let pointer= document.querySelector('#account-pointer')
+    let accountNumber= document.querySelector('#acc-number')
+    console.log(pointer, accountNumber)
+    pointer.addEventListener('click', (e)=>{
+        if (accountNumber.style.display == 'flex'){
+            accountNumber.style.display= 'none'
+        }
+        else{
+            accountNumber.style.display ='flex'
+        }
+    })
+}
+
+displayAcc()
