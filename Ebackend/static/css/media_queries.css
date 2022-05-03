@@ -1,13 +1,9 @@
-@media screen and (max-width:800px){
+@media screen and (max-width:700px){
     *{
         font-size: 15px;
     }
 
     html{
-        width: 100%;
-    }
-    
-    .hero-section, .items, .mordern-cont{
         width: 100%;
     }
 
@@ -29,18 +25,36 @@
         background-color: lightblue;
         margin: 2px;
     }
+    
+
+    .mordern-txt{/*text at the top of the index page*/
+        margin: auto;
+        width: fit-content;
+        padding: 5px;
+    }
+
+    .mordern-cont{
+        width: 100%;
+        margin: 20px;
+    }
+    
     /* hero section and items */
     .hero-section, .items{
+        width: 100%;
+        margin: 20px;
         justify-content:space-between;
     }
-    /* container of all products by vendors */
+
+    .big-img, .review-div{
+        margin-left: 16px;
+    }
+    /* container (named 'section') of all products by vendors. Each product has a 'product-cont' parent, before its own 'product container' */
     .vendor-products> section{
-        grid-template-columns:1fr;
-        gap: 10px;
-        flex: 1 1 auto;
+        grid-template-columns:100%;
+        gap: 7px;
         margin: auto;
     }
-    .product>img{
-        width: 100%;
-    }
+    /*.product-cont{
+    
+    }*/
 }

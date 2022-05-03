@@ -9,6 +9,7 @@
 *{
     margin:none;
     border:none;
+    box-sizing: border-box;
     font-family: poppins;
 }
 
@@ -25,14 +26,15 @@ header{
     border-bottom:solid black 2px;
     background-color:white;
     z-index: 1000;
-    padding: 10px;
+    padding: 12px;
+    width:100%;
 }
  .laptop-view{/*navigation for larg screen*/
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin: 5px;
 }
 
 .logo > a{
@@ -465,6 +467,7 @@ form.desc-btn{
 .product-cont{
     width: 100%;
     height: fit-content;
+    margin: auto;
 }
 .product{
     display: flex;
@@ -476,10 +479,11 @@ form.desc-btn{
     border-radius: 10px;
     width: fit-content;
     padding:5px;
+    margin: auto;
 }
 .product >img{/*images within section at the index page*/
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: 50%;
     align-self: center;
     border-radius:15px;
     flex-grow: 1;
