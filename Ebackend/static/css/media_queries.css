@@ -50,16 +50,20 @@
         gap: 7px;
         margin: auto;
     }
-    /*.product-cont{
-    
-    }*/
 
     .profile{/* the profile icon */
         margin: auto;
         margin-left: 45px;
     }
-    
+
     /* actual profile styling starts from here */
+    .message{/*flash messages */
+        margin-top: 20%;
+        margin-bottom:-20%;
+    }
+    .profile-parent{
+        margin-top: 30%;
+    }
     .your_products{
         grid-template-columns: repeat(2, 1fr);
     }
