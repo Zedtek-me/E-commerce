@@ -3,10 +3,6 @@
         font-size: 15px;
     }
 
-    html{
-        width: 100%;
-    }
-
     .laptop-view{
         display: none;
     }
@@ -57,4 +53,14 @@
     /*.product-cont{
     
     }*/
+
+    .profile{/* the profile icon */
+        margin: auto;
+        margin-left: 45px;
+    }
+    
+    /* actual profile styling starts from here */
+    .your_products{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

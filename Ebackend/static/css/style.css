@@ -26,7 +26,7 @@ header{
     border-bottom:solid black 2px;
     background-color:white;
     z-index: 1000;
-    padding: 12px;
+    padding: 10px;
     width:100%;
 }
  .laptop-view{/*navigation for larg screen*/
@@ -82,6 +82,13 @@ header{
     align-items: center;
     width:fit-content;
     padding:15px;
+}
+
+.search-box{/*search icon*/
+    border: solid orange 1px;
+    border-radius: 8px;
+    width: 80px;
+    margin-right: -12px;
 }
 
 .checkout{ /*the anchor tag that hold cart icon*/
