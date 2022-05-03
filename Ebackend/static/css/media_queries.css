@@ -6,7 +6,6 @@
     .laptop-view{
         display: none;
     }
-
     .hamburger{
         display: flex;
         flex-direction: column;
