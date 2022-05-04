@@ -41,28 +41,35 @@
     .mordern-cont>.buy-nd-cart, .big-img>.buy-nd-cart{ /*the 'buy-nd-cart' container */
         justify-content: space-between;
         align-items: center;
-        align-self: center;
-        /* flex-wrap: nowrap; */
+        align-self: flex-end;
+        margin: auto;
     }
 
+    .big-img>.buy-nd-cart{
+        margin-top: -70px;
+    }
     .mordern-cont>.buy-nd-cart>*, .big-img>.buy-nd-cart>*{
         margin: 2px;
     }
+    
+    .big-img, .review-div{
+        margin-left: 16px;
+    }
+    .big-img > img{
+        margin: auto;
+    }
     /* hero section and items */
-
     .root-parent{
+        margin-top: 50px;
         padding: 25px;
     }
 
     .hero-section{
         width: 100%;
-        /* margin: 20px; */
         justify-content:space-between;
+        align-self: flex-end;
     }
 
-    .big-img, .review-div{
-        margin-left: 16px;
-    }
     /* container (named 'section') of all products by vendors. Each product has a 'product-cont' parent, before its own 'product container' */
     .vendor-products> section{
         grid-template-columns:100%;
