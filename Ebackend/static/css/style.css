@@ -167,6 +167,8 @@ body{
 .root-parent{
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 70px;
     width: 100%;
     background-image:url('../img/E-comBackground.png');
@@ -595,6 +597,7 @@ footer > div{
     height:fit-content;
     padding:10px;
     text-align: center;
+    margin: auto;
 }
 
 #your-products{/*Your product text*/
@@ -608,6 +611,7 @@ footer > div{
     width:fit-content;
     height:fit-content;
     padding:20px;
+    margin: auto;
 }
 .products{/*actual product container*/
     display: flex;

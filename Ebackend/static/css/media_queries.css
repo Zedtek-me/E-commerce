@@ -31,12 +31,32 @@
     .mordern-cont{
         width: 100%;
         margin: 20px;
+        margin: auto;
     }
     
+    .big-img{
+        margin: auto;
+    }
+
+    .mordern-cont>.buy-nd-cart, .big-img>.buy-nd-cart{ /*the 'buy-nd-cart' container */
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+        /* flex-wrap: nowrap; */
+    }
+
+    .mordern-cont>.buy-nd-cart>*, .big-img>.buy-nd-cart>*{
+        margin: 2px;
+    }
     /* hero section and items */
-    .hero-section, .items{
+
+    .root-parent{
+        padding: 25px;
+    }
+
+    .hero-section{
         width: 100%;
-        margin: 20px;
+        /* margin: 20px; */
         justify-content:space-between;
     }
 
@@ -52,7 +72,7 @@
 
     .profile{/* the profile icon */
         margin: auto;
-        margin-left: 45px;
+        margin-left: 35px;
     }
 
     /* actual profile styling starts from here */
@@ -73,8 +93,10 @@
     }
     .your_products{
         grid-template-columns: repeat(2, 1fr);
+        padding: 6px;
     }
     #cart-head-text{
         margin-top: 30%;
     }
+    
 }
