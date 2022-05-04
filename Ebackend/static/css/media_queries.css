@@ -3,6 +3,7 @@
         font-size: 15px;
     }
 
+    /* nav section  */
     .laptop-view{
         display: none;
     }
@@ -20,7 +21,17 @@
         background-color: lightblue;
         margin: 2px;
     }
-    
+    /* Index page styling */
+    .root-parent{
+        margin-top: 50px;
+        padding: 25px;
+    }
+
+    .hero-section{
+        width: 100%;
+        justify-content:space-between;
+        align-self: flex-end;
+    }
 
     .mordern-txt{/*text at the top of the index page*/
         margin: auto;
@@ -58,18 +69,20 @@
     .big-img > img{
         margin: auto;
     }
-    /* hero section and items */
-    .root-parent{
-        margin-top: 50px;
-        padding: 25px;
+
+    .items >.item{
+        width:100%;
+    }
+    
+    .item >img{
+        width:100%;
+        height:50%;
     }
 
-    .hero-section{
-        width: 100%;
-        justify-content:space-between;
-        align-self: flex-end;
+    .mordern-cont>img, #big-img{
+        width:70%;
+        height:50%;
     }
-
     /* container (named 'section') of all products by vendors. Each product has a 'product-cont' parent, before its own 'product container' */
     .vendor-products> section{
         grid-template-columns:100%;

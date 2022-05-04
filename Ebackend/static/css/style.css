@@ -367,6 +367,7 @@ form.desc-btn{
     justify-content: space-around;
     align-items: center;
     margin:auto;
+    text-align: center;
 }
 
 .items >.item{
