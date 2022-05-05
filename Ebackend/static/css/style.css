@@ -776,6 +776,7 @@ footer > div> a, .buyer-seller> a{
     background-color:orange ;
     background-size:100%;
     text-align: center;
+    width:100%;
 }
 
 /* payment platform styling */
