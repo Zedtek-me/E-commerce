@@ -4,9 +4,7 @@ function mobileNav(){
     let navBar= document.querySelector('.hamburger')
     console.log(mobile)
     navBar.addEventListener('click', (e)=>{
-        console.log('I am clicked')
-        mobile.classList.toggle('.mobile-list')
-        console.log(mobile)
+        mobile.classList.toggle('mobile-list')
     })
 }
 

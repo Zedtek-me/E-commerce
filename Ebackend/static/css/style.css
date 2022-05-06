@@ -1,9 +1,9 @@
 @keyframes mobile-animation{
     from{
-        left: 70%;
-    }
+        width: 50%;
+        }
     to{
-        left: 50%;
+        width: 100%;
     }
 }
 
@@ -105,7 +105,7 @@ header{
     align-items: center;
     text-decoration:none;
     color: black;
-    /* z-index: 400; */
+    z-index: 200;
 }
 
 
@@ -139,7 +139,6 @@ header{
     padding: 2px;
     margin-bottom: 15px;
     color:white;
-    /* z-index: 300; */
 }
 .logs > li{
     margin:5px;
@@ -163,32 +162,35 @@ header{
 .mobile-list{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
     text-align: left;
     list-style: none;
-    width: fit-content;
     padding: 10px;
     border-left: solid 2px orange;
+    background-color: purple;
     position:absolute;
-    top:50%;
+    top:-5;
     right: 0;
-    left: 50%;
+    bottom: -50;
+    left: 0;
+    margin-left: 0px;
+    z-index: 400;
+    height: 1000%;
     animation-name: mobile-animation;
-    animation-duration: 3s;
-    animation-timing-function: step-start;
+    animation-duration: 0.7s;
+    animation-timing-function:ease-in-out;
 }
 
 .mobile-list > li a{
     text-decoration: none;
-    color: black;
-}
-
-.mobile-list>li a:hover{
+    color: white;
     border-bottom:solid 2px orange;
 }
+
 .hamburger{
     display:none;
+    z-index: 500;
 }
 
 body{
