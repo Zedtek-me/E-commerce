@@ -1,3 +1,18 @@
+// mobile navigation menu
+function mobileNav(){
+    let mobile= document.querySelector('.nav-list-mobile')
+    let navBar= document.querySelector('.hamburger')
+    console.log(mobile)
+    navBar.addEventListener('click', (e)=>{
+        console.log('I am clicked')
+        mobile.classList.toggle('.mobile-list')
+        console.log(mobile)
+    })
+}
+
+mobileNav()
+
+
 // display quick links
 function displayLink(){
     let links= document.querySelector('.b-seller')
@@ -113,4 +128,3 @@ const increaseNdDecreaseAmount= ()=>{
 }
 
 increaseNdDecreaseAmount()
-

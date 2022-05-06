@@ -1,3 +1,12 @@
+@keyframes mobile-animation{
+    from{
+        left: 70%;
+    }
+    to{
+        left: 50%;
+    }
+}
+
 @font-face{
     font-family:poppins;
     src: url('../Poppins/Poppins-Medium.ttf'),
@@ -150,6 +159,33 @@ header{
 /* mobile nav */
 .nav-list-mobile{
     display: none;
+}
+.mobile-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: left;
+    list-style: none;
+    width: fit-content;
+    padding: 10px;
+    border-left: solid 2px orange;
+    position:absolute;
+    top:50%;
+    right: 0;
+    left: 50%;
+    animation-name: mobile-animation;
+    animation-duration: 3s;
+    animation-timing-function: step-start;
+}
+
+.mobile-list > li a{
+    text-decoration: none;
+    color: black;
+}
+
+.mobile-list>li a:hover{
+    border-bottom:solid 2px orange;
 }
 .hamburger{
     display:none;
