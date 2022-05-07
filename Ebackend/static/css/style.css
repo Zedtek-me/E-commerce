@@ -96,7 +96,7 @@ header{
 .search-box{/*search icon*/
     border: solid orange 1px;
     border-radius: 8px;
-    width: 80px;
+    width: 150px;
     margin-right: -12px;
 }
 
