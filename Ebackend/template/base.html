@@ -29,9 +29,11 @@
                 <li><a href="#bedroom">Bedroom</a></li>
                 <li><a href="#living-room">Living Room</a></li>
                 <li><a href="#kid-room">Kid Room</a></li>
+                <!-- <a href="{%url 'profile'%}" class="profile"><i class="fa-solid fa-image-portrait"></i></a>
+                <i class="fa-solid fa-bell"></i> -->
             </ul>
              <!-- profile link -->
-             <a href="{%url 'profile'%}" class="profile"><i class="fa-solid fa-image-portrait"></i></a>
+             <a href="{%url 'profile'%}" class="profile large-profile"><i class="fa-solid fa-image-portrait"></i></a>
             <!-- login logout buttons -->
             <div class="logs">
                 {%block login%}<li class="login"><a href="{%url 'login'%}">Login</a></li>{%endblock%}
@@ -43,7 +45,7 @@
                 <div class="cart-item">
                     <a href="/checkout/" class="checkout"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count">{%if session_data%}{{session_data}}{%endif%}</div></a>
                 </div>
-                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-bell large-bell"></i>
             </div>
             <!-- hamburgger -->
             <div class="hamburger">
