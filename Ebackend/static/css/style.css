@@ -1,12 +1,3 @@
-@keyframes mobile-animation{
-    from{
-        width: 50%;
-        }
-    to{
-        width: 100%;
-    }
-}
-
 @font-face{
     font-family:poppins;
     src: url('../Poppins/Poppins-Medium.ttf'),
@@ -177,9 +168,6 @@ header{
     transition: 1s all ease-in;
 }
 .mobile-list{
-    /* animation-name: mobile-animation;
-    animation-duration: 0.7s;
-    animation-timing-function:ease-in-out; */
     left:0px
 }
 
