@@ -157,9 +157,6 @@ header{
 
 /* mobile nav */
 .nav-list-mobile{
-    display: none;
-}
-.mobile-list{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,16 +170,20 @@ header{
     top:-5;
     right: 0;
     bottom: -50;
-    left: 0;
+    left: 600px;
     margin-left: 0px;
     z-index: 400;
     height: 1000%;
-    animation-name: mobile-animation;
+    transition: 1s all ease-in;
+}
+.mobile-list{
+    /* animation-name: mobile-animation;
     animation-duration: 0.7s;
-    animation-timing-function:ease-in-out;
+    animation-timing-function:ease-in-out; */
+    left:0px
 }
 
-.mobile-list > li a{
+.nav-list-mobile > li a{
     text-decoration: none;
     color: white;
     border-bottom:solid 2px orange;
