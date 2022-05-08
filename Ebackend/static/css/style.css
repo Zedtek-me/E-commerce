@@ -7,7 +7,6 @@
 }
 
 *{
-    margin:none;
     border:none;
     box-sizing: border-box;
     font-family: poppins;
@@ -154,21 +153,24 @@ header{
     align-items: flex-start;
     text-align: left;
     list-style: none;
-    padding: 10px;
+    padding-top: 80px;
     border-left: solid 2px orange;
     background-color: purple;
     position:absolute;
     top:-5;
     right: 0;
     bottom: -50;
-    left: 600px;
+    left: 1400px;
     margin-left: 0px;
     z-index: 400;
     height: 1000%;
-    transition: 1s all ease-in;
+    transition: 0.8s all ease-in-out;
 }
 .mobile-list{
-    left:0px
+    left:70px
+}
+.mobile-list>*{
+    margin: 5px;
 }
 
 .nav-list-mobile > li a{
@@ -809,13 +811,24 @@ footer > div> a, .buyer-seller> a{
 
 /* payment platform styling */
 .pay-parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 15%;
-    text-align-last: center; 
+    text-align: center; 
 }
 
 #account-pointer{
     cursor:pointer;
 }
-#acc-number{
+span#acc-number{
     display: none;
+    text-align: center;
+    transition:all 1.9s ease-in-out;
+    transform: rotateX(360deg)
 }
+
+/* span#acc-number:hover{
+    
+} */

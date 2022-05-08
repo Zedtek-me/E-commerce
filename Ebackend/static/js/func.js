@@ -33,7 +33,6 @@ function removeProd(){
     }
 
 }
-removeProd()
 
 //displays the product update form
 const updateProd= ()=>{
@@ -50,6 +49,7 @@ const updateProd= ()=>{
     }
 }
 updateProd()
+
 
 // the diplay account number function-- useful at the payment page
 const displayAcc= ()=>{

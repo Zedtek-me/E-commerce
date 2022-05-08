@@ -2,7 +2,6 @@
 function mobileNav(){
     let mobile= document.querySelector('.nav-list-mobile')
     let navBar= document.querySelector('.hamburger')
-    console.log(mobile)
     navBar.addEventListener('click', (e)=>{
         mobile.classList.toggle('mobile-list')
     })
@@ -57,7 +56,6 @@ const removeCartItem= ()=>{
                 method:'POST',
                 body: formInfo
             })
-            // .then((response)=>{console.log(response)})
             removeCart[j].style.display='none'//remove the button
         })
         
