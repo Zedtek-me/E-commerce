@@ -548,6 +548,7 @@ footer{
     background: rgb(51, 48, 48);
     padding:20px;
     margin-top:20%;
+    flex-grow: 1;
 }
 
 footer > div{
