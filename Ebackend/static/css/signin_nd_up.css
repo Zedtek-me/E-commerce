@@ -3,7 +3,7 @@ form{
     margin:auto;
     margin-top: 15px;
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding:5px;

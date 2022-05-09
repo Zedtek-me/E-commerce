@@ -92,6 +92,19 @@
         margin: auto;
     }
 
+    /*the form elements for sign-up and sign-in*/form >input{
+        width:50%;
+    }
+    div.sign-up-guide{
+        margin-top: 35%;
+    }
+    .input-cont{
+        width: 50%;
+        margin:13px;
+    }
+    .options{
+        margin-bottom: 30px;
+    }
     .profile{/* the profile icon */
         margin: auto;
         margin-left: 8px;
