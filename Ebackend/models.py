@@ -98,7 +98,7 @@ class PurchasedProducts(models.Model):
     owned_by= models.ForeignKey(VendorProfile, on_delete=models.CASCADE)
     bought_by= models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
     date= models.DateField(auto_now_add=True)
-
+    
     def __str__(self):
         return (
                     'Vendor %s\'s %s, purchased on %s, by %s' %(self.owned_by.vendor.username, self.product.product_name, self.date, self.bought_by)
