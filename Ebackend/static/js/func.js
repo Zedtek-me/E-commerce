@@ -34,6 +34,8 @@ function removeProd(){
 
 }
 
+removeProd()
+
 //displays the product update form
 const updateProd= ()=>{
     let editBtns= document.querySelectorAll('.edit-prod')
