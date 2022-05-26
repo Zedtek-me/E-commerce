@@ -20,7 +20,8 @@ urlpatterns=[
     path('remove-prod/', views.remove_prod, name= 'remove-prod'),
     path('edit-prod/', views.edit_product, name= 'edit-prod'),
     path('add_to_cart/', views.add_to_cart, name= 'add_to_cart'),
-    path('remove_from_cart/', views.remove_from_cart, name= 'remove_from_cart')
+    path('remove_from_cart/', views.remove_from_cart, name= 'remove_from_cart'),
+    path('search/', views.search, name= 'search')
 ]
 
 if settings.DEBUG:

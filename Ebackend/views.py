@@ -10,6 +10,9 @@ import os
 from django.conf import settings
 import django
 import uuid
+import json
+from django.core.serializers import serialize
+from django.db.models import Q
 
 
 # index page--> accesible to all users (anonymous or not)
@@ -254,6 +257,16 @@ def edit_product(request):
         messages.success(request, 'update successful!')
     # the if statement above isn't necessary cuz, I apparently expect all the data: be it changed or the default. I might adjust this later sha.
     return redirect('profile')
+
+def search(request):
+    search_text= json.loads(request.body)
+    queries= Product.objects.filter(Q(product_name__icontains= search_text) | Q(description__icontains= search_text))
+    print(queries)
+    if queries:
+        serialized_query= serialize('json', queries)
+        return HttpResponse(serialized_query, content_type='application/json')
+    return HttpResponse(json.dumps(f'Nothing was found for {search_text}'))
+
 
 def payment_method(request):
     user= request.user
