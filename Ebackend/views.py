@@ -267,6 +267,8 @@ def search(request):
         return HttpResponse(serialized_query, content_type='application/json')
     return HttpResponse(json.dumps(f'Nothing was found for {search_text}'))
 
+def searchProducts(request): #the template that displays the searched items
+    return render(request, 'search_product.html', context={})
 
 def payment_method(request):
     user= request.user
