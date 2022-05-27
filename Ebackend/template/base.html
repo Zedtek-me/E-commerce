@@ -41,9 +41,9 @@
             <div class="icon">
                 {%block search%}<input type="search" name="search-term" class="search-box"><i class="fa-solid fa-magnifying-glass"></i>{%endblock%}
                 <!-- submit form for search result -->
-                <form action="search/" method="get" id="search-form" style="display:none;">
+                <form action="{%url 'search'%}" method="get" id="search-form" style="display:none;">
                     <input type="hidden" name="query">
-                    <input type="submit" id="submit-btn" name="submit-btn">
+                    <input type="submit" id="submit-btn">
                 </form>
                 <div class="cart-item">
                     <a href="/checkout/" class="checkout"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count">{%if session_data%}{{session_data}}{%endif%}</div></a>

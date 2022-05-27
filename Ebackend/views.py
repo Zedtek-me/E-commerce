@@ -1,4 +1,5 @@
 from email import message
+from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -261,17 +262,18 @@ def edit_product(request):
 
 # the search view. I only expect get requests from this view
 def search(request):
-    msg= messages.get_messages(request)#gets messages from server
-    context= {'msgs': msg}
+    context={}
     search_text= request.GET.get('query')
-    print(search_text)
-    queries= Product.objects.filter(Q(product_name__icontains= search_text) | Q(description__icontains= search_text))
-    print(queries)
-    if queries:
-        context.update(search_results= queries)    
-        return render( request, 'search_product.html', context)
-    messages.info(request, f" Nothing was found for {search_text}")
-    return redirect('search')
+    # try to catch error, in case filter data with the searched text is not found
+    try:
+        queries= Product.objects.filter(Q(product_name__icontains= search_text) | Q(description__icontains= search_text))  
+        query_length= len(queries)
+    except Exception:
+        return render(request, 'search_product.html', context)
+    # this below, runs if there's no exception
+    context.update(search_results= queries, result_length=query_length)   
+    return render( request, 'search_product.html', context)
+
 
 def payment_method(request):
     user= request.user

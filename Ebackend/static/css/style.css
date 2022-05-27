@@ -830,6 +830,12 @@ span#acc-number{
     transform: rotateX(360deg)
 }
 
+.search-items{
+    margin-top: 10%;
+}
+.search-items > *{
+    margin: 20px;
+}
 /* span#acc-number:hover{
     
 } */

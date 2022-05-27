@@ -137,5 +137,11 @@
     #cart-head-text{
         margin-top: 30%;
     }
+
+    .search-items{
+        margin-top: 28%;
+        margin-right: 7%;
+        margin-left: 7%;
+    }
     
 }
