@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Ebackend',
     'rest_framework',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Ebackend/static')]
 # if I encounter an error in production that says something along the line of 'expected str, pathlike objec and not list', remove the directory pointer from the list.
-STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 
 STATICFILES_FINDERS=[
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -139,7 +139,13 @@ STATICFILES_FINDERS=[
 
 # media files uploaded by a user(Vendor or Buyer)
 MEDIA_ULR= '/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR, 'Media_files')
+# aws configurations 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+AWS_STORAGE_BUCKET_NAME='CommerceBucket'
+AWS_S3_ACCESS_KEY_ID= os.environ.get('AWS_S3_ACCESS_ID')
+AWS_S3_SECRET_ACCESS_KEY= os.environ.get('SECRETE_ACCESS_KEY')
+AWS_S3_FILE_OVERWRITE= False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
