@@ -1,3 +1,4 @@
+from email import message
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -258,17 +259,19 @@ def edit_product(request):
     # the if statement above isn't necessary cuz, I apparently expect all the data: be it changed or the default. I might adjust this later sha.
     return redirect('profile')
 
+# the search view. I only expect get requests from this view
 def search(request):
-    search_text= json.loads(request.body)
+    msg= messages.get_messages(request)#gets messages from server
+    context= {'msgs': msg}
+    search_text= request.GET.get('query')
+    print(search_text)
     queries= Product.objects.filter(Q(product_name__icontains= search_text) | Q(description__icontains= search_text))
     print(queries)
     if queries:
-        serialized_query= serialize('json', queries)
-        return HttpResponse(serialized_query, content_type='application/json')
-    return HttpResponse(json.dumps(f'Nothing was found for {search_text}'))
-
-def searchProducts(request): #the template that displays the searched items
-    return render(request, 'search_product.html', context={})
+        context.update(search_results= queries)    
+        return render( request, 'search_product.html', context)
+    messages.info(request, f" Nothing was found for {search_text}")
+    return redirect('search')
 
 def payment_method(request):
     user= request.user
