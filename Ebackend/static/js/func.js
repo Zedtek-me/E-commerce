@@ -52,3 +52,19 @@ const updateProd= ()=>{
 }
 updateProd()
 
+// for profile settings
+const toggleSetting= ()=>{
+    let [settingsCont, settingArrow, settingsForm]= [document.querySelector('#update-account-txt'), document.querySelector('.settings-tog'), document.querySelector('#acc-update-form')]
+    settingsCont.addEventListener('click', (e)=>{
+        settingArrow.classList.toggle('fa-angle-down')
+        settingArrow.classList.toggle('fa-angle-up')
+        if (settingsForm.style.display=='flex'){
+            settingsForm.style.display = 'none'
+        }
+        else{
+            settingsForm.style.display= 'flex'
+        }
+    })
+}
+
+toggleSetting()

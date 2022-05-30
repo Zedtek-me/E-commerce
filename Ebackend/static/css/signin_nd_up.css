@@ -308,3 +308,53 @@ overflow-x: scroll;
     text-align: center;
     padding: 5px;
 }
+
+#update-acc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+#acc-update-form{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    background-color: purple;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 35px;
+    text-align: center;
+}
+/* .form-off{
+    display: o;
+} */
+#acc-update-form > label, #submit-update{
+    align-self: center;
+    margin: 8px;
+}
+
+#submit-update,#update-account-txt{
+    cursor: pointer;   
+}
+
+.setting-info{
+    border-bottom:solid 1px orange;
+}
+#acc-update-form > label{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+
+#acc-update-form > label >*{
+    margin: 5px;
+}

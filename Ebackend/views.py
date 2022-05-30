@@ -286,4 +286,20 @@ def payment_method(request):
     # other logics(like perhaps, if whatsapp payment option's available or need to get user data to fetch api) come in below.
     return render(request, 'payment.html',{'user': user, 'session_data': data_length})
 
-    
+
+def update_account(request):
+    # get from request
+    user= request.user
+    new_name= request.POST.get('updated-name')
+    new_picture= request.FILES.get('updated-picture')
+
+    # update name directly to db
+    user.username= new_name
+    # check whether user is a buyer or a seller to know which table(vendor profile or buyer profile) to update
+    if user.vendorprofile:
+        user.vendorprofile.profile_img= new_picture
+    else:
+        user.buyerprofile.profile_img= new_picture
+    user.save()
+    messages.success(request, 'profile successfully updated.')
+    return redirect('profile')

@@ -147,5 +147,9 @@
     .item-detail{/*one of the detail of an item, with the lorem ipsium text*/
         text-align: center;
     }
+
+    .success, .error, .info{
+        margin-top: 10%;
+    }
     
 }
