@@ -26,12 +26,12 @@ class VendorProfile(models.Model):
         name= self.vendor.username
         return name
 
-    def save(self,*args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.profile_img.path)
-        thumb=(400,400)
-        img.thumbnail(thumb)
-        img.save(self.profile_img.path)
+    # def save(self,*args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     img = Image.open(self.profile_img.path)
+    #     thumb=(400,400)
+    #     img.thumbnail(thumb)
+    #     img.save(self.profile_img.path)
 
 # buyer's table
 class BuyerProfile(models.Model):
@@ -52,12 +52,12 @@ class BuyerProfile(models.Model):
         name= self.buyer.username
         return name
 
-    def save(self,*args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.profile_img.path)
-        thumb=(400,400)
-        img.thumbnail(thumb)
-        img.save(self.profile_img.path)
+    # def save(self,*args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     img = Image.open(self.profile_img.path)
+    #     thumb=(400,400)
+    #     img.thumbnail(thumb)
+    #     img.save(self.profile_img.path)
 
 # product's table referencing the users'(buyers and vendors) table, since both buyers and vendors are users
 class Product(models.Model):
@@ -73,12 +73,12 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-    def save(self,*args, **kwargs):
-        super().save()
-        img = Image.open(self.product_image.path)
-        thumb=(400,400)
-        img.thumbnail(thumb)
-        img.save(self.product_image.path)
+    # def save(self,*args, **kwargs):
+    #     super().save()
+    #     img = Image.open(self.product_image.path)
+    #     thumb=(400,400)
+    #     img.thumbnail(thumb)
+    #     img.save(self.product_image.path)
 
 # category Table for each product--> This would help later when I just need to display product categories only.
 class Category(models.Model):

@@ -143,5 +143,9 @@
         margin-right: 11%;
         /* margin-left: 7%; */
     }
+
+    .item-detail{/*one of the detail of an item, with the lorem ipsium text*/
+        text-align: center;
+    }
     
 }
