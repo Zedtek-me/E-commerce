@@ -141,11 +141,12 @@ STATICFILES_FINDERS=[
 MEDIA_ULR= '/media/'
 # aws configurations 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-AWS_STORAGE_BUCKET_NAME='CommerceBucket'
-AWS_S3_ACCESS_KEY_ID= os.environ.get('AWS_S3_ACCESS_ID')
-AWS_S3_SECRET_ACCESS_KEY= os.environ.get('SECRETE_ACCESS_KEY')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME='commercebucket'
+AWS_S3_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_S3_SECRET_ACCESS_KEY= os.environ.get('AWS_S3_SECRETE_ACCESS_KEY')
 AWS_S3_FILE_OVERWRITE= False
+AWS_LOCATION= 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
