@@ -21,7 +21,7 @@
                 <!-- profile update here -->
                 <div class="update-account-details" id="update-acc">
                     <p id="update-account-txt">Settings <i class="fa-solid fa-angle-down settings-tog"></i></p>
-                    <form action="{%url 'update account'%}" id="acc-update-form" method="post">
+                    <form action="{%url 'update account'%}" id="acc-update-form" method="post" enctype= "multipart/form-data">
                         <div class="setting-info">Update your info below.</div>
                         {%csrf_token%}
                         <label for="update-username"><p>Username:</p>

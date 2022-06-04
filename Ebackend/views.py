@@ -1,5 +1,3 @@
-from email import message
-from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -292,14 +290,32 @@ def update_account(request):
     user= request.user
     new_name= request.POST.get('updated-name')
     new_picture= request.FILES.get('updated-picture')
-
-    # update name directly to db
-    user.username= new_name
-    # check whether user is a buyer or a seller to know which table(vendor profile or buyer profile) to update
-    if user.vendorprofile:
-        user.vendorprofile.profile_img= new_picture
+    # update directly to db if both pictures and username are to be updated
+    if new_name and new_picture:
+        user.username= new_name
+        # check whether user is a buyer or a seller to know which table(vendor profile or buyer profile) to update
+        if user.vendorprofile:
+           vendor= VendorProfile.objects.get(vendor=user)
+           vendor.profile_img= new_picture
+           vendor.save()
+        else:
+            buyer= BuyerProfile.objects.get(buyer=user)
+            buyer.profile_img= new_picture
+            buyer.save()
+    # if only name is to be changed
+    elif new_name and not new_picture:
+        user.username= new_name
+    # only picture
     else:
-        user.buyerprofile.profile_img= new_picture
+        # check whether user is a buyer or a vendor or both
+        if user.vendorprofile:
+           vendor= VendorProfile.objects.get(vendor=user)
+           vendor.profile_img= new_picture
+           vendor.save()
+        else:
+            buyer= BuyerProfile.objects.get(buyer=user)
+            buyer.profile_img= new_picture
+            buyer.save()
     user.save()
     messages.success(request, 'profile successfully updated.')
     return redirect('profile')
