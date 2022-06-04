@@ -104,14 +104,15 @@
             <h4 class="name">{{name}}</h4>
             <!-- profile update here -->
             <div class="update-account-details" id="update-acc">
-                <p id="update-account-txt">Settings<i class="fa-solid fa-angle-down settings-tog"></i></p>
-                <form action="update-acc/" id="acc-update-form" method="post">
+                <p id="update-account-txt">Settings <i class="fa-solid fa-angle-down settings-tog"></i></p>
+                <form action="{%url 'update account'%}" id="acc-update-form" method="post" enctype= "multipart/form-data">
                     <div class="setting-info">Update your info below.</div>
                     {%csrf_token%}
-                    <label for="update-username">New Username:
+                    <label for="update-username"><p>Username:</p>
                         <input type="text" name="updated-name" id="updated-name">
                     </label>
-                    <label for="update-username">New Photo:
+                    <label for="update-username" id="update-pix-label">
+                        <p>New Photo:</p>
                         <input type="file" name="updated-picture" id="updated-picture" accept="image/*">
                     </label>
                     <input type="submit" name="submit" id="submit-update">

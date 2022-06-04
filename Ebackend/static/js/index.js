@@ -10,7 +10,7 @@ function mobileNav(){
 mobileNav()
 
 
-// display quick links
+// display quick links in the footer
 function displayLink(){
     let links= document.querySelector('.b-seller')
     let arrowDown= document.querySelector('.reveal')
