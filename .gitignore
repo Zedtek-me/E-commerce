@@ -1,0 +1,4 @@
+*.logs
+*.md
+*.lte
+*sqlite.*

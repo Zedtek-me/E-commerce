@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('ECOM_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 APPEND_SLASH= True
 
