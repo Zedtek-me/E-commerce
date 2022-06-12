@@ -303,10 +303,10 @@ def update_account(request):
             buyer.profile_img= new_picture
             buyer.save()
     # if only name is to be changed
-    elif new_name and not new_picture:
+    elif new_name:
         user.username= new_name
     # only picture
-    else:
+    elif new_picture:
         # check whether user is a buyer or a vendor or both
         if user.vendorprofile:
            vendor= VendorProfile.objects.get(vendor=user)
@@ -316,6 +316,9 @@ def update_account(request):
             buyer= BuyerProfile.objects.get(buyer=user)
             buyer.profile_img= new_picture
             buyer.save()
+    else:
+        messages.info(request, 'Nothing was changed!')
+        return redirect('profile')
     user.save()
     messages.success(request, 'profile successfully updated.')
     return redirect('profile')
