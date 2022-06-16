@@ -124,3 +124,12 @@ const increaseNdDecreaseAmount= ()=>{
 }
 
 increaseNdDecreaseAmount()
+
+const removeFlash= ()=>{
+    let xIcon= document.querySelector('.fa-xmark')
+    let body= document.querySelector('.body')
+    let iconParent= document.querySelector('.message')
+    // remove flash message when clicked
+    xIcon.addEventListener('click', (e)=> body.removeChild(iconParent))
+}
+removeFlash()

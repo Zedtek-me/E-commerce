@@ -7,7 +7,7 @@
 {%block content%}
 {%if msgs%}
     {%for msg in msgs%}
-    <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}</div>
+    <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}<i class="fa-solid fa-xmark"></i></div>
     {%endfor%}
 {%endif%}
 <div class="sign-in"><h5>Sign in here</h5> <hr class="sepr"></div>
