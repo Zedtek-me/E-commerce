@@ -112,10 +112,10 @@ div.sign-up-guide{
     align-self: flex-start;
 }
 
-.success{
+.success, .info, .error{
     display: flex;
     justify-content: space-between;
-    margin:auto;
+    margin-top:7%;
     text-align: center;
     width:fit-content;
     padding:5px;
@@ -125,23 +125,12 @@ div.sign-up-guide{
 }
 
 .error{
-    margin:auto;
-    text-align: center;
-    width:fit-content;
-    padding:5px;
     background-color: lightcoral;
-    color:white;
-    border-radius:15px;
 }
 
 .info{
-    margin:auto;
-    text-align: center;
-    width:fit-content;
-    padding:5px;
     background-color: rgb(81, 183, 218);
     color:black;
-    border-radius:15px;
 }
 
 .search-info{
