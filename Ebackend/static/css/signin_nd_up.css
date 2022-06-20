@@ -115,6 +115,7 @@ div.sign-up-guide{
 .success, .info, .error{
     display: flex;
     justify-content: center;
+    justify-self: flex-start;
     /* margin-top:10%; */
     text-align: center;
     width:fit-content;
