@@ -119,17 +119,17 @@ div.sign-up-guide{
     text-align: center;
     width:fit-content;
     padding:5px;
-    background-color:lightgreen;
+    background-color:rgb(93, 240, 93);
     color: white;
     border-radius:15px;
 }
 
 .error{
-    background-color: lightcoral;
+    background-color: rgb(235, 57, 57);
 }
 
 .info{
-    background-color: rgb(81, 183, 218);
+    background-color: rgb(32, 167, 212);
     color:black;
 }
 
