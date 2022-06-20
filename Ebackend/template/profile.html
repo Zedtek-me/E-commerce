@@ -6,12 +6,12 @@
 {%block search%}{%endblock%}
 
 {%block content%}
-    {%if msgs%}
-        {%for msg in msgs%}
-        <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}</div>
-        {%endfor%}
-    {%endif%}
     <div class="profile-parent">
+        {%if msgs%}
+            {%for msg in msgs%}
+                <div {%if msg.tags%}class="{{msg.tags}} message"{%endif%}>{{msg}}</div>
+            {%endfor%}
+        {%endif%}
         <h3 id="hello">Hello {{name}}</h3>
         <!-- for vendors -->
         {%if name.vendorprofile%}
