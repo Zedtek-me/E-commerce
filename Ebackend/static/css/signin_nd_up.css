@@ -115,7 +115,7 @@ div.sign-up-guide{
 .success, .info, .error{
     display: flex;
     justify-content: space-between;
-    margin-top:7%;
+    margin-top:20%;
     text-align: center;
     width:fit-content;
     padding:5px;
