@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
-from .models import VendorProfile, BuyerProfile, Product
-from django.contrib.auth.models import Group, Permission, User
+from Ebackend.models import VendorProfile
+from django.contrib.auth.models import Group
 
 # defining a callback for adding vendors to group
 def add_to_vendor_group(sender, instance, created, **kwargs):
