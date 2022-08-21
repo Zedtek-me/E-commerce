@@ -3,7 +3,6 @@ import django
 from django.db import models
 from django.db.models import Manager
 from django.contrib.auth.models import User
-from PIL import Image
 
 # vendor's table
 class VendorProfile(models.Model):
