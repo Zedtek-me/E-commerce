@@ -1,6 +1,5 @@
-from unicodedata import name
 from django.urls import path
-from . import views, api_views
+from Ebackend import views, api_views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns=[
@@ -8,6 +7,7 @@ urlpatterns=[
     path('vendor/', api_views.get_vendor, name='vendors' ),
     path('buyer/', api_views.get_buyer, name='buyers' ),
     path('product/', api_views.get_product, name='products' ),
+    path('users', api_views.users, name= 'users'),
 
     # urls to template views
     path('', views.index, name='home' ),
