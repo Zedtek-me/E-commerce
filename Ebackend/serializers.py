@@ -3,7 +3,7 @@ from Ebackend.models import VendorProfile, BuyerProfile, Product, Category
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializers):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model= User
         fields= ['name', 'username', 'email', 'is_staff', 'is_admin', 'is_superuser']
