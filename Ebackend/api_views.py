@@ -54,6 +54,7 @@ def users(request):
         if serialized_user.is_valid():
             serialized_user.save()
             return Response(serialized_user.data, status.HTTP_201_CREATED)
+        return Response({'invalid':'the data provided was invalid!'})
     #otherwise, it's a get request; Now check if the request is meant for a single user or all users
     if not('pk' in request.query_params):
         '''This is a general get request-> returns all users'''
