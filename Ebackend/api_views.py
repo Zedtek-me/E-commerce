@@ -45,7 +45,7 @@ def get_product(request):
 @api_view(['GET', 'POST'])
 def users(request):
     '''
-    Create and Retrieves users per request.
+    Creates and Retrieves users per request.
     '''
     print(request.query_params)
     if request.method == 'POST':
